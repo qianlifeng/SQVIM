@@ -1,6 +1,6 @@
 " {{{ 文件头
 " DesCRiption: vimrc for scottqian
-" Last Change: 2012-10-08
+" Last Change: 2012-11-07
 " Version:     0.2.3
 "}}}
  
@@ -198,6 +198,11 @@ nmap <leader>1 :set filetype=xml<cr>
 "设置折叠方式为语法折叠同时开启所有折叠
  map <leader>fs :set fdm=syntax<cr>zM
 
+"列出搜索结果
+nmap <leader>f :g//<left>
+"映射搜索快捷键
+nmap <C-f> gg//g<left><left>
+imap <C-f> <esc>gg//g<left><left>
 "}}}
 
 "{{{ Python 配置
