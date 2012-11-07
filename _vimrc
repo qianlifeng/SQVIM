@@ -6,6 +6,8 @@
  
 "{{{ 基础配置
 
+"忽略搜索时候的大小写
+set ic
 "重新设置leader key
 let mapleader = ","
 "不区分大小写
@@ -111,6 +113,7 @@ Bundle 'JavaScript-syntax'
 Bundle 'The-NERD-tree'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'ervandew/supertab'
+Bundle 'MultipleSearch'
 filetype plugin indent on
 "}}}
  
@@ -177,6 +180,13 @@ set t_Co=256
 "let g:Powerline_symbols = 'fancy'
 "}}}
 
+" {{{ 插件名：Nerd Tree
+"     Vundle安装名：'The-NERD-tree'
+"     作用：
+"          树形目录结构
+map <leader>t :NERDTreeFind<CR>
+"}}}
+
 "消除每行结尾有可能出现的^M (文件格式问题)
 map <C-m> :%s/\r//g<CR> 
  
@@ -187,6 +197,7 @@ nmap <leader>1 :set filetype=xml<cr>
 
 "设置折叠方式为语法折叠同时开启所有折叠
  map <leader>fs :set fdm=syntax<cr>zM
+
 "}}}
 
 "{{{ Python 配置
