@@ -203,6 +203,10 @@ nmap <leader>f :g//<left>
 "映射搜索快捷键
 nmap <C-f> gg//g<left><left>
 imap <C-f> <esc>gg//g<left><left>
+
+"双击鼠标左键高亮所有选择的单词
+nmap <2-leftmouse> *
+imap <2-leftmouse> <esc>*a
 "}}}
 
 "{{{ Python 配置
