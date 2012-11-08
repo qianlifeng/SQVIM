@@ -91,16 +91,20 @@ autocmd GUIEnter * simalt ~x
 "   
 "           管理插件安装
 "
+
+"required
 filetype off
 "此处规定Vundle的路径
-set rtp+=$VIM/vimfiles/bundle/vundle/
+set rtp+=$HOME/.vim/bundle/vundle
 "此处规定插件的安装路径
-call vundle#rc('$VIM/vimfiles/bundle/')
-"插件列表
- 
+call vundle#rc('$HOME/.vim/bundle')
+" let Vundle manage Vundle
 Bundle 'gmarik/vundle'
+" required!
+
+"插件列表
 Bundle 'The-NERD-Commenter'
-Bundle 'https://github.com/vim-scripts/L9'
+Bundle 'vim-scripts/L9'
 Bundle 'FuzzyFinder'
 Bundle 'matchit.zip' 
 Bundle 'utl.vim'
@@ -166,7 +170,6 @@ nnoremap <silent><F10> :Utl<CR>
 "   
 "           函数列表显示 
 
-set tags=D:\WorkProject\private\lqian\v6.1.1.0_20120724\Prodika\tags,d:\Soft\vim73-x64\tags 
 map <silent> <F9> :TlistToggle<cr>
 "}}}
 
