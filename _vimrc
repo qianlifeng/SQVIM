@@ -56,6 +56,7 @@ set encoding=utf-8
 "set fileencoding=utf-8
 "GVIM支持打开的文件编码
 set fileencodings=utf-8,gbk,gb2312,big5,latin1
+set termencoding=utf-8
 "解决菜单及右键菜单乱码
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
@@ -190,16 +191,18 @@ set t_Co=256
 map <leader>t :NERDTreeFind<CR>
 "}}}
 
-"消除每行结尾有可能出现的^M (文件格式问题)
-map <C-m> :%s/\r//g<CR> 
+"}}}
  
 "{{{ 键盘映射
+
+"消除每行结尾有可能出现的^M (文件格式问题)
+map <C-m> :%s/\r//g<CR> 
 
 "文件类型
 nmap <leader>1 :set filetype=xml<cr>
 
 "设置折叠方式为语法折叠同时开启所有折叠
- map <leader>fs :set fdm=syntax<cr>zM
+map <leader>fs :set fdm=syntax<cr>zM
 
 "列出搜索结果
 nmap <leader>f :g//<left>
@@ -208,8 +211,26 @@ nmap <C-f> gg//g<left><left>
 imap <C-f> <esc>gg//g<left><left>
 
 "双击鼠标左键高亮所有选择的单词
-nmap <2-leftmouse> *
-imap <2-leftmouse> <esc>*a
+nmap <2-leftmouse> *N
+imap <2-leftmouse> <esc>*Na
+"清除搜索高亮
+nmap <leader><leader> :nohlsearch<CR>
+
+"资源管理器中打开当前文件
+imap <F12> <ESC>:call OpenFileLocation()<CR> 
+nmap <F12> :call OpenFileLocation()<CR>
+"}}}
+
+"{{{ 自定义函数
+
+function OpenFileLocation()  
+    if ( expand("%") != "" )  
+        execute "!start explorer /select, %"   
+    else  
+        execute "!start explorer /select, %:p:h"  
+    endif  
+endfunction  
+
 "}}}
 
 "{{{ Python 配置
