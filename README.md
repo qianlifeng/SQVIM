@@ -3,6 +3,12 @@ SQVIM
 VIM配置文件  
 使用Vundle管理插件，Vundle安装方法：http://www.cnblogs.com/qiangji/archive/2011/07/31/Vundle.html
 
+
+###2012-11-15
+* 修改Nerd Tree配置
+* 修改Tag List插件快捷键为F10
+* 修改Nerd Tree插件快捷键为F11
+
 ###2012-11-09
 * 增加资源管理器打开当前文件功能 F12
 * 增加清楚搜索高亮快捷键

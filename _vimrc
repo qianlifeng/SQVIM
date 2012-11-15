@@ -1,6 +1,6 @@
 " {{{ 文件头
 " DesCRiption: vimrc for scottqian
-" Last Change: 2012-11-07
+" Last Change: 2012-11-15
 " Version:     0.2.3
 "}}}
  
@@ -171,7 +171,10 @@ nnoremap <silent><F10> :Utl<CR>
 "   
 "           函数列表显示 
 
-map <silent> <F9> :TlistToggle<cr>
+map <silent> <F10> :TlistToggle<cr>
+imap <F10> <ESC>:TlistToggle<cr>a
+let Tlist_Show_One_File = 1            "不同时显示多个文件的tag，只显示当前文件的
+let Tlist_Exit_OnlyWindow = 1          "如果taglist窗口是最后一个窗口，则退出vim
 "}}}
 
 " {{{ 插件名：PowerLine
@@ -188,7 +191,8 @@ set t_Co=256
 "     Vundle安装名：'The-NERD-tree'
 "     作用：
 "          树形目录结构
-map <leader>t :NERDTreeFind<CR>
+map <F11> :NERDTreeFind<CR>
+imap <F11> <ESC>:NERDTreeFind<CR>a
 "}}}
 
 "}}}
