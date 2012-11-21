@@ -3,6 +3,8 @@ SQVIM
 VIM配置文件  
 使用Vundle管理插件，Vundle安装方法：http://www.cnblogs.com/qiangji/archive/2011/07/31/Vundle.html
 
+###2012-11-21
+* 鼠标左键双击选中当前单词
 
 ###2012-11-15
 * 修改Nerd Tree配置

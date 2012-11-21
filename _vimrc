@@ -215,8 +215,8 @@ nmap <C-f> gg//g<left><left>
 imap <C-f> <esc>gg//g<left><left>
 
 "双击鼠标左键高亮所有选择的单词
-nmap <2-leftmouse> *N
-imap <2-leftmouse> <esc>*Na
+nmap <2-leftmouse> *Nvw
+imap <2-leftmouse> <esc>*Nvw
 "清除搜索高亮
 nmap <leader><leader> :nohlsearch<CR>
 
