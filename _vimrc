@@ -119,6 +119,7 @@ Bundle 'The-NERD-tree'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'ervandew/supertab'
 Bundle 'MultipleSearch'
+Bundle 'jquery.vim'
 filetype plugin indent on
 "}}}
  
@@ -195,6 +196,9 @@ map <F11> :NERDTreeFind<CR>
 imap <F11> <ESC>:NERDTreeFind<CR>a
 "}}}
 
+"jquery语法高亮插件, 需要下载http://www.vim.org/scripts/script.php?script_id=2416
+au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
+
 "}}}
  
 "{{{ 键盘映射
@@ -223,6 +227,10 @@ nmap <leader><leader> :nohlsearch<CR>
 "资源管理器中打开当前文件
 imap <F12> <ESC>:call OpenFileLocation()<CR> 
 nmap <F12> :call OpenFileLocation()<CR>
+
+"当前行下移一行
+imap <C-n> <ESC>O
+nmap <C-n> O<ESC>
 "}}}
 
 "{{{ 自定义函数
