@@ -119,7 +119,9 @@ Bundle 'The-NERD-tree'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'ervandew/supertab'
 Bundle 'MultipleSearch'
-Bundle 'jquery.vim'
+"注意注释该插件下面的ftpplugin中的markdown折叠功能
+Bundle 'plasticboy/vim-markdown'
+Bundle 'waylan/vim-markdown-extra-preview'
 filetype plugin indent on
 "}}}
  
@@ -231,6 +233,7 @@ nmap <F12> :call OpenFileLocation()<CR>
 "当前行下移一行
 imap <C-n> <ESC>O
 nmap <C-n> O<ESC>
+
 "}}}
 
 "{{{ 自定义函数
