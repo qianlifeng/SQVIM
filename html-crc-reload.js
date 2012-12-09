@@ -32,7 +32,8 @@ function check(firstRun) {
 	
 	$.ajax({
 		type: 'GET',			
-		url: window.location.pathname,					
+		url: window.location.pathname,	
+		isLocal：true,
 		success: function(data) {						
 			if(firstRun) {	
 				previousCrc = crc32(data);
