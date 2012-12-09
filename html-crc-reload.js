@@ -34,21 +34,14 @@ function check(firstRun) {
 		type: 'GET',			
 		url: window.location.pathname,					
 		success: function(data) {						
-			
-			if (window.console && window.console.firebug) {
-				
-				for (var x in console) {
-					delete console[x];
-				}
-			}
-			
 			if(firstRun) {	
 				previousCrc = crc32(data);
+				console.log("previousCrc:"+previousCrc);
 				return;
 			}
 			
 			var newCrc = crc32(data);
-			
+			console.log("newCrc:"+newCrc);
 			if(newCrc != previousCrc) {
 				location.reload();
 			} 
