@@ -32,23 +32,14 @@ function check(firstRun) {
 	
 	$.ajax({
 		type: 'GET',			
-		url: window.location.pathname,					
+		url: window.location.pathname+'?t='+ Date.parse(new Date()), //prevent browser using html cache	
 		success: function(data) {						
-			
-			if (window.console && window.console.firebug) {
-				
-				for (var x in console) {
-					delete console[x];
-				}
-			}
-			
 			if(firstRun) {	
 				previousCrc = crc32(data);
 				return;
 			}
 			
 			var newCrc = crc32(data);
-			
 			if(newCrc != previousCrc) {
 				location.reload();
 			} 
