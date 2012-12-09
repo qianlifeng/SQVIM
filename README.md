@@ -3,6 +3,9 @@ SQVIM
 VIM配置文件  
 使用Vundle管理插件，Vundle安装方法：http://www.cnblogs.com/qiangji/archive/2011/07/31/Vundle.html
 
+###2012-12-09
+* 增加mardown自动预览功能
+
 ###2012-12-07
 * 增加markdown语法支持
 

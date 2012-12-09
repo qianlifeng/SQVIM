@@ -121,6 +121,8 @@ Bundle 'ervandew/supertab'
 Bundle 'MultipleSearch'
 "注意注释该插件下面的ftpplugin中的markdown折叠功能
 Bundle 'plasticboy/vim-markdown'
+"注意修改插件模版文件夹下面的默认文件夹模版
+"添加jquery.js和html-crc-reload.js 以便浏览器自动刷新
 Bundle 'waylan/vim-markdown-extra-preview'
 filetype plugin indent on
 "}}}
@@ -198,8 +200,9 @@ map <F11> :NERDTreeFind<CR>
 imap <F11> <ESC>:NERDTreeFind<CR>a
 "}}}
 
-"jquery语法高亮插件, 需要下载http://www.vim.org/scripts/script.php?script_id=2416
-au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
+"{{{ 插件名字：vim-markdown-extra-preview
+au BufWritePost,InsertLeave *.md Mer
+"}}}
 
 "}}}
  
