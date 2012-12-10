@@ -3,6 +3,10 @@ SQVIM
 VIM配置文件  
 使用Vundle管理插件，Vundle安装方法：http://www.cnblogs.com/qiangji/archive/2011/07/31/Vundle.html
 
+###2012-12-10
+* 增加pyflakes插件（python语法检查）
+* 增加vim-ipython插件（配合supertab实现python自动完成）
+
 ###2012-12-09
 * 增加mardown自动预览功能
 
