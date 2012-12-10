@@ -1,0 +1,286 @@
+.vimMarkdown a {
+    color: #4183c4;
+    text-decoration: none;
+}
+.vimMarkdown a:hover {
+    text-decoration: underline;
+}
+.vimMarkdown a:active {
+    outline: none;
+}
+.vimMarkdown {
+    font-size: 14px;
+    line-height: 1.6;
+    width: 872px;
+    margin: 0 auto;
+}
+.vimMarkdown a.anchor {
+    display: block;
+    padding-left: 30px;
+    margin-left: -30px;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+}
+.vimMarkdown h1, .vimMarkdown h2, .vimMarkdown h3, .vimMarkdown h4, .vimMarkdown h5, .vimMarkdown h6 {
+    margin: 20px 0 10px;
+    padding: 0;
+    font-weight: bold;
+    -webkit-font-smoothing: antialiased;
+    cursor: text;
+    position: relative;
+}
+.vimMarkdown h1:hover a.anchor, .vimMarkdown h2:hover a.anchor, .vimMarkdown h3:hover a.anchor, .vimMarkdown h4:hover a.anchor, .vimMarkdown h5:hover a.anchor, .vimMarkdown h6:hover a.anchor {
+    text-decoration: none;
+}
+.vimMarkdown h1 tt, .vimMarkdown h1 code, .vimMarkdown h2 tt, .vimMarkdown h2 code, .vimMarkdown h3 tt, .vimMarkdown h3 code, .vimMarkdown h4 tt, .vimMarkdown h4 code, .vimMarkdown h5 tt, .vimMarkdown h5 code, .vimMarkdown h6 tt, .vimMarkdown h6 code {
+    font-size: inherit;
+}
+.vimMarkdown h1 {
+    font-size: 28px;
+    color: #000;
+}
+.vimMarkdown h2 {
+    font-size: 24px;
+    border-bottom: 1px solid #ccc;
+    color: #000;
+}
+.vimMarkdown h3 {
+    font-size: 18px;
+}
+.vimMarkdown h4 {
+    font-size: 16px;
+}
+.vimMarkdown h5 {
+    font-size: 14px;
+}
+.vimMarkdown h6 {
+    color: #777;
+    font-size: 14px;
+}
+.vimMarkdown p, .vimMarkdown blockquote, .vimMarkdown ul, .vimMarkdown ol, .vimMarkdown dl, .vimMarkdown li, .vimMarkdown table, .vimMarkdown pre {
+    margin: 15px 0;
+}
+.vimMarkdown hr {
+    border: 0 none;
+    color: #ccc;
+    height: 4px;
+    padding: 0;
+}
+.vimMarkdown>h2:first-child, .vimMarkdown>h1:first-child, .vimMarkdown>h1:first-child+h2, .vimMarkdown>h3:first-child, .vimMarkdown>h4:first-child, .vimMarkdown>h5:first-child, .vimMarkdown>h6:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+.vimMarkdown a:first-child h1, .vimMarkdown a:first-child h2, .vimMarkdown a:first-child h3, .vimMarkdown a:first-child h4, .vimMarkdown a:first-child h5, .vimMarkdown a:first-child h6 {
+    margin-top: 0;
+    padding-top: 0;
+}
+.vimMarkdown h1+p, .vimMarkdown h2+p, .vimMarkdown h3+p, .vimMarkdown h4+p, .vimMarkdown h5+p, .vimMarkdown h6+p {
+    margin-top: 0;
+}
+.vimMarkdown li p.first {
+    display: inline-block;
+}
+.vimMarkdown ul, .vimMarkdown ol {
+    padding-left: 30px;
+}
+.vimMarkdown ul li>:first-child, .vimMarkdown ol li>:first-child {
+    margin-top: 0;
+}
+.vimMarkdown ul li>:last-child, .vimMarkdown ol li>:last-child {
+    margin-bottom: 0;
+}
+.vimMarkdown dl {
+    padding: 0;
+}
+.vimMarkdown dl dt {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0;
+    margin: 15px 0 5px;
+}
+.vimMarkdown dl dt:first-child {
+    padding: 0;
+}
+.vimMarkdown dl dt>:first-child {
+    margin-top: 0;
+}
+.vimMarkdown dl dt>:last-child {
+    margin-bottom: 0;
+}
+.vimMarkdown dl dd {
+    margin: 0 0 15px;
+    padding: 0 15px;
+}
+.vimMarkdown dl dd>:first-child {
+    margin-top: 0;
+}
+.vimMarkdown dl dd>:last-child {
+    margin-bottom: 0;
+}
+.vimMarkdown blockquote {
+    border-left: 4px solid #DDD;
+    padding: 0 15px;
+    color: #777;
+}
+.vimMarkdown blockquote>:first-child {
+    margin-top: 0;
+}
+.vimMarkdown blockquote>:last-child {
+    margin-bottom: 0;
+}
+.vimMarkdown table {
+    padding: 0;
+}
+.vimMarkdown table tr {
+    border-top: 1px solid #ccc;
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+}
+.vimMarkdown table tr:nth-child(2n) {
+    background-color: #f8f8f8;
+}
+.vimMarkdown table tr th {
+    font-weight: bold;
+}
+.vimMarkdown table tr th, .vimMarkdown table tr td {
+    border: 1px solid #ccc;
+    text-align: left;
+    margin: 0;
+    padding: 6px 13px;
+}
+.vimMarkdown table tr th>:first-child, .vimMarkdown table tr td>:first-child {
+    margin-top: 0;
+}
+.vimMarkdown table tr th>:last-child, .vimMarkdown table tr td>:last-child {
+    margin-bottom: 0;
+}
+.vimMarkdown img {
+    max-width: 100%;
+}
+.vimMarkdown span.frame {
+    display: block;
+    overflow: hidden;
+}
+.vimMarkdown span.frame>span {
+    border: 1px solid #ddd;
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin: 13px 0 0;
+    padding: 7px;
+    width: auto;
+}
+.vimMarkdown span.frame span img {
+    display: block;
+    float: left;
+}
+.vimMarkdown span.frame span span {
+    clear: both;
+    color: #333;
+    display: block;
+    padding: 5px 0 0;
+}
+.vimMarkdown span.align-center {
+    display: block;
+    overflow: hidden;
+    clear: both;
+}
+.vimMarkdown span.align-center>span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: center;
+}
+.vimMarkdown span.align-center span img {
+    margin: 0 auto;
+    text-align: center;
+}
+.vimMarkdown span.align-right {
+    display: block;
+    overflow: hidden;
+    clear: both;
+}
+.vimMarkdown span.align-right>span {
+    display: block;
+    overflow: hidden;
+    margin: 13px 0 0;
+    text-align: right;
+}
+.vimMarkdown span.align-right span img {
+    margin: 0;
+    text-align: right;
+}
+.vimMarkdown span.float-left {
+    display: block;
+    margin-right: 13px;
+    overflow: hidden;
+    float: left;
+}
+.vimMarkdown span.float-left span {
+    margin: 13px 0 0;
+}
+.vimMarkdown span.float-right {
+    display: block;
+    margin-left: 13px;
+    overflow: hidden;
+    float: right;
+}
+.vimMarkdown span.float-right>span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: right;
+}
+.vimMarkdown code, .vimMarkdown tt {
+    margin: 0 2px;
+    padding: 0 5px;
+    white-space: nowrap;
+    border: 1px solid #eaeaea;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+}
+.vimMarkdown pre>code {
+    margin: 0;
+    padding: 0;
+    white-space: pre;
+    border: none;
+    background: transparent;
+}
+.vimMarkdown .highlight pre, .vimMarkdown pre {
+    background-color: #f8f8f8;
+    border: 1px solid #ccc;
+    font-size: 13px;
+    line-height: 19px;
+    overflow: auto;
+    padding: 6px 10px;
+    border-radius: 3px;
+}
+.vimMarkdown pre code, .vimMarkdown pre tt {
+    background-color: transparent;
+    border: none;
+}
+#article {
+    padding: 3px;
+    background: #EEE;
+    border-radius: 3px;
+}
+#article span.name {
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: bold;
+    padding: 10px 10px;
+    color: #555;
+    text-shadow: 0 1px 0 #fff;
+    display: block;
+    border: 1px solid #CACACA;
+    border-bottom: 0 none;
+    background: #fafafa;
+    background: -moz-linear-gradient(#fafafa, #eaeaea);
+    background: -webkit-linear-gradient(#fafafa, #eaeaea);
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#fafafa', endColorstr='#eaeaea')";
+}
