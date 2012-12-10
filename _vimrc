@@ -123,6 +123,8 @@ Bundle 'MultipleSearch'
 Bundle 'plasticboy/vim-markdown'
 "注意修改插件模版文件夹下面的默认文件夹模版
 "添加jquery.js和html-crc-reload.js 以便浏览器自动刷新
+"<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js" ></script>
+"<script type="text/javascript" src="https://raw.github.com/qianlifeng/SQVIM/master/html-crc-reload.js"></script>
 Bundle 'waylan/vim-markdown-extra-preview'
 filetype plugin indent on
 "}}}
