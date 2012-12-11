@@ -248,6 +248,8 @@ nmap <C-n> O<ESC>
 imap <C-K><C-D> <ESC>gg=G
 nmap <C-K><C-D> gg=G
 
+"自动完成映射为Ctrl+J
+imap <C-J> <C-X><C-O>
 "}}}
 
 "{{{ 自定义函数
