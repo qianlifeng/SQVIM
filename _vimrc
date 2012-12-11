@@ -244,6 +244,10 @@ nmap <F12> :call OpenFileLocation()<CR>
 imap <C-n> <ESC>O
 nmap <C-n> O<ESC>
 
+"格式化全文
+imap <C-K><C-D> <ESC>gg=G
+nmap <C-K><C-D> gg=G
+
 "}}}
 
 "{{{ 自定义函数
