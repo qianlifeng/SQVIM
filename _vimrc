@@ -3,7 +3,53 @@
 " Last Change: 2012-11-15
 " Version:     0.2.3
 "}}}
- 
+
+"{{{ 自定义函数
+
+function OpenFileLocation()  
+    if ( expand("%") != "" )  
+        execute "!start explorer /select, %"   
+    else  
+        execute "!start explorer /select, %:p:h"  
+    endif  
+endfunction  
+
+"
+" 修改标签页的标题
+" set up tab labels with tab number, buffer name, number of windows
+"
+function GuiTabLabel()
+  let label = ''
+  let bufnrlist = tabpagebuflist(v:lnum)
+  " Add '+' if one of the buffers in the tab page is modified
+  for bufnr in bufnrlist
+    if getbufvar(bufnr, "&modified")
+      let label = '+'
+      break
+    endif
+  endfor
+  " Append the tab number
+  let label .= v:lnum.': '
+  " Append the buffer name
+  let name = bufname(bufnrlist[tabpagewinnr(v:lnum) - 1])
+  if name == ''
+    " give a name to no-name documents
+    if &buftype=='quickfix'
+      let name = '[Quickfix List]'
+    else
+      let name = '[No Name]'
+    endif
+  else
+    " get only the file name
+    let name = fnamemodify(name,":t")
+  endif
+  let label .= name
+  " Append the number of windows in the tab page
+  let wincount = tabpagewinnr(v:lnum, '$')
+  return label . '  [' . wincount . ']'
+endfunction
+"}}}
+
 "{{{ 基础配置
 
 "忽略搜索时候的大小写
@@ -22,8 +68,6 @@ set noswapfile
 set go=
 "显示滚动条
 set go+=r
-"总是显示标签。0：不显示；1：多于1个时显示
-set showtabline=0
 "开启行号
 set number
 "开启自动缩进, 7.3以上版本已自动开启
@@ -68,6 +112,8 @@ set ambiwidth=double
 set foldmethod=marker
 "多个文件打开时用tab显示,0永远不显示 1两个以上显示 2 永远显示
 set showtabline=1
+"set guitablabel=%{GuiTabLabel()}
+set guitablabel=%t
 " 搜索时忽略大小写，但在有一个或以上大写字母时仍大小写敏感
 set ignorecase
 set smartcase
@@ -81,7 +127,6 @@ set hlsearch
 highlight Pmenu guifg=#FFFFFF guibg=#333333
 "默认全屏
 autocmd GUIEnter * simalt ~x
- 
 "}}}
  
 "{{{ 插件配置
@@ -250,17 +295,6 @@ nmap <C-K><C-D> gg=G
 
 "自动完成映射为Ctrl+J
 imap <C-J> <C-X><C-O>
-"}}}
-
-"{{{ 自定义函数
-
-function OpenFileLocation()  
-    if ( expand("%") != "" )  
-        execute "!start explorer /select, %"   
-    else  
-        execute "!start explorer /select, %:p:h"  
-    endif  
-endfunction  
 
 "}}}
 
