@@ -176,6 +176,10 @@ Bundle 'waylan/vim-markdown-extra-preview'
 Bundle 'ivanov/vim-ipython'
 "python 语法检查工具。检查结果使用:cl命令在quickfix窗口下查看
 Bundle 'pyflakes.vim'
+"自动注释工具
+Bundle 'DoxygenToolkit.vim'
+"自动完成代码片段
+Bundle 'snipMate'
 filetype plugin indent on
 "}}}
  
@@ -256,6 +260,15 @@ imap <F11> <ESC>:NERDTreeFind<CR>a
 au BufWritePost,InsertLeave *.md Mer
 "}}}
 
+"{{{ 插件名字：DoxygenToolkit
+let g:doxygenToolkit_authorName="Scott Qian"
+let g:doxygenToolkit_briefTag_funcName="yes"
+"}}}
+
+"{{{ 插件名字：Vim-IPython
+let g:ipy_perform_mappings = 0
+"}}}
+
 "}}}
  
 "{{{ 键盘映射
@@ -285,8 +298,10 @@ nmap <leader><leader> :nohlsearch<CR>
 imap <F12> <ESC>:call OpenFileLocation()<CR> 
 nmap <F12> :call OpenFileLocation()<CR>
 
+
 "当前行下移一行
-imap <C-n> <ESC>O
+"插入模式下如果启用，则tab键会触发这个功能，原因不详
+"imap <C-n> <ESC>O
 nmap <C-n> O<ESC>
 
 "格式化全文
