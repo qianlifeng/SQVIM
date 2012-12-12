@@ -51,7 +51,9 @@ endfunction
 "}}}
 
 "{{{ 基础配置
-
+"记录文件状态（包括独立于该文件的键盘映射、代码折叠状态等）：
+autocmd BufWinLeave *.* if expand('%') != '' && &buftype == '' | mkview | endif
+autocmd BufWinEnter *.* if expand('%') != '' && &buftype == '' | silent loadview | endif
 "忽略搜索时候的大小写
 set ic
 "重新设置leader key

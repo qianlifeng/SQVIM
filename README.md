@@ -6,6 +6,7 @@ VIM配置文件
 ###2012-12-12
 * 增加sinpMate插件
 * 增加DoxygenToolkit插件
+* 增加进入和退出buf时，自动保存加载上次文件状态（包括语法着色信息，折叠信息等）
 
 ###2012-12-11
 * 增加格式化全文的快捷键 Ctrl-K,Ctrl-D （仿Visual Studio）
