@@ -173,15 +173,12 @@ Bundle 'plasticboy/vim-markdown'
 "<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js" ></script>
 "<script type="text/javascript" src="https://raw.github.com/qianlifeng/SQVIM/master/html-crc-reload.js"></script>
 Bundle 'waylan/vim-markdown-extra-preview'
-"利用ipython的交互功能，为vim带来python的额外支持。
-"使用此插件需要下载 http://www.lfd.uci.edu/~gohlke/pythonlibs/#pyzmq
-Bundle 'ivanov/vim-ipython'
 "python 语法检查工具。检查结果使用:cl命令在quickfix窗口下查看
 Bundle 'pyflakes.vim'
 "自动注释工具
 Bundle 'DoxygenToolkit.vim'
-"自动完成代码片段
-Bundle 'snipMate'
+"代码片段工具
+Bundle 'drmingdrmer/xptemplate'
 filetype plugin indent on
 "}}}
  
@@ -267,10 +264,10 @@ let g:doxygenToolkit_authorName="Scott Qian"
 let g:doxygenToolkit_briefTag_funcName="yes"
 "}}}
 
-"{{{ 插件名字：Vim-IPython
-let g:ipy_perform_mappings = 0
+"{{{ 插件名字：XPTemplate 
+let g:xptemplate_key = '<Tab>'
 "}}}
-
+"
 "}}}
  
 "{{{ 键盘映射
@@ -313,6 +310,9 @@ nmap <C-K><C-D> gg=G
 "自动完成映射为Ctrl+J
 imap <C-J> <C-X><C-O>
 
+"Ctrl+Tab
+imap <C-Tab> <ESC>gt
+nmap <C-Tab> gt
 "}}}
 
 "{{{ Python 配置

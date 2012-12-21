@@ -3,6 +3,10 @@ SQVIM
 VIM配置文件  
 使用Vundle管理插件，Vundle安装方法：http://www.cnblogs.com/qiangji/archive/2011/07/31/Vundle.html
 
+###2012-12-21
+* 去除sinpMate插件，有冲突（插入模式下不可以复制，回退也有问题），使用XPTemplate替代
+* 增加Ctrl+Tab 切换tab映射
+
 ###2012-12-12
 * 增加sinpMate插件
 * 增加DoxygenToolkit插件
