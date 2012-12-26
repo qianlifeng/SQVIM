@@ -267,7 +267,8 @@ let g:doxygenToolkit_briefTag_funcName="yes"
 "}}}
 
 "{{{ 插件名字：XPTemplate 
-let g:xptemplate_key = '<Tab>'
+"重设后，supertab无效了
+"let g:xptemplate_key = '<Tab>'
 "}}}
 "
 "}}}
