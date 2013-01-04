@@ -8,6 +8,7 @@ VIM配置文件
 * 增加vb代码高亮
 * 增加AutoComplPop插件（推荐）
 * 增加surround插件
+* 修复XPTemplate与supertab和AutoComplPop冲突的问题
 
 ###2012-12-22
 * 修改mkview时候保存的位置，防止在win7下权限不够的问题

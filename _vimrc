@@ -186,6 +186,8 @@ Bundle 'vbnet.vim'
 "自动弹出补全对话框，有个bug需要修复一下：http://hi.baidu.com/_bigbug/item/c490dffedf7f4ce91b111faa
 Bundle 'AutoComplPop'
 Bundle 'surround.vim'
+"自动补全另一半引号，括号等等
+Bundle 'https://github.com/Raimondi/delimitMate.git'
 filetype plugin indent on
 "}}}
  
@@ -272,8 +274,24 @@ let g:doxygenToolkit_briefTag_funcName="yes"
 "}}}
 
 "{{{ 插件名字：XPTemplate 
-"重设后，supertab无效了
-"let g:xptemplate_key = '<Tab>'
+" avoid key conflict
+let g:SuperTabMappingForward = '<Plug>supertabKey'
+
+" if nothing matched in xpt, try supertab
+let g:xptemplate_fallback = '<Plug>supertabKey'
+
+" " use <tab>/<S-tab> to navigate through pum. Optional
+" let g:xptemplate_pum_tab_nav = 1
+
+" " xpt triggers only when you typed whole name of a snippet. Optional
+" let g:xptemplate_minimal_prefix = 'full'
+
+"solve conflict with AutoComplPop plugin
+let g:xptemplate_key = '<Plug>triggerxpt'
+inoremap <Plug>closePUM <C-v><C-v><BS>
+imap <TAB> <Plug>closePUM<Plug>triggerxpt
+
+
 "}}}
 
 "{{{ 插件名字：vbnet.vim 
