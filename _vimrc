@@ -316,6 +316,9 @@ imap <C-J> <C-X><C-O>
 "Ctrl+Tab
 imap <C-Tab> <ESC>gt
 nmap <C-Tab> gt
+
+"复制当前文件路径
+nmap <Leader>c :let @+ = expand("%:p")<CR>
 "}}}
 
 "{{{ Python 配置

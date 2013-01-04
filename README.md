@@ -3,6 +3,9 @@ SQVIM
 VIM配置文件  
 使用Vundle管理插件，Vundle安装方法：http://www.cnblogs.com/qiangji/archive/2011/07/31/Vundle.html
 
+###2013-01-04
+* 增加复制当前文件路径到剪切板的快捷键：<leader>c
+
 ###2012-12-22
 * 修改mkview时候保存的位置，防止在win7下权限不够的问题
 
