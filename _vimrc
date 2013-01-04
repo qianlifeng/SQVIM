@@ -181,6 +181,9 @@ Bundle 'pyflakes.vim'
 Bundle 'DoxygenToolkit.vim'
 "代码片段工具
 Bundle 'drmingdrmer/xptemplate'
+"vb 代码高亮
+Bundle 'vbnet.vim'
+
 filetype plugin indent on
 "}}}
  
@@ -270,6 +273,12 @@ let g:doxygenToolkit_briefTag_funcName="yes"
 "重设后，supertab无效了
 "let g:xptemplate_key = '<Tab>'
 "}}}
+
+
+"{{{ 插件名字：vbnet.vim 
+autocmd BufNewFile,BufRead *.vb set ft=vbnet
+"}}}
+
 "
 "}}}
  
