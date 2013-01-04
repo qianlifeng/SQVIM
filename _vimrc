@@ -183,7 +183,9 @@ Bundle 'DoxygenToolkit.vim'
 Bundle 'drmingdrmer/xptemplate'
 "vb 代码高亮
 Bundle 'vbnet.vim'
-
+"自动弹出补全对话框，有个bug需要修复一下：http://hi.baidu.com/_bigbug/item/c490dffedf7f4ce91b111faa
+Bundle 'AutoComplPop'
+Bundle 'surround.vim'
 filetype plugin indent on
 "}}}
  
@@ -273,7 +275,6 @@ let g:doxygenToolkit_briefTag_funcName="yes"
 "重设后，supertab无效了
 "let g:xptemplate_key = '<Tab>'
 "}}}
-
 
 "{{{ 插件名字：vbnet.vim 
 autocmd BufNewFile,BufRead *.vb set ft=vbnet
