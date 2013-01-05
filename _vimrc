@@ -131,6 +131,11 @@ set hlsearch
 highlight Pmenu guifg=#FFFFFF guibg=#333333
 "默认全屏
 autocmd GUIEnter * simalt ~x
+"插入状态下禁用方向键
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
 "}}}
  
 "{{{ 插件配置
@@ -160,10 +165,10 @@ Bundle 'matchit.zip'
 Bundle 'utl.vim'
 Bundle 'taglist.vim'
 Bundle 'restart.vim'
+Bundle 'bufexplorer.zip'
 "按下/搜索后按tab补全单词
 Bundle 'SearchComplete'
 Bundle 'JavaScript-syntax'
-"Bundle 'http://github.com/ervandew/supertab'
 Bundle 'The-NERD-tree'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'ervandew/supertab'
@@ -189,6 +194,9 @@ Bundle 'surround.vim'
 "自动补全另一半引号，括号等等
 Bundle 'https://github.com/Raimondi/delimitMate.git'
 Bundle 'huxiao/vim-bookmark'
+"相对行号
+Bundle 'jeffkreeftmeijer/vim-numbertoggle'
+Bundle 'Lokaltog/vim-easymotion'
 filetype plugin indent on
 "}}}
  
@@ -353,6 +361,38 @@ nmap <C-Tab> gt
 
 "复制当前文件路径
 nmap <Leader>c :let @+ = expand("%:p")<CR>
+
+"******************************split setting*********************************
+
+" Quick vertical split
+nnoremap <leader>w <C-w>v
+
+" Switch splits with <C-h> & <C-l>
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+
+" Set the minimal split width
+set winwidth=40
+set winminwidth=40
+
+" Using <leader>=, toggle the width of the current split. If it's set to 999, it
+" takes up as much space as possible, without pushing the other ones under 60
+" columns. The other option makes sure all splits are equally wide.
+function! SplitToggle()
+	if(&winwidth == &winminwidth)
+    set winwidth=999
+	else
+    set winwidth=40
+    wincmd =
+	endif
+endfunc
+
+nnoremap <leader>= :call SplitToggle()<cr>
+
+"******************************************************************************
+
 "}}}
 
 "{{{ Python 配置
