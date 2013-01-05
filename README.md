@@ -3,6 +3,11 @@ SQVIM
 VIM配置文件  
 使用Vundle管理插件，Vundle安装方法：http://www.cnblogs.com/qiangji/archive/2011/07/31/Vundle.html
 
+
+###2013-01-05
+* 增加vim-mark插件
+* 修改鼠标双击不自动选中单词
+
 ###2013-01-04
 * 增加复制当前文件路径到剪切板的快捷键：<leader>c
 * 增加vb代码高亮

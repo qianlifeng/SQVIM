@@ -188,6 +188,7 @@ Bundle 'AutoComplPop'
 Bundle 'surround.vim'
 "自动补全另一半引号，括号等等
 Bundle 'https://github.com/Raimondi/delimitMate.git'
+Bundle 'huxiao/vim-bookmark'
 filetype plugin indent on
 "}}}
  
@@ -298,6 +299,11 @@ imap <TAB> <Plug>closePUM<Plug>triggerxpt
 autocmd BufNewFile,BufRead *.vb set ft=vbnet
 "}}}
 
+"{{{ 插件名字：vim-bookmark
+"书签保存位置
+let g:vbookmark_bookmarkSaveFile = $HOME . '/.vimbookmark'
+"}}}
+
 "
 "}}}
  
@@ -319,8 +325,8 @@ nmap <C-f> gg//g<left><left>
 imap <C-f> <esc>gg//g<left><left>
 
 "双击鼠标左键高亮所有选择的单词
-nmap <2-leftmouse> *Nvw
-imap <2-leftmouse> <esc>*Nvw
+nmap <2-leftmouse> *N
+imap <2-leftmouse> <esc>*N
 "清除搜索高亮
 nmap <leader><leader> :nohlsearch<CR>
 
