@@ -132,8 +132,9 @@ highlight Pmenu guifg=#FFFFFF guibg=#333333
 "默认全屏
 autocmd GUIEnter * simalt ~x
 "插入状态下禁用方向键
-inoremap <up> <nop>
-inoremap <down> <nop>
+"MRU和acp的时候需要上下选择
+"inoremap <up> <nop>
+"inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
 "}}}
@@ -197,6 +198,7 @@ Bundle 'huxiao/vim-bookmark'
 "相对行号
 Bundle 'jeffkreeftmeijer/vim-numbertoggle'
 Bundle 'Lokaltog/vim-easymotion'
+Bundle 'rson/vim-conque'
 filetype plugin indent on
 "}}}
  
@@ -310,6 +312,11 @@ autocmd BufNewFile,BufRead *.vb set ft=vbnet
 "{{{ 插件名字：vim-bookmark
 "书签保存位置
 let g:vbookmark_bookmarkSaveFile = $HOME . '/.vimbookmark'
+"}}}
+
+"{{{ 插件名字：Conque
+"hide start messages
+let g:ConqueTerm_StartMessages = 0
 "}}}
 
 "
