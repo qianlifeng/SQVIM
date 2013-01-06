@@ -198,6 +198,7 @@ Bundle 'huxiao/vim-bookmark'
 "œ‡∂‘––∫≈
 Bundle 'jeffkreeftmeijer/vim-numbertoggle'
 Bundle 'qianlifeng/vim-easymotion'
+Bundle 'qianlifeng/vbo'
 Bundle 'rson/vim-conque'
 filetype plugin indent on
 "}}}

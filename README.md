@@ -5,6 +5,7 @@ VIM配置文件
 
 ###2013-01-06
 * 修改了easymotion的快捷键`<leader><leader`
+* 添加自己写的微博插件vbo
 
 ###2013-01-05
 * 增加vim-mark插件
