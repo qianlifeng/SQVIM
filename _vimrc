@@ -197,7 +197,7 @@ Bundle 'https://github.com/Raimondi/delimitMate.git'
 Bundle 'huxiao/vim-bookmark'
 "相对行号
 Bundle 'jeffkreeftmeijer/vim-numbertoggle'
-Bundle 'Lokaltog/vim-easymotion'
+Bundle 'qianlifeng/vim-easymotion'
 Bundle 'rson/vim-conque'
 filetype plugin indent on
 "}}}
@@ -317,6 +317,15 @@ let g:vbookmark_bookmarkSaveFile = $HOME . '/.vimbookmark'
 "{{{ 插件名字：Conque
 "hide start messages
 let g:ConqueTerm_StartMessages = 0
+
+map <silent> <F9> :ConqueTermVSplit cmd<cr>
+imap <F9> <ESC> :ConqueTermVSplit cmd<cr>
+
+"}}}
+
+"{{{ 插件名字：EasyMotion
+let g:EasyMotion_do_mapping = 0
+nmap <leader><leader> :call EasyMotion#WB(0,0)<CR>
 "}}}
 
 "
@@ -342,8 +351,6 @@ imap <C-f> <esc>gg//g<left><left>
 "双击鼠标左键高亮所有选择的单词
 nmap <2-leftmouse> *N
 imap <2-leftmouse> <esc>*N
-"清除搜索高亮
-nmap <leader><leader> :nohlsearch<CR>
 
 "资源管理器中打开当前文件
 imap <F12> <ESC>:call OpenFileLocation()<CR> 

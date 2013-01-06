@@ -3,6 +3,8 @@ SQVIM
 VIM配置文件  
 使用Vundle管理插件，Vundle安装方法：http://www.cnblogs.com/qiangji/archive/2011/07/31/Vundle.html
 
+###2013-01-06
+* 修改了easymotion的快捷键`<leader><leader`
 
 ###2013-01-05
 * 增加vim-mark插件
