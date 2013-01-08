@@ -287,10 +287,10 @@ let g:doxygenToolkit_briefTag_funcName="yes"
 
 "{{{ 插件名字：XPTemplate 
 " avoid key conflict
-let g:SuperTabMappingForward = '<Plug>supertabKey'
+"let g:SuperTabMappingForward = '<Plug>supertabKey'
 
 " if nothing matched in xpt, try supertab
-let g:xptemplate_fallback = '<Plug>supertabKey'
+"let g:xptemplate_fallback = '<Plug>supertabKey'
 
 " " use <tab>/<S-tab> to navigate through pum. Optional
 " let g:xptemplate_pum_tab_nav = 1
@@ -299,9 +299,9 @@ let g:xptemplate_fallback = '<Plug>supertabKey'
 " let g:xptemplate_minimal_prefix = 'full'
 
 "solve conflict with AutoComplPop plugin
-let g:xptemplate_key = '<Plug>triggerxpt'
-inoremap <Plug>closePUM <C-v><C-v><BS>
-imap <TAB> <Plug>closePUM<Plug>triggerxpt
+"let g:xptemplate_key = '<Plug>triggerxpt'
+"inoremap <Plug>closePUM <C-v><C-v><BS>
+"imap <TAB> <Plug>closePUM<Plug>triggerxpt
 
 
 "}}}
@@ -326,7 +326,7 @@ imap <F9> <ESC> :ConqueTermVSplit cmd<cr>
 
 "{{{ 插件名字：EasyMotion
 let g:EasyMotion_do_mapping = 0
-nmap <leader><leader> :call EasyMotion#WB(0,0)<CR>
+nmap f :call EasyMotion#WB(0,0)<CR>
 "}}}
 
 "{{{ 插件名字：vbo

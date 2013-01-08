@@ -4,6 +4,10 @@ VIM配置文件
 使用Vundle管理插件，Vundle安装方法：http://www.cnblogs.com/qiangji/archive/2011/07/31/Vundle.html
 
 ###2013-01-06
+* 重置了XPTemplate的快捷键，如果将其设置为tab键的话，多多少少会出现一些问题。所以还是保持默认的ctrl+\
+* 更改easymotion的快捷键为f
+
+###2013-01-06
 * 修改了easymotion的快捷键`<leader><leader`
 * 添加自己写的微博插件vbo
 
