@@ -1,9 +1,3 @@
-" {{{ 文件头
-" DesCRiption: vimrc for scottqian
-" Last Change: 2012-11-15
-" Version:     0.2.3
-"}}}
-
 "{{{ 自定义函数
 
 function OpenFileLocation()  
@@ -161,45 +155,33 @@ Bundle 'gmarik/vundle'
 "插件列表
 Bundle 'The-NERD-Commenter'
 Bundle 'vim-scripts/L9'
+"FuzzyFinder依赖于L9
 Bundle 'FuzzyFinder'
 Bundle 'matchit.zip' 
-Bundle 'utl.vim'
 Bundle 'taglist.vim'
 Bundle 'restart.vim'
-Bundle 'bufexplorer.zip'
 "按下/搜索后按tab补全单词
-Bundle 'SearchComplete'
 Bundle 'JavaScript-syntax'
 Bundle 'The-NERD-tree'
 Bundle 'Lokaltog/vim-powerline'
-Bundle 'ervandew/supertab'
+"Bundle 'ervandew/supertab'
 Bundle 'MultipleSearch'
 "注意注释该插件下面的ftpplugin中的markdown折叠功能
 Bundle 'plasticboy/vim-markdown'
-"注意修改插件模版文件夹下面的默认文件夹模版
-"添加jquery.js和html-crc-reload.js 以便浏览器自动刷新
-"<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js" ></script>
-"<script type="text/javascript" src="https://raw.github.com/qianlifeng/SQVIM/master/html-crc-reload.js"></script>
-Bundle 'waylan/vim-markdown-extra-preview'
 "python 语法检查工具。检查结果使用:cl命令在quickfix窗口下查看
 Bundle 'pyflakes.vim'
 "自动注释工具
 Bundle 'DoxygenToolkit.vim'
-"代码片段工具
-Bundle 'drmingdrmer/xptemplate'
 "vb 代码高亮
 Bundle 'vbnet.vim'
 "自动弹出补全对话框，有个bug需要修复一下：http://hi.baidu.com/_bigbug/item/c490dffedf7f4ce91b111faa
 Bundle 'AutoComplPop'
 Bundle 'surround.vim'
-"自动补全另一半引号，括号等等
-Bundle 'https://github.com/Raimondi/delimitMate.git'
 Bundle 'huxiao/vim-bookmark'
 "相对行号
 Bundle 'jeffkreeftmeijer/vim-numbertoggle'
 Bundle 'qianlifeng/vim-easymotion'
 Bundle 'qianlifeng/vbo'
-Bundle 'rson/vim-conque'
 filetype plugin indent on
 "}}}
  
@@ -234,17 +216,6 @@ nnoremap <silent><F3> :FufMruCmd<CR>
 imap <silent><F3> <esc>:FufMruCmd<cr>  
 "}}}
  
-" {{{ 插件名：Utl
-"     项目地址: http://www.vim.org/scripts/script.php?script_id=293
-"     Vundle安装名称：Utl.vim
-"     作用：
-"   
-"          快速打开文本中的链接（不仅仅是http://格式的，还包括文件链接等） 
- 
-nnoremap <silent><F10> :Utl<CR>
- 
-"}}}
- 
 " {{{ 插件名：TagList
 "     项目地址: http://www.vim.org/scripts/script.php?script_id=273 
 "     Vundle安装名称：taglist.vim
@@ -276,36 +247,6 @@ map <F11> :NERDTreeFind<CR>
 imap <F11> <ESC>:NERDTreeFind<CR>a
 "}}}
 
-"{{{ 插件名字：vim-markdown-extra-preview
-au BufWritePost,InsertLeave *.md Mer
-"}}}
-
-"{{{ 插件名字：DoxygenToolkit
-let g:doxygenToolkit_authorName="Scott Qian"
-let g:doxygenToolkit_briefTag_funcName="yes"
-"}}}
-
-"{{{ 插件名字：XPTemplate 
-" avoid key conflict
-"let g:SuperTabMappingForward = '<Plug>supertabKey'
-
-" if nothing matched in xpt, try supertab
-"let g:xptemplate_fallback = '<Plug>supertabKey'
-
-" " use <tab>/<S-tab> to navigate through pum. Optional
-" let g:xptemplate_pum_tab_nav = 1
-
-" " xpt triggers only when you typed whole name of a snippet. Optional
-" let g:xptemplate_minimal_prefix = 'full'
-
-"solve conflict with AutoComplPop plugin
-"let g:xptemplate_key = '<Plug>triggerxpt'
-"inoremap <Plug>closePUM <C-v><C-v><BS>
-"imap <TAB> <Plug>closePUM<Plug>triggerxpt
-
-
-"}}}
-
 "{{{ 插件名字：vbnet.vim 
 autocmd BufNewFile,BufRead *.vb set ft=vbnet
 "}}}
@@ -315,18 +256,9 @@ autocmd BufNewFile,BufRead *.vb set ft=vbnet
 let g:vbookmark_bookmarkSaveFile = $HOME . '/.vimbookmark'
 "}}}
 
-"{{{ 插件名字：Conque
-"hide start messages
-let g:ConqueTerm_StartMessages = 0
-
-map <silent> <F9> :ConqueTermVSplit cmd<cr>
-imap <F9> <ESC> :ConqueTermVSplit cmd<cr>
-
-"}}}
-
 "{{{ 插件名字：EasyMotion
 let g:EasyMotion_do_mapping = 0
-nmap f :call EasyMotion#WB(0,0)<CR>
+nmap <leader><leader> :call EasyMotion#WB(0,0)<CR>
 "}}}
 
 "{{{ 插件名字：vbo
@@ -391,7 +323,7 @@ imap <C-Tab> <ESC>gt
 nmap <C-Tab> gt
 
 "复制当前文件路径
-nmap <Leader>c :let @+ = expand("%:p")<CR>
+nmap <F4> :let @+ = expand("%:p")<CR>
 
 "******************************split setting*********************************
 
