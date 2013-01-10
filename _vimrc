@@ -200,6 +200,7 @@ Bundle 'jeffkreeftmeijer/vim-numbertoggle'
 Bundle 'qianlifeng/vim-easymotion'
 Bundle 'qianlifeng/vbo'
 Bundle 'rson/vim-conque'
+Bundle 'Align'
 filetype plugin indent on
 "}}}
  
@@ -326,7 +327,7 @@ imap <F9> <ESC> :ConqueTermVSplit cmd<cr>
 
 "{{{ 插件名字：EasyMotion
 let g:EasyMotion_do_mapping = 0
-nmap f :call EasyMotion#WB(0,0)<CR>
+nmap <leader><leader> :call EasyMotion#WB(0,0)<CR>
 "}}}
 
 "{{{ 插件名字：vbo
