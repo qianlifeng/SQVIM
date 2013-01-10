@@ -182,11 +182,7 @@ Bundle 'huxiao/vim-bookmark'
 Bundle 'jeffkreeftmeijer/vim-numbertoggle'
 Bundle 'qianlifeng/vim-easymotion'
 Bundle 'qianlifeng/vbo'
-<<<<<<< HEAD
-Bundle 'rson/vim-conque'
 Bundle 'Align'
-=======
->>>>>>> 842aee0ce3eab265096402d965b3f8275028dd4a
 filetype plugin indent on
 "}}}
  
