@@ -3,6 +3,9 @@ SQVIM
 VIM配置文件  
 使用Vundle管理插件，Vundle安装方法：http://www.cnblogs.com/qiangji/archive/2011/07/31/Vundle.html
 
+###2013-01-13
+* solve terminal encoding issue in entire english environment.
+
 ###2013-01-10
 * 删除了一些不常用的插件，如Utl。删除了一些总是有问题的插件如XPTemplate和supertab,利用AutoComplPop也能工作的很好
 

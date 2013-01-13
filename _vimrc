@@ -87,7 +87,6 @@ set guifont=courier_new:h10
 "关闭兼容模式
 set nocompatible
 "以下三行模拟Windows操作，如Ctrl-C复制
-source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
 behave mswin
 "不生成备份文件，下面这句要写在behave mswin下面，否则还是会生成备份，不知为何～
@@ -95,15 +94,16 @@ set nobackup
 "GVIM内部编码
 set encoding=utf-8
 "当前编辑的文件编码
-"set fileencoding=utf-8
+set fileencoding=utf-8
 "GVIM支持打开的文件编码
 set fileencodings=utf-8,gbk,gb2312,big5,latin1
-set termencoding=utf-8
+"set termencoding=utf-8
 "解决菜单及右键菜单乱码
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
 "解决consle输出乱码
-language messages zh_CN.utf-8
+"have problem in entire english environment
+"language messages zh_CN.utf-8
 "防止特殊符号无法正常显示，如五角星等
 set ambiwidth=double
 "设置折叠方式
