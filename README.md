@@ -3,6 +3,9 @@ SQVIM
 VIM配置文件  
 使用Vundle管理插件，Vundle安装方法：http://www.cnblogs.com/qiangji/archive/2011/07/31/Vundle.html
 
+###2013-01-15
+* 使用python-mode插件替换pyflask
+
 ###2013-01-13
 * solve terminal encoding issue in entire english environment.
 

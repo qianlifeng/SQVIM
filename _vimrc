@@ -87,6 +87,7 @@ set guifont=courier_new:h10
 "关闭兼容模式
 set nocompatible
 "以下三行模拟Windows操作，如Ctrl-C复制
+source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
 behave mswin
 "不生成备份文件，下面这句要写在behave mswin下面，否则还是会生成备份，不知为何～
@@ -94,16 +95,15 @@ set nobackup
 "GVIM内部编码
 set encoding=utf-8
 "当前编辑的文件编码
-set fileencoding=utf-8
+"set fileencoding=utf-8
 "GVIM支持打开的文件编码
 set fileencodings=utf-8,gbk,gb2312,big5,latin1
-"set termencoding=utf-8
+set termencoding=utf-8
 "解决菜单及右键菜单乱码
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
 "解决consle输出乱码
-"have problem in entire english environment
-"language messages zh_CN.utf-8
+language messages zh_CN.utf-8
 "防止特殊符号无法正常显示，如五角星等
 set ambiwidth=double
 "设置折叠方式
@@ -169,7 +169,8 @@ Bundle 'MultipleSearch'
 "注意注释该插件下面的ftpplugin中的markdown折叠功能
 Bundle 'plasticboy/vim-markdown'
 "python 语法检查工具。检查结果使用:cl命令在quickfix窗口下查看
-Bundle 'pyflakes.vim'
+"包含在了python-mode下
+"Bundle 'pyflakes.vim'
 "自动注释工具
 Bundle 'DoxygenToolkit.vim'
 "vb 代码高亮
@@ -183,6 +184,7 @@ Bundle 'jeffkreeftmeijer/vim-numbertoggle'
 Bundle 'qianlifeng/vim-easymotion'
 Bundle 'qianlifeng/vbo'
 Bundle 'Align'
+Bundle 'klen/python-mode'
 filetype plugin indent on
 "}}}
  
@@ -277,6 +279,9 @@ let g:vbo_sina_weibo_proxy_https_host = '10.182.45.231'
 let g:vbo_sina_weibo_proxy_https_port = 80
 
 "}}}
+
+
+let g:pymode_lint_checker = "pyflakes"
 
 "
 "}}}
