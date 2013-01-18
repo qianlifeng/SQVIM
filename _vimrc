@@ -280,8 +280,11 @@ let g:vbo_sina_weibo_proxy_https_port = 80
 
 "}}}
 
-
+"{{{ ²å¼þÃû×Ö£ºPython-mode
 let g:pymode_lint_checker = "pyflakes"
+"DO NOT Auto create and open ropeproject
+let g:pymode_rope_auto_project = 0
+"}}}
 
 "
 "}}}
