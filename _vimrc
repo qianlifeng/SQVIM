@@ -83,7 +83,8 @@ colo desert
 "开启语法高亮, 7.3版本已自动开启
 syntax on
 "字体设置
-set guifont=courier_new:h10
+"set guifont=courier_new:h10
+set guifont=Bitstream_Vera_Sans_Mono:h10:cANSI
 "关闭兼容模式
 set nocompatible
 "以下三行模拟Windows操作，如Ctrl-C复制
@@ -185,6 +186,7 @@ Bundle 'qianlifeng/vim-easymotion'
 Bundle 'qianlifeng/vbo'
 Bundle 'Align'
 Bundle 'klen/python-mode'
+"Bundle 'Yggdroot/indentLine'
 filetype plugin indent on
 "}}}
  
@@ -270,11 +272,11 @@ nmap <leader><leader> :call EasyMotion#WB(0,0)<CR>
 "是否启用代理设置，1表示启用，0表示不启用
 let g:vbo_sina_weibo_proxy_enable = 1 
 "HTTP代理地址，如果是url的形式则不需要协议方式直接写域名就行，例如：www.baidu.com
-let g:vbo_sina_weibo_proxy_http_host = '10.182.45.231'
+let g:vbo_sina_weibo_proxy_http_host = 'cn-proxy.cn.oracle.com'
 "HTTP代理端口
 let g:vbo_sina_weibo_proxy_http_port = 80
 "HTTPS代理地址
-let g:vbo_sina_weibo_proxy_https_host = '10.182.45.231'
+let g:vbo_sina_weibo_proxy_https_host = 'cn-proxy.cn.oracle.com'
 "HTTPS代理端口
 let g:vbo_sina_weibo_proxy_https_port = 80
 
@@ -283,7 +285,7 @@ let g:vbo_sina_weibo_proxy_https_port = 80
 "{{{ 插件名字：Python-mode
 let g:pymode_lint_checker = "pyflakes"
 "DO NOT Auto create and open ropeproject
-let g:pymode_rope_auto_project = 0
+"let g:pymode_rope_auto_project = 0
 "}}}
 
 "
