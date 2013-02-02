@@ -123,7 +123,7 @@ set incsearch
 " 搜索时高亮显示被找到的文本
 set hlsearch
 "更改选择pane中的颜色
-highlight Pmenu guifg=#FFFFFF guibg=#333333
+highlight Pmenu guifg=#FFFFFF guibg=#111111
 "默认全屏
 autocmd GUIEnter * simalt ~x
 "插入状态下禁用方向键
@@ -161,7 +161,6 @@ Bundle 'FuzzyFinder'
 Bundle 'matchit.zip' 
 Bundle 'taglist.vim'
 Bundle 'restart.vim'
-"按下/搜索后按tab补全单词
 Bundle 'JavaScript-syntax'
 Bundle 'The-NERD-tree'
 Bundle 'Lokaltog/vim-powerline'
@@ -177,9 +176,9 @@ Bundle 'DoxygenToolkit.vim'
 "vb 代码高亮
 Bundle 'vbnet.vim'
 "自动弹出补全对话框，有个bug需要修复一下：http://hi.baidu.com/_bigbug/item/c490dffedf7f4ce91b111faa
-Bundle 'AutoComplPop'
+"Bundle 'AutoComplPop'
 Bundle 'surround.vim'
-Bundle 'huxiao/vim-bookmark'
+"Bundle 'huxiao/vim-bookmark'
 "相对行号
 Bundle 'jeffkreeftmeijer/vim-numbertoggle'
 Bundle 'qianlifeng/vim-easymotion'
@@ -187,6 +186,12 @@ Bundle 'qianlifeng/vbo'
 Bundle 'Align'
 Bundle 'klen/python-mode'
 "Bundle 'Yggdroot/indentLine'
+Bundle 'Shougo/neocomplcache'
+"snipmate related
+Bundle "MarcWeber/vim-addon-mw-utils"
+Bundle "tomtom/tlib_vim"
+Bundle "snipmate-snippets"
+Bundle "garbas/vim-snipmate"
 filetype plugin indent on
 "}}}
  
@@ -287,6 +292,8 @@ let g:pymode_lint_checker = "pyflakes"
 "DO NOT Auto create and open ropeproject
 "let g:pymode_rope_auto_project = 0
 "}}}
+
+let g:neocomplcache_enable_at_startup = 1 
 
 "
 "}}}
