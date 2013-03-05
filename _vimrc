@@ -132,6 +132,8 @@ autocmd GUIEnter * simalt ~x
 "inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
+"当前行对齐线
+set cursorcolumn
 "}}}
  
 "{{{ 插件配置
