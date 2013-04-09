@@ -8,40 +8,6 @@ function OpenFileLocation()
     endif  
 endfunction  
 
-"
-" 修改标签页的标题
-" set up tab labels with tab number, buffer name, number of windows
-"
-function GuiTabLabel()
-  let label = ''
-  let bufnrlist = tabpagebuflist(v:lnum)
-  " Add '+' if one of the buffers in the tab page is modified
-  for bufnr in bufnrlist
-    if getbufvar(bufnr, "&modified")
-      let label = '+'
-      break
-    endif
-  endfor
-  " Append the tab number
-  let label .= v:lnum.': '
-  " Append the buffer name
-  let name = bufname(bufnrlist[tabpagewinnr(v:lnum) - 1])
-  if name == ''
-    " give a name to no-name documents
-    if &buftype=='quickfix'
-      let name = '[Quickfix List]'
-    else
-      let name = '[No Name]'
-    endif
-  else
-    " get only the file name
-    let name = fnamemodify(name,":t")
-  endif
-  let label .= name
-  " Append the number of windows in the tab page
-  let wincount = tabpagewinnr(v:lnum, '$')
-  return label . '  [' . wincount . ']'
-endfunction
 "}}}
 
 "{{{ 基础配置
@@ -167,7 +133,7 @@ Bundle 'JavaScript-syntax'
 Bundle 'The-NERD-tree'
 Bundle 'Lokaltog/vim-powerline'
 "Bundle 'ervandew/supertab'
-Bundle 'MultipleSearch'
+"Bundle 'MultipleSearch'
 "注意注释该插件下面的ftpplugin中的markdown折叠功能
 Bundle 'plasticboy/vim-markdown'
 "python 语法检查工具。检查结果使用:cl命令在quickfix窗口下查看
@@ -180,20 +146,17 @@ Bundle 'vbnet.vim'
 "自动弹出补全对话框，有个bug需要修复一下：http://hi.baidu.com/_bigbug/item/c490dffedf7f4ce91b111faa
 "Bundle 'AutoComplPop'
 Bundle 'surround.vim'
-"Bundle 'huxiao/vim-bookmark'
 "相对行号
 Bundle 'jeffkreeftmeijer/vim-numbertoggle'
 Bundle 'qianlifeng/vim-easymotion'
-Bundle 'qianlifeng/vbo'
 Bundle 'Align'
 Bundle 'klen/python-mode'
-"Bundle 'Yggdroot/indentLine'
 Bundle 'Shougo/neocomplcache'
 "snipmate related
-Bundle "MarcWeber/vim-addon-mw-utils"
-Bundle "tomtom/tlib_vim"
-Bundle "snipmate-snippets"
-Bundle "garbas/vim-snipmate"
+"Bundle "MarcWeber/vim-addon-mw-utils"
+"Bundle "tomtom/tlib_vim"
+"Bundle "snipmate-snippets"
+"Bundle "garbas/vim-snipmate"
 filetype plugin indent on
 "}}}
  
@@ -263,30 +226,9 @@ imap <F11> <ESC>:NERDTreeFind<CR>a
 autocmd BufNewFile,BufRead *.vb set ft=vbnet
 "}}}
 
-"{{{ 插件名字：vim-bookmark
-"书签保存位置
-let g:vbookmark_bookmarkSaveFile = $HOME . '/.vimbookmark'
-"}}}
-
 "{{{ 插件名字：EasyMotion
 let g:EasyMotion_do_mapping = 0
 nmap <leader><leader> :call EasyMotion#WB(0,0)<CR>
-"}}}
-
-"{{{ 插件名字：vbo
-
-"代理设置
-"是否启用代理设置，1表示启用，0表示不启用
-let g:vbo_sina_weibo_proxy_enable = 1 
-"HTTP代理地址，如果是url的形式则不需要协议方式直接写域名就行，例如：www.baidu.com
-let g:vbo_sina_weibo_proxy_http_host = 'cn-proxy.cn.oracle.com'
-"HTTP代理端口
-let g:vbo_sina_weibo_proxy_http_port = 80
-"HTTPS代理地址
-let g:vbo_sina_weibo_proxy_https_host = 'cn-proxy.cn.oracle.com'
-"HTTPS代理端口
-let g:vbo_sina_weibo_proxy_https_port = 80
-
 "}}}
 
 "{{{ 插件名字：Python-mode
@@ -345,6 +287,8 @@ nmap <C-Tab> gt
 "复制当前文件路径
 nmap <F4> :let @+ = expand("%:p")<CR>
 
+nmap <F6> :!p4 edit %<Enter>
+imap <F6> <ESC>:!p4 edit %<Enter>
 "******************************split setting*********************************
 
 " Quick vertical split
@@ -383,4 +327,11 @@ nnoremap <leader>= :call SplitToggle()<cr>
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 
 map <F5> <Esc>:!c:\python27\python.exe %<CR>
+"}}}
+
+"{{{ C# 配置
+au FileType cs set foldmethod=marker 
+au FileType cs set foldmarker={,} 
+au FileType cs set foldtext=substitute(getline(v:foldstart),'{.*','{...}',) 
+au FileType cs set foldlevelstart=2 
 "}}}
