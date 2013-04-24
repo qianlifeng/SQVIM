@@ -20,8 +20,6 @@ set viewdir=~/.vim/view
 set ic
 "重新设置leader key
 let mapleader = ","
-"不区分大小写
-set ignorecase
 "不需要高亮
 set nohls
 "不产生备份文件
@@ -49,7 +47,6 @@ colo desert
 "开启语法高亮, 7.3版本已自动开启
 syntax on
 "字体设置
-"set guifont=courier_new:h10
 set guifont=Bitstream_Vera_Sans_Mono:h10:cANSI
 "关闭兼容模式
 set nocompatible
@@ -62,19 +59,18 @@ set nobackup
 "GVIM内部编码
 set encoding=utf-8
 "当前编辑的文件编码
-"set fileencoding=utf-8
 "GVIM支持打开的文件编码
 set fileencodings=utf-8,gbk,gb2312,big5,latin1
 set termencoding=utf-8
 "解决菜单及右键菜单乱码
-source $VIMRUNTIME/delmenu.vim
-source $VIMRUNTIME/menu.vim
+"source $VIMRUNTIME/delmenu.vim
+"source $VIMRUNTIME/menu.vim
 "解决consle输出乱码
 language messages zh_CN.utf-8
 "防止特殊符号无法正常显示，如五角星等
 set ambiwidth=double
 "设置折叠方式
-set foldmethod=marker
+"set foldmethod=marker
 "多个文件打开时用tab显示,0永远不显示 1两个以上显示 2 永远显示
 set showtabline=1
 "set guitablabel=%{GuiTabLabel()}
@@ -132,13 +128,10 @@ Bundle 'restart.vim'
 Bundle 'JavaScript-syntax'
 Bundle 'The-NERD-tree'
 Bundle 'Lokaltog/vim-powerline'
-"Bundle 'ervandew/supertab'
-"Bundle 'MultipleSearch'
 "注意注释该插件下面的ftpplugin中的markdown折叠功能
 Bundle 'plasticboy/vim-markdown'
 "python 语法检查工具。检查结果使用:cl命令在quickfix窗口下查看
 "包含在了python-mode下
-"Bundle 'pyflakes.vim'
 "自动注释工具
 Bundle 'DoxygenToolkit.vim'
 "vb 代码高亮
