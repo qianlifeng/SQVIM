@@ -130,11 +130,8 @@ Bundle 'The-NERD-tree'
 Bundle 'Lokaltog/vim-powerline'
 "注意注释该插件下面的ftpplugin中的markdown折叠功能
 Bundle 'plasticboy/vim-markdown'
-"python 语法检查工具。检查结果使用:cl命令在quickfix窗口下查看
-"包含在了python-mode下
 "自动注释工具
 Bundle 'DoxygenToolkit.vim'
-"vb 代码高亮
 Bundle 'vbnet.vim'
 "自动弹出补全对话框，有个bug需要修复一下：http://hi.baidu.com/_bigbug/item/c490dffedf7f4ce91b111faa
 "Bundle 'AutoComplPop'
@@ -143,13 +140,9 @@ Bundle 'surround.vim'
 Bundle 'jeffkreeftmeijer/vim-numbertoggle'
 Bundle 'qianlifeng/vim-easymotion'
 Bundle 'Align'
-Bundle 'klen/python-mode'
+"python-mode拖慢启动速度
+"Bundle 'klen/python-mode'
 Bundle 'Shougo/neocomplcache'
-"snipmate related
-"Bundle "MarcWeber/vim-addon-mw-utils"
-"Bundle "tomtom/tlib_vim"
-"Bundle "snipmate-snippets"
-"Bundle "garbas/vim-snipmate"
 filetype plugin indent on
 "}}}
  
@@ -222,12 +215,6 @@ autocmd BufNewFile,BufRead *.vb set ft=vbnet
 "{{{ 插件名字：EasyMotion
 let g:EasyMotion_do_mapping = 0
 nmap <leader><leader> :call EasyMotion#WB(0,0)<CR>
-"}}}
-
-"{{{ 插件名字：Python-mode
-let g:pymode_lint_checker = "pyflakes"
-"DO NOT Auto create and open ropeproject
-"let g:pymode_rope_auto_project = 0
 "}}}
 
 let g:neocomplcache_enable_at_startup = 1 
