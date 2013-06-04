@@ -29,7 +29,7 @@ set noswapfile
 "不要图像按钮
 set go=
 "显示滚动条
-set go+=r
+set guioptions+=b
 "开启行号
 set number
 "开启自动缩进, 7.3以上版本已自动开启
@@ -96,6 +96,8 @@ inoremap <left> <nop>
 inoremap <right> <nop>
 "当前行对齐线
 set cursorcolumn
+"设置不自动折行
+:set nowrap 
 "}}}
  
 "{{{ 插件配置
