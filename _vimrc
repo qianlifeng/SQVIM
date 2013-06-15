@@ -136,7 +136,7 @@ Bundle 'plasticboy/vim-markdown'
 Bundle 'DoxygenToolkit.vim'
 Bundle 'vbnet.vim'
 "自动弹出补全对话框，有个bug需要修复一下：http://hi.baidu.com/_bigbug/item/c490dffedf7f4ce91b111faa
-"Bundle 'AutoComplPop'
+Bundle 'AutoComplPop'
 Bundle 'surround.vim'
 "相对行号
 Bundle 'jeffkreeftmeijer/vim-numbertoggle'
