@@ -145,6 +145,7 @@ Bundle 'Align'
 "python-mode拖慢启动速度
 "Bundle 'klen/python-mode'
 Bundle 'Shougo/neocomplcache'
+Bundle 'kchmck/vim-coffee-script'
 filetype plugin indent on
 "}}}
  
@@ -220,6 +221,12 @@ nmap <leader><leader> :call EasyMotion#WB(0,0)<CR>
 "}}}
 
 let g:neocomplcache_enable_at_startup = 1 
+
+"默认竖着显示
+"有个问题需要解决：注释 ftpplugin\coffee.vim 中的第89行
+let coffee_compile_vert = 1
+au BufReadPost *.coffee silent CoffeeCompile watch vert
+au BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
 
 "
 "}}}
