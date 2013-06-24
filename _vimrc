@@ -107,8 +107,6 @@ set cursorcolumn
 "     作用：
 "   
 "           管理插件安装
-"
-
 "required
 filetype off
 "此处规定Vundle的路径
@@ -118,44 +116,87 @@ call vundle#rc('$HOME/.vim/bundle')
 " let Vundle manage Vundle
 Bundle 'gmarik/vundle'
 " required!
+"}}}
 
 "插件列表
-Bundle 'The-NERD-Commenter'
-Bundle 'vim-scripts/L9'
-"FuzzyFinder依赖于L9
-Bundle 'FuzzyFinder'
 Bundle 'matchit.zip' 
-Bundle 'taglist.vim'
 Bundle 'restart.vim'
 Bundle 'JavaScript-syntax'
-Bundle 'The-NERD-tree'
-Bundle 'Lokaltog/vim-powerline'
-"注意注释该插件下面的ftpplugin中的markdown折叠功能
-Bundle 'plasticboy/vim-markdown'
+"Bundle 'terryma/vim-multiple-cursors'
 "自动注释工具
 Bundle 'DoxygenToolkit.vim'
-Bundle 'vbnet.vim'
 "自动弹出补全对话框，有个bug需要修复一下：http://hi.baidu.com/_bigbug/item/c490dffedf7f4ce91b111faa
 Bundle 'AutoComplPop'
 Bundle 'surround.vim'
-"相对行号
-Bundle 'jeffkreeftmeijer/vim-numbertoggle'
-Bundle 'qianlifeng/vim-easymotion'
 Bundle 'Align'
 "python-mode拖慢启动速度
 "Bundle 'klen/python-mode'
-Bundle 'Shougo/neocomplcache'
+Bundle 'terryma/vim-expand-region'
 Bundle 'kchmck/vim-coffee-script'
-filetype plugin indent on
+
+"{{{ Vim-markdown
+"注意注释该插件下面的ftpplugin中的markdown折叠功能
+Bundle 'plasticboy/vim-markdown'
+let g:vim_markdown_folding_disabled=1
+"}}}
+
+"{{{ Gundo 查看文件编辑历史
+Bundle 'sjl/gundo.vim'
+nnoremap <leader>h :GundoToggle<CR>    
+"}}}
+
+"{{{ syntastic 语法检查，支持N多语言，真是无敌了
+Bundle 'scrooloose/syntastic'
+let g:syntastic_auto_loc_list=1
+let g:syntastic_disabled_filetypes=['html']
+let g:syntastic_enable_signs=1
+"需要提前安装好各种检查器，比如
+"js依赖于jshint: npm install -g jshint
+"}}}
+
+"{{{ vim-numbertoggle 相对行号
+Bundle 'jeffkreeftmeijer/vim-numbertoggle'
+"非要设置个快捷键，设置一个不常用的
+"let g:NumberToggleTrigger='<C-F2>'  
+"}}}
+
+"{{{ neocomplcache 自动补全
+"陆陆续续用了很多自动补全插件，这款还是不错的，速度很快
+Bundle 'Shougo/neocomplcache'
+let g:neocomplcache_enable_at_startup = 1 
+"}}}
+
+"{{{ rainbow_parentheses 括号显示增强
+Bundle 'kien/rainbow_parentheses.vim'
+let g:rbpt_colorpairs = [
+    \ ['brown',       'RoyalBlue3'],
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkgray',    'DarkOrchid3'],
+    \ ['darkgreen',   'firebrick3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['darkred',     'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'firebrick3'],
+    \ ['gray',        'RoyalBlue3'],
+    \ ['black',       'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ['darkred',     'DarkOrchid3'],
+    \ ['red',         'firebrick3'],
+    \ ]
+let g:rbpt_max = 16
+let g:rbpt_loadcmd_toggle = 0
+au VimEnter * RainbowParenthesesToggle
+au Syntax   * RainbowParenthesesLoadRound
+au Syntax   * RainbowParenthesesLoadSquare
+au Syntax   * RainbowParenthesesLoadBraces
 "}}}
  
-" {{{ 插件名：The NERD Commenter 
-"     项目地址：http://www.vim.org/scripts/script.php?script_id=1218
-"     Vundle安装名称：The-NERD-Commenter
-"     作用：
-"   
-"           用于代码注释，这里使用的绑定快捷键同VS
-"
+" {{{ The NERD Commenter 用于代码注释
+" 这里使用的绑定快捷键同VS
+Bundle 'The-NERD-Commenter'
 :nmap <C-K><C-C> <leader>c<space>
 :imap <C-K><C-C> <Esc><leader>c<space>i
 :nmap <C-K><C-U> <leader>c<space>
@@ -163,13 +204,10 @@ filetype plugin indent on
  
 "}}}
  
-" {{{ 插件名：FuzzyFinder
-"     项目地址：http://www.vim.org/scripts/script.php?script_id=1984
-"     Vundle安装名称：FuzzyFinder
-"     作用：
-"   
-"           方面查找包括MRUFile在内的各种元素
- 
+" {{{ FuzzyFinder
+Bundle 'vim-scripts/L9'
+"FuzzyFinder依赖于L9
+Bundle 'FuzzyFinder'
 "开启MRU模式，默认禁用
 let g:fuf_modesDisable = []
 nnoremap <silent><F1> :FufHelp<CR>
@@ -180,61 +218,57 @@ nnoremap <silent><F3> :FufMruCmd<CR>
 imap <silent><F3> <esc>:FufMruCmd<cr>  
 "}}}
  
-" {{{ 插件名：TagList
-"     项目地址: http://www.vim.org/scripts/script.php?script_id=273 
-"     Vundle安装名称：taglist.vim
-"     作用：
-"   
-"           函数列表显示 
-
+" {{{ TagList 函数列表显示 
+Bundle 'taglist.vim'
 map <silent> <F10> :TlistToggle<cr>
 imap <F10> <ESC>:TlistToggle<cr>a
 let Tlist_Show_One_File = 1            "不同时显示多个文件的tag，只显示当前文件的
 let Tlist_Exit_OnlyWindow = 1          "如果taglist窗口是最后一个窗口，则退出vim
 "}}}
 
-" {{{ 插件名：PowerLine
-"     Vundle安装名：Lokaltog/vim-powerline
-"     作用：
-"   
+" {{{ PowerLine
+Bundle 'Lokaltog/vim-powerline'
 set laststatus=2
 set encoding=utf-8
 set t_Co=256
 "let g:Powerline_symbols = 'fancy'
 "}}}
 
-" {{{ 插件名：Nerd Tree
-"     Vundle安装名：'The-NERD-tree'
-"     作用：
-"          树形目录结构
+" {{{ Nerd Tree  树形目录结构
+Bundle 'The-NERD-tree'
 map <F11> :NERDTreeFind<CR>
 imap <F11> <ESC>:NERDTreeFind<CR>a
 "}}}
 
-"{{{ 插件名字：vbnet.vim 
+"{{{ vbnet.vim 
+Bundle 'vbnet.vim'
 autocmd BufNewFile,BufRead *.vb set ft=vbnet
 "}}}
 
-"{{{ 插件名字：EasyMotion
+"{{{ EasyMotion
+Bundle 'qianlifeng/vim-easymotion'
 let g:EasyMotion_do_mapping = 0
 nmap <leader><leader> :call EasyMotion#WB(0,0)<CR>
 "}}}
 
-let g:neocomplcache_enable_at_startup = 1 
-
+"{{{ coffee script
 "默认竖着显示
 "有个问题需要解决：注释 ftpplugin\coffee.vim 中的第89行
 let coffee_compile_vert = 1
 au BufReadPost *.coffee silent CoffeeCompile watch vert
 au BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
-
-"
 "}}}
- 
+
+filetype plugin indent on
+"}}}
+
 "{{{ 键盘映射
 
 "消除每行结尾有可能出现的^M (文件格式问题)
 map <C-m> :%s/\r//g<CR> 
+
+"回车复制当前单词到剪切板
+nmap <CR> "+yiw
 
 "文件类型
 nmap <leader>1 :set filetype=xml<cr>
@@ -255,7 +289,6 @@ imap <2-leftmouse> <esc>*N
 "资源管理器中打开当前文件
 imap <F12> <ESC>:call OpenFileLocation()<CR> 
 nmap <F12> :call OpenFileLocation()<CR>
-
 
 "当前行下移一行
 "插入模式下如果启用，则tab键会触发这个功能，原因不详
