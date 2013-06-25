@@ -134,6 +134,11 @@ Bundle 'Align'
 Bundle 'terryma/vim-expand-region'
 Bundle 'kchmck/vim-coffee-script'
 
+"{{{ color molokai
+Bundle 'tomasr/molokai'
+color molokai
+"}}}
+
 "{{{ Vim-markdown
 "注意注释该插件下面的ftpplugin中的markdown折叠功能
 Bundle 'plasticboy/vim-markdown'
@@ -163,7 +168,19 @@ Bundle 'jeffkreeftmeijer/vim-numbertoggle'
 "{{{ neocomplcache 自动补全
 "陆陆续续用了很多自动补全插件，这款还是不错的，速度很快
 Bundle 'Shougo/neocomplcache'
-let g:neocomplcache_enable_at_startup = 1 
+"代码片段，一个人的作品。这样和自动完成的冲突比较少
+Bundle 'Shougo/neosnippet'
+"Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
+" Use neocomplcache.
+let g:neocomplcache_enable_at_startup = 1
+" Use smartcase.
+let g:neocomplcache_enable_smart_case = 1
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 "}}}
 
 "{{{ rainbow_parentheses 括号显示增强
@@ -255,11 +272,7 @@ nmap <leader><leader> :call EasyMotion#WB(0,0)<CR>
 "默认竖着显示
 "有个问题需要解决：注释 ftpplugin\coffee.vim 中的第89行
 let coffee_compile_vert = 1
-"let coffee_lint_options = '-f lint.json'
 au BufReadPost *.coffee silent CoffeeCompile watch vert
-"npm install -g coffeelint
-au BufReadPost *.coffee silent CoffeeLint! | cwindow
-au BufWritePost *.coffee silent CoffeeLint! | cwindow
 au BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
 "}}}
 
