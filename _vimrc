@@ -14,6 +14,9 @@ endfunction
 "记录文件状态（包括独立于该文件的键盘映射、代码折叠状态等）：
 autocmd BufWinLeave *.* if expand('%') != '' && &buftype == '' | mkview | endif
 autocmd BufWinEnter *.* if expand('%') != '' && &buftype == '' | silent loadview | endif
+"映射y为系统剪切板
+nnoremap y "+y
+vnoremap y "+y
 "重新设置mkview时候的保存路径，在win7上如果安装在C盘的话可能出现保存不了的情况
 set viewdir=~/.vim/view
 "忽略搜索时候的大小写
@@ -125,15 +128,12 @@ Bundle 'JavaScript-syntax'
 "Bundle 'terryma/vim-multiple-cursors'
 "自动注释工具
 Bundle 'DoxygenToolkit.vim'
-"自动弹出补全对话框，有个bug需要修复一下：http://hi.baidu.com/_bigbug/item/c490dffedf7f4ce91b111faa
-Bundle 'AutoComplPop'
 Bundle 'surround.vim'
 Bundle 'Align'
 "python-mode拖慢启动速度
 "Bundle 'klen/python-mode'
 Bundle 'terryma/vim-expand-region'
 Bundle 'kchmck/vim-coffee-script'
-
 "{{{ color molokai
 Bundle 'tomasr/molokai'
 color molokai
@@ -168,7 +168,7 @@ Bundle 'jeffkreeftmeijer/vim-numbertoggle'
 "{{{ neocomplcache 自动补全
 "陆陆续续用了很多自动补全插件，这款还是不错的，速度很快
 Bundle 'Shougo/neocomplcache'
-"代码片段，一个人的作品。这样和自动完成的冲突比较少
+"使用后不能使用鼠标选择文字了，奇怪
 Bundle 'Shougo/neosnippet'
 "Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
 " Use neocomplcache.
