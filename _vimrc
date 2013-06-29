@@ -134,6 +134,8 @@ Bundle 'Align'
 "Bundle 'klen/python-mode'
 Bundle 'terryma/vim-expand-region'
 Bundle 'AutoClose'
+Bundle 'kchmck/vim-coffee-script'
+
 "{{{ ctrlp
 Bundle 'kien/ctrlp.vim'
 "MRU default 
@@ -148,7 +150,7 @@ let g:ctrlp_match_window_reversed=0
 let g:ctrlp_mruf_max=500
 let g:ctrlp_follow_symlinks=1
 "}}}
-Bundle 'kchmck/vim-coffee-script'
+
 "{{{ color molokai
 Bundle 'tomasr/molokai'
 color molokai
@@ -156,8 +158,8 @@ color molokai
 
 "{{{ Vim-markdown
 "注意注释该插件下面的ftpplugin中的markdown折叠功能
-Bundle 'plasticboy/vim-markdown'
-let g:vim_markdown_folding_disabled=1
+"Bundle 'plasticboy/vim-markdown'
+"let g:vim_markdown_folding_disabled=1
 "}}}
 
 "{{{ Gundo 查看文件编辑历史
@@ -172,6 +174,7 @@ let g:syntastic_disabled_filetypes=['html']
 let g:syntastic_enable_signs=1
 "需要提前安装好各种检查器，比如
 "js依赖于jshint: npm install -g jshint
+"css依赖于csslint: npm install -g csslint
 "}}}
 
 "{{{ vim-numbertoggle 相对行号
