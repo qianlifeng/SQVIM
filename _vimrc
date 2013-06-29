@@ -6,7 +6,7 @@ function OpenFileLocation()
     else  
         execute "!start explorer /select, %:p:h"  
     endif  
-endfunction  
+endfunction
 
 "}}}
 
@@ -133,6 +133,21 @@ Bundle 'Align'
 "python-mode拖慢启动速度
 "Bundle 'klen/python-mode'
 Bundle 'terryma/vim-expand-region'
+Bundle 'AutoClose'
+"{{{ ctrlp
+Bundle 'kien/ctrlp.vim'
+"MRU default 
+let g:ctrlp_map = '<leader><leader>'
+let g:ctrlp_regexp = 1
+let g:ctrlp_cmd = 'CtrlPMRU'
+let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$\|.rvm$'
+"let g:ctrlp_working_path_mode=0
+let g:ctrlp_match_window_bottom=1
+let g:ctrlp_max_height=15
+let g:ctrlp_match_window_reversed=0
+let g:ctrlp_mruf_max=500
+let g:ctrlp_follow_symlinks=1
+"}}}
 Bundle 'kchmck/vim-coffee-script'
 "{{{ color molokai
 Bundle 'tomasr/molokai'
@@ -167,15 +182,15 @@ Bundle 'jeffkreeftmeijer/vim-numbertoggle'
 
 "{{{ neocomplcache 自动补全
 "陆陆续续用了很多自动补全插件，这款还是不错的，速度很快
-Bundle 'Shougo/neocomplcache'
-"使用后不能使用鼠标选择文字了，奇怪
 Bundle 'Shougo/neosnippet'
-"Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
+Bundle 'Shougo/neocomplcache.vim'
+"自动完成映射为Ctrl+J
+imap <C-J> <C-X><C-u>
 " Use neocomplcache.
 let g:neocomplcache_enable_at_startup = 1
-" Use smartcase.
-let g:neocomplcache_enable_smart_case = 1
-" Enable omni completion.
+let g:neocomplcache_force_overwrite_completefunc = 1
+" AutoComplPop like behavior.
+let g:neocomplcache_enable_auto_select = 1
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
@@ -265,7 +280,6 @@ autocmd BufNewFile,BufRead *.vb set ft=vbnet
 "{{{ EasyMotion
 Bundle 'qianlifeng/vim-easymotion'
 let g:EasyMotion_do_mapping = 0
-nmap <leader><leader> :call EasyMotion#WB(0,0)<CR>
 "}}}
 
 "{{{ coffee script
@@ -316,8 +330,6 @@ nmap <C-n> O<ESC>
 imap <C-K><C-D> <ESC>gg=G
 nmap <C-K><C-D> gg=G
 
-"自动完成映射为Ctrl+J
-imap <C-J> <C-X><C-O>
 
 "Ctrl+Tab
 imap <C-Tab> <ESC>gt
@@ -364,8 +376,7 @@ nnoremap <leader>= :call SplitToggle()<cr>
 "{{{ Python 配置
 
 autocmd FileType python set omnifunc=pythoncomplete#Complete
-
-map <F5> <Esc>:!c:\python27\python.exe %<CR>
+"map <F5> <Esc>:!c:\python27\python.exe %<CR>
 "}}}
 
 "{{{ C# 配置
