@@ -152,8 +152,8 @@ let g:ctrlp_follow_symlinks=1
 "}}}
 
 "{{{ color molokai
-Bundle 'tomasr/molokai'
-color molokai
+"Bundle 'tomasr/molokai'
+"color molokai
 "}}}
 
 "{{{ Vim-markdown
@@ -185,10 +185,18 @@ Bundle 'jeffkreeftmeijer/vim-numbertoggle'
 
 "{{{ neocomplcache 自动补全
 "陆陆续续用了很多自动补全插件，这款还是不错的，速度很快
-Bundle 'Shougo/neosnippet'
+"启用了以后会不能选中文字
+"Bundle 'Shougo/neosnippet'
 Bundle 'Shougo/neocomplcache.vim'
 "自动完成映射为Ctrl+J
 imap <C-J> <C-X><C-u>
+" SuperTab like snippets behavior.
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: "\<TAB>"
 " Use neocomplcache.
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_force_overwrite_completefunc = 1
