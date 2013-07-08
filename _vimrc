@@ -124,6 +124,7 @@ Bundle 'gmarik/vundle'
 "插件列表
 Bundle 'matchit.zip' 
 Bundle 'restart.vim'
+Bundle 'vim-javascript-syntax'
 Bundle 'JavaScript-syntax'
 "Bundle 'terryma/vim-multiple-cursors'
 "自动注释工具
@@ -190,13 +191,6 @@ Bundle 'jeffkreeftmeijer/vim-numbertoggle'
 Bundle 'Shougo/neocomplcache.vim'
 "自动完成映射为Ctrl+J
 imap <C-J> <C-X><C-u>
-" SuperTab like snippets behavior.
-imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: "\<TAB>"
 " Use neocomplcache.
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_force_overwrite_completefunc = 1
