@@ -15,8 +15,8 @@ endfunction
 autocmd BufWinLeave *.* if expand('%') != '' && &buftype == '' | mkview | endif
 autocmd BufWinEnter *.* if expand('%') != '' && &buftype == '' | silent loadview | endif
 "映射y为系统剪切板
-nnoremap y "+y
-vnoremap y "+y
+"nnoremap y "+y
+"vnoremap y "+y
 "重新设置mkview时候的保存路径，在win7上如果安装在C盘的话可能出现保存不了的情况
 set viewdir=~/.vim/view
 "忽略搜索时候的大小写
@@ -134,7 +134,6 @@ Bundle 'Align'
 "python-mode拖慢启动速度
 "Bundle 'klen/python-mode'
 Bundle 'terryma/vim-expand-region'
-Bundle 'AutoClose'
 Bundle 'kchmck/vim-coffee-script'
 
 "{{{ ctrlp
