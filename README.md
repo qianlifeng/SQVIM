@@ -4,6 +4,8 @@ VIM配置文件
 使用Vundle管理插件，Vundle安装方法：http://www.cnblogs.com/qiangji/archive/2011/07/31/Vundle.html  
 因为默认配置了每个文件关闭的时候都mkview，所以一段时间后可能产生大量的view文件，从而拖慢启动速度，需要记得清理。  
 
+###2013-07-21
+* 增加插件EasyGrep
 
 ###2013-06-04
 * 添加横向滚动条，不自动折行

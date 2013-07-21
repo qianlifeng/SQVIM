@@ -102,9 +102,9 @@ set cursorcolumn
 "设置不自动折行
 :set nowrap 
 "}}}
- 
+
 "{{{ 插件配置
- 
+
 " {{{ 插件名：Vundle
 "     项目地址：https://github.com/gmarik/vundle
 "     作用：
@@ -135,6 +135,12 @@ Bundle 'Align'
 "Bundle 'klen/python-mode'
 Bundle 'terryma/vim-expand-region'
 Bundle 'kchmck/vim-coffee-script'
+
+Bundle 'EasyGrep'
+"Only search in current file by default
+let g:EasyGrepDefaultUserPattern = '%'
+let g:EasyGrepMode = 3
+
 
 "{{{ ctrlp
 Bundle 'kien/ctrlp.vim'
@@ -205,23 +211,23 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 "{{{ rainbow_parentheses 括号显示增强
 Bundle 'kien/rainbow_parentheses.vim'
 let g:rbpt_colorpairs = [
-    \ ['brown',       'RoyalBlue3'],
-    \ ['Darkblue',    'SeaGreen3'],
-    \ ['darkgray',    'DarkOrchid3'],
-    \ ['darkgreen',   'firebrick3'],
-    \ ['darkcyan',    'RoyalBlue3'],
-    \ ['darkred',     'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['brown',       'firebrick3'],
-    \ ['gray',        'RoyalBlue3'],
-    \ ['black',       'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['Darkblue',    'firebrick3'],
-    \ ['darkgreen',   'RoyalBlue3'],
-    \ ['darkcyan',    'SeaGreen3'],
-    \ ['darkred',     'DarkOrchid3'],
-    \ ['red',         'firebrick3'],
-    \ ]
+            \ ['brown',       'RoyalBlue3'],
+            \ ['Darkblue',    'SeaGreen3'],
+            \ ['darkgray',    'DarkOrchid3'],
+            \ ['darkgreen',   'firebrick3'],
+            \ ['darkcyan',    'RoyalBlue3'],
+            \ ['darkred',     'SeaGreen3'],
+            \ ['darkmagenta', 'DarkOrchid3'],
+            \ ['brown',       'firebrick3'],
+            \ ['gray',        'RoyalBlue3'],
+            \ ['black',       'SeaGreen3'],
+            \ ['darkmagenta', 'DarkOrchid3'],
+            \ ['Darkblue',    'firebrick3'],
+            \ ['darkgreen',   'RoyalBlue3'],
+            \ ['darkcyan',    'SeaGreen3'],
+            \ ['darkred',     'DarkOrchid3'],
+            \ ['red',         'firebrick3'],
+            \ ]
 let g:rbpt_max = 16
 let g:rbpt_loadcmd_toggle = 0
 au VimEnter * RainbowParenthesesToggle
@@ -229,7 +235,7 @@ au Syntax   * RainbowParenthesesLoadRound
 au Syntax   * RainbowParenthesesLoadSquare
 au Syntax   * RainbowParenthesesLoadBraces
 "}}}
- 
+
 " {{{ The NERD Commenter 用于代码注释
 " 这里使用的绑定快捷键同VS
 Bundle 'The-NERD-Commenter'
@@ -237,10 +243,10 @@ Bundle 'The-NERD-Commenter'
 :imap <C-K><C-C> <Esc><leader>c<space>i
 :nmap <C-K><C-U> <leader>c<space>
 :imap <C-K><C-U> <Esc><leader>c<space>i
- 
+
 "}}}
- 
-" {{{ FuzzyFinder
+
+" {{{ FuzzyFinder 此插件基本已被ctrlp取代，保留F1快速帮助功能
 Bundle 'vim-scripts/L9'
 "FuzzyFinder依赖于L9
 Bundle 'FuzzyFinder'
@@ -253,7 +259,7 @@ imap <silent><F2> <esc>:FufMruFile<cr>
 nnoremap <silent><F3> :FufMruCmd<CR>
 imap <silent><F3> <esc>:FufMruCmd<cr>  
 "}}}
- 
+
 " {{{ TagList 函数列表显示 
 Bundle 'taglist.vim'
 map <silent> <F10> :TlistToggle<cr>
@@ -303,16 +309,16 @@ filetype plugin indent on
 map <C-m> :%s/\r//g<CR> 
 
 "回车复制当前单词到剪切板
-nmap <CR> "+yiw
+"conflict inside quickfix window
+"nmap <CR> "+yiw
 
 "文件类型
 nmap <leader>1 :set filetype=xml<cr>
 
 "设置折叠方式为语法折叠同时开启所有折叠
 map <leader>fs :set fdm=syntax<cr>zM
+map <leader>fm :set fdm=marker<cr>zM
 
-"列出搜索结果
-nmap <leader>f :g//<left>
 "映射搜索快捷键
 nmap <C-f> gg//g<left><left>
 imap <C-f> <esc>gg//g<left><left>
@@ -325,15 +331,9 @@ imap <2-leftmouse> <esc>*N
 imap <F12> <ESC>:call OpenFileLocation()<CR> 
 nmap <F12> :call OpenFileLocation()<CR>
 
-"当前行下移一行
-"插入模式下如果启用，则tab键会触发这个功能，原因不详
-"imap <C-n> <ESC>O
-nmap <C-n> O<ESC>
-
 "格式化全文
 imap <C-K><C-D> <ESC>gg=G
 nmap <C-K><C-D> gg=G
-
 
 "Ctrl+Tab
 imap <C-Tab> <ESC>gt
@@ -342,6 +342,7 @@ nmap <C-Tab> gt
 "复制当前文件路径
 nmap <F4> :let @+ = expand("%:p")<CR>
 
+"p4 command
 nmap <F6> :!p4 edit %<Enter>
 imap <F6> <ESC>:!p4 edit %<Enter>
 "******************************split setting*********************************
@@ -363,24 +364,18 @@ set winminwidth=40
 " takes up as much space as possible, without pushing the other ones under 60
 " columns. The other option makes sure all splits are equally wide.
 function! SplitToggle()
-	if(&winwidth == &winminwidth)
-    set winwidth=999
-	else
-    set winwidth=40
-    wincmd =
-	endif
+    if(&winwidth == &winminwidth)
+        set winwidth=999
+    else
+        set winwidth=40
+        wincmd =
+    endif
 endfunc
 
 nnoremap <leader>= :call SplitToggle()<cr>
 
 "******************************************************************************
 
-"}}}
-
-"{{{ Python 配置
-
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-"map <F5> <Esc>:!c:\python27\python.exe %<CR>
 "}}}
 
 "{{{ C# 配置
