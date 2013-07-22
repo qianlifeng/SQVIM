@@ -124,7 +124,6 @@ Bundle 'gmarik/vundle'
 "插件列表
 Bundle 'matchit.zip' 
 Bundle 'restart.vim'
-Bundle 'vim-javascript-syntax'
 Bundle 'JavaScript-syntax'
 "Bundle 'terryma/vim-multiple-cursors'
 "自动注释工具
