@@ -1,5 +1,17 @@
 "{{{ 自定义函数
 
+" Using <leader>=, toggle the width of the current split. If it's set to 999, it
+" takes up as much space as possible, without pushing the other ones under 60
+" columns. The other option makes sure all splits are equally wide.
+function! SplitToggle()
+    if(&winwidth == &winminwidth)
+        set winwidth=999
+    else
+        set winwidth=40
+        wincmd =
+    endif
+endfunc
+
 function OpenFileLocation()  
     if ( expand("%") != "" )  
         execute "!start explorer /select, %"   
@@ -50,8 +62,6 @@ set smarttab
 colo desert
 "开启语法高亮, 7.3版本已自动开启
 syntax on
-"字体设置
-set guifont=Bitstream_Vera_Sans_Mono:h10:cANSI
 "关闭兼容模式
 set nocompatible
 "以下三行模拟Windows操作，如Ctrl-C复制
@@ -136,10 +146,12 @@ Bundle 'Align'
 Bundle 'terryma/vim-expand-region'
 Bundle 'kchmck/vim-coffee-script'
 
+"{{{ EasyGrep 
 Bundle 'EasyGrep'
 "Only search in current file by default
 let g:EasyGrepDefaultUserPattern = '%'
 let g:EasyGrepMode = 3
+"}}}
 
 "{{{ ctrlp
 Bundle 'kien/ctrlp.vim'
@@ -158,8 +170,8 @@ let g:ctrlp_follow_symlinks=1
 
 "{{{ Vim-markdown
 "注意注释该插件下面的ftpplugin中的markdown折叠功能
-"Bundle 'plasticboy/vim-markdown'
-"let g:vim_markdown_folding_disabled=1
+Bundle 'plasticboy/vim-markdown'
+let g:vim_markdown_folding_disabled=1
 "}}}
 
 "{{{ Gundo 查看文件编辑历史
@@ -248,10 +260,10 @@ Bundle 'FuzzyFinder'
 let g:fuf_modesDisable = []
 nnoremap <silent><F1> :FufHelp<CR>
 imap <silent><F1> <esc>:FufHelp<cr>  
-nnoremap <silent><F2> :FufMruFile<CR>
-imap <silent><F2> <esc>:FufMruFile<cr>  
-nnoremap <silent><F3> :FufMruCmd<CR>
-imap <silent><F3> <esc>:FufMruCmd<cr>  
+"nnoremap <silent><F2> :FufMruFile<CR>
+"imap <silent><F2> <esc>:FufMruFile<cr>  
+"nnoremap <silent><F3> :FufMruCmd<CR>
+"imap <silent><F3> <esc>:FufMruCmd<cr>  
 "}}}
 
 " {{{ TagList 函数列表显示 
@@ -264,10 +276,13 @@ let Tlist_Exit_OnlyWindow = 1          "如果taglist窗口是最后一个窗口，则退出vim
 
 " {{{ PowerLine
 Bundle 'Lokaltog/vim-powerline'
+Bundle 'eugeneching/consolas-powerline-vim'
+"字体设置,先到到tool下安装consolas字体
+set guifont=Consolas\ for\ Powerline\ FixedD:h11
 set laststatus=2
 set encoding=utf-8
 set t_Co=256
-"let g:Powerline_symbols = 'fancy'
+let g:Powerline_symbols = 'fancy'
 "}}}
 
 " {{{ Nerd Tree  树形目录结构
@@ -339,13 +354,12 @@ nmap <F4> :let @+ = expand("%:p")<CR>
 "p4 command
 nmap <F6> :!p4 edit %<Enter>
 imap <F6> <ESC>:!p4 edit %<Enter>
-"******************************split setting*********************************
 
 " Quick vertical split
 nnoremap <leader>w <C-w>v
 
 " Switch splits with <C-h> & <C-l>
-nnoremap <C-h> <C-w>h
+noremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
@@ -353,19 +367,6 @@ nnoremap <C-k> <C-w>k
 " Set the minimal split width
 set winwidth=40
 set winminwidth=40
-
-" Using <leader>=, toggle the width of the current split. If it's set to 999, it
-" takes up as much space as possible, without pushing the other ones under 60
-" columns. The other option makes sure all splits are equally wide.
-function! SplitToggle()
-    if(&winwidth == &winminwidth)
-        set winwidth=999
-    else
-        set winwidth=40
-        wincmd =
-    endif
-endfunc
-
 nnoremap <leader>= :call SplitToggle()<cr>
 
 "******************************************************************************

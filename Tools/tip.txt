@@ -1,0 +1,1 @@
+TotalCommander下面F4自动在新的tab页面打开文件： gvim.exe -p --remote-tab-silent "%*"
