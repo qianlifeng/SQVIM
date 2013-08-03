@@ -11,14 +11,15 @@ endfunction
 "}}}
 
 "{{{ 基础配置
+"映射y为系统剪切板
+nnoremap y "+y
+vnoremap y "+y
+"重新设置mkview时候的保存路径，在win7上如果安装在C盘的话可能出现保存不了的情况
+set viewdir=~/.vim/view
 "记录文件状态（包括独立于该文件的键盘映射、代码折叠状态等）：
 autocmd BufWinLeave *.* if expand('%') != '' && &buftype == '' | mkview | endif
 autocmd BufWinEnter *.* if expand('%') != '' && &buftype == '' | silent loadview | endif
-"映射y为系统剪切板
-"nnoremap y "+y
-"vnoremap y "+y
-"重新设置mkview时候的保存路径，在win7上如果安装在C盘的话可能出现保存不了的情况
-set viewdir=~/.vim/view
+autocmd BufWinEnter _vimrc set foldmethod=marker
 "忽略搜索时候的大小写
 set ic
 "重新设置leader key
@@ -378,6 +379,11 @@ au FileType cs set foldtext=substitute(getline(v:foldstart),'{.*','{...}',)
 au FileType cs set foldlevelstart=2 
 "}}}
 
+"{{{ UI
+
+"自动透明
+au GUIEnter * call libcallnr("vimtweak.dll", "SetAlpha", 234)
+
 "{{{ Color
 set background=dark
 highlight clear
@@ -506,4 +512,6 @@ hi scssNestedProperty ctermfg=81 ctermbg=NONE cterm=NONE guifg=#66d9ef guibg=NON
 hi scssVariable ctermfg=208 ctermbg=NONE cterm=NONE guifg=#fd971f guibg=NONE gui=NONE
 hi scssVariableValue ctermfg=141 ctermbg=NONE cterm=NONE guifg=#ae81ff guibg=NONE gui=NONE
 hi scssColor ctermfg=81 ctermbg=NONE cterm=NONE guifg=#66d9ef guibg=NONE gui=NONE
+"}}}
+
 "}}}
