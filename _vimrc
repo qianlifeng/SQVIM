@@ -380,8 +380,8 @@ au FileType cs set foldlevelstart=2
 
 "自动透明
 au GUIEnter * call libcallnr("vimtweak.dll", "SetAlpha", 234)
-"默认全屏
-autocmd GUIEnter * simalt ~x
+"自动最大化
+au GUIEnter * call libcallnr("vimtweak.dll", "EnableMaximize", 1)
 
 "{{{ Color
 set background=dark
