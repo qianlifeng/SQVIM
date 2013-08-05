@@ -20,6 +20,28 @@ function OpenFileLocation()
     endif  
 endfunction
 
+function! NTFinderP()
+    "" Check if NERDTree is open
+    if exists("t:NERDTreeBufName")
+        let s:ntree = bufwinnr(t:NERDTreeBufName)
+    else
+        let s:ntree = -1
+    endif
+    if (s:ntree != -1)
+        "" If NERDTree is open, close it.
+        :NERDTreeClose
+    else
+        "" Try to open a :Rtree for the rails project
+        if exists(":Rtree")
+            "" Open Rtree (using rails plugin, it opens in project dir)
+            :Rtree
+        else
+            "" Open NERDTree in the file path
+            :NERDTreeFind
+        endif
+    endif
+endfunction
+
 "}}}
 
 "{{{ 基础配置
@@ -131,7 +153,9 @@ Bundle 'gmarik/vundle'
 "插件列表
 Bundle 'matchit.zip' 
 Bundle 'restart.vim'
+
 Bundle 'pangloss/vim-javascript'
+
 "Bundle 'terryma/vim-multiple-cursors'
 "自动注释工具
 Bundle 'DoxygenToolkit.vim'
@@ -262,12 +286,12 @@ imap <silent><F1> <esc>:FufHelp<cr>
 "imap <silent><F3> <esc>:FufMruCmd<cr>  
 "}}}
 
-" {{{ TagList 函数列表显示 
-Bundle 'taglist.vim'
-map <silent> <F10> :TlistToggle<cr>
-imap <F10> <ESC>:TlistToggle<cr>a
-let Tlist_Show_One_File = 1            "不同时显示多个文件的tag，只显示当前文件的
-let Tlist_Exit_OnlyWindow = 1          "如果taglist窗口是最后一个窗口，则退出vim
+" {{{ Tagbar 函数列表显示 
+Bundle 'majutsushi/tagbar'
+"js support:
+"   1. git clone --recursive https://github.com/mozilla/doctorjs.github
+"   2. add tool/jsctags.bat to path (need to change some variables inside it)
+nmap <silent><F10> :TagbarToggle<CR>
 "}}}
 
 " {{{ PowerLine
@@ -283,8 +307,7 @@ let g:Powerline_symbols = 'fancy'
 
 " {{{ Nerd Tree  树形目录结构
 Bundle 'The-NERD-tree'
-map <F11> :NERDTreeFind<CR>
-imap <F11> <ESC>:NERDTreeFind<CR>a
+map <silent> <F11> :call NTFinderP()<CR>
 "}}}
 
 "{{{ vbnet.vim 
@@ -347,6 +370,8 @@ nmap <C-Tab> gt
 "复制当前文件路径
 nmap <F4> :let @+ = expand("%:p")<CR>
 
+nmap <Tab> <C-w>w
+
 "p4 command
 nmap <F6> :!p4 edit %<Enter>
 imap <F6> <ESC>:!p4 edit %<Enter>
@@ -379,7 +404,7 @@ au FileType cs set foldlevelstart=2
 "{{{ UI
 
 "自动透明
-au GUIEnter * call libcallnr("vimtweak.dll", "SetAlpha", 234)
+au GUIEnter * call libcallnr("vimtweak.dll", "SetAlpha", 238)
 "自动最大化
 au GUIEnter * call libcallnr("vimtweak.dll", "EnableMaximize", 1)
 
