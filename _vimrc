@@ -165,20 +165,6 @@ Bundle 'Align'
 "Bundle 'klen/python-mode'
 
 Bundle 'terryma/vim-expand-region'
-" Default settings. (NOTE: Remove comments in dictionary before sourcing)
-let g:expand_region_text_objects = {
-      \ 'iw'  :0,
-      \ 'iW'  :0,
-      \ 'i"'  :0,
-      \ 'i''' :0,
-      \ 'i]'  :1, 
-      \ 'ib'  :1, 
-      \ 'iB'  :1, 
-      \ 'il'  :1,
-      \ 'ip'  :0,
-      \ 'ie'  :1,
-      \ }
-
 Bundle 'kchmck/vim-coffee-script'
 
 "{{{ EasyGrep 
