@@ -153,7 +153,8 @@ Bundle 'gmarik/vundle'
 "²å¼þÁÐ±í
 Bundle 'matchit.zip' 
 Bundle 'restart.vim'
-
+"Mercurial
+Bundle 'vim-signify'
 Bundle 'pangloss/vim-javascript'
 
 "Bundle 'terryma/vim-multiple-cursors'
@@ -400,6 +401,7 @@ au FileType cs set foldmethod=marker
 au FileType cs set foldmarker={,} 
 au FileType cs set foldtext=substitute(getline(v:foldstart),'{.*','{...}',) 
 au FileType cs set foldlevelstart=2 
+au FileType cs TagbarOpen
 "}}}
 
 "{{{ UI
