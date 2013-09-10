@@ -80,8 +80,6 @@ set tabstop=4
 set et
 "按一次Backspace就删除4个空格
 set smarttab
-"配色方案
-colo desert
 "开启语法高亮, 7.3版本已自动开启
 syntax on
 "关闭兼容模式
@@ -152,9 +150,15 @@ Bundle 'gmarik/vundle'
 
 "插件列表
 Bundle 'matchit.zip' 
+"Bundle 'vcscommand.vim'
 Bundle 'restart.vim'
+Bundle 'terryma/vim-multiple-cursors'
 "Mercurial
-Bundle 'vim-signify'
+
+"用于标记git or hg 中被修改的地方。
+"此插件有点拖慢打开文件速度
+"Bundle 'vim-signify'
+
 Bundle 'pangloss/vim-javascript'
 
 "Bundle 'terryma/vim-multiple-cursors'
@@ -165,7 +169,7 @@ Bundle 'Align'
 "python-mode拖慢启动速度
 "Bundle 'klen/python-mode'
 
-Bundle 'terryma/vim-expand-region'
+"Bundle 'terryma/vim-expand-region'
 Bundle 'kchmck/vim-coffee-script'
 
 "{{{ EasyGrep 
@@ -202,19 +206,17 @@ nnoremap <leader>h :GundoToggle<CR>
 "}}}
 
 "{{{ syntastic 语法检查，支持N多语言，真是无敌了
-Bundle 'scrooloose/syntastic'
-let g:syntastic_auto_loc_list=1
-let g:syntastic_disabled_filetypes=['html']
-let g:syntastic_enable_signs=1
+"Bundle 'scrooloose/syntastic'
+"let g:syntastic_auto_loc_list=1
+"let g:syntastic_disabled_filetypes=['html']
+"let g:syntastic_enable_signs=1
 "需要提前安装好各种检查器，比如
 "js依赖于jshint: npm install -g jshint
 "css依赖于csslint: npm install -g csslint
 "}}}
 
-"{{{ vim-numbertoggle 相对行号
-Bundle 'jeffkreeftmeijer/vim-numbertoggle'
-"非要设置个快捷键，设置一个不常用的
-"let g:NumberToggleTrigger='<C-F2>'  
+"{{{ numbers.vim 相对行号
+Bundle 'myusuf3/numbers.vim'
 "}}}
 
 "{{{ neocomplcache 自动补全
@@ -401,7 +403,6 @@ au FileType cs set foldmethod=marker
 au FileType cs set foldmarker={,} 
 au FileType cs set foldtext=substitute(getline(v:foldstart),'{.*','{...}',) 
 au FileType cs set foldlevelstart=2 
-au FileType cs TagbarOpen
 "}}}
 
 "{{{ UI
