@@ -80,6 +80,8 @@ set tabstop=4
 set et
 "按一次Backspace就删除4个空格
 set smarttab
+"配色方案
+colo desert
 "开启语法高亮, 7.3版本已自动开启
 syntax on
 "关闭兼容模式
@@ -150,27 +152,16 @@ Bundle 'gmarik/vundle'
 
 "插件列表
 Bundle 'matchit.zip' 
-"Bundle 'vcscommand.vim'
 Bundle 'restart.vim'
-Bundle 'terryma/vim-multiple-cursors'
 "Mercurial
-
-"用于标记git or hg 中被修改的地方。
-"此插件有点拖慢打开文件速度
-"Bundle 'vim-signify'
-
 Bundle 'pangloss/vim-javascript'
 
-"Bundle 'terryma/vim-multiple-cursors'
+Bundle 'terryma/vim-multiple-cursors'
 "自动注释工具
 Bundle 'DoxygenToolkit.vim'
 Bundle 'surround.vim'
 Bundle 'Align'
-"python-mode拖慢启动速度
-"Bundle 'klen/python-mode'
-
-"Bundle 'terryma/vim-expand-region'
-Bundle 'kchmck/vim-coffee-script'
+Bundle 'terryma/vim-expand-region'
 
 "{{{ EasyGrep 
 Bundle 'EasyGrep'
@@ -200,23 +191,20 @@ Bundle 'plasticboy/vim-markdown'
 let g:vim_markdown_folding_disabled=1
 "}}}
 
-"{{{ Gundo 查看文件编辑历史
-Bundle 'sjl/gundo.vim'
-nnoremap <leader>h :GundoToggle<CR>    
-"}}}
-
 "{{{ syntastic 语法检查，支持N多语言，真是无敌了
-"Bundle 'scrooloose/syntastic'
-"let g:syntastic_auto_loc_list=1
-"let g:syntastic_disabled_filetypes=['html']
-"let g:syntastic_enable_signs=1
+Bundle 'scrooloose/syntastic'
+let g:syntastic_auto_loc_list=1
+let g:syntastic_disabled_filetypes=['html']
+let g:syntastic_enable_signs=1
 "需要提前安装好各种检查器，比如
 "js依赖于jshint: npm install -g jshint
 "css依赖于csslint: npm install -g csslint
 "}}}
 
-"{{{ numbers.vim 相对行号
-Bundle 'myusuf3/numbers.vim'
+"{{{ vim-numbertoggle 相对行号
+Bundle 'jeffkreeftmeijer/vim-numbertoggle'
+"非要设置个快捷键，设置一个不常用的
+"let g:NumberToggleTrigger='<C-F2>'  
 "}}}
 
 "{{{ neocomplcache 自动补全
@@ -276,20 +264,6 @@ Bundle 'The-NERD-Commenter'
 
 "}}}
 
-" {{{ FuzzyFinder 此插件基本已被ctrlp取代，保留F1快速帮助功能
-Bundle 'vim-scripts/L9'
-"FuzzyFinder依赖于L9
-Bundle 'FuzzyFinder'
-"开启MRU模式，默认禁用
-let g:fuf_modesDisable = []
-nnoremap <silent><F1> :FufHelp<CR>
-imap <silent><F1> <esc>:FufHelp<cr>  
-"nnoremap <silent><F2> :FufMruFile<CR>
-"imap <silent><F2> <esc>:FufMruFile<cr>  
-"nnoremap <silent><F3> :FufMruCmd<CR>
-"imap <silent><F3> <esc>:FufMruCmd<cr>  
-"}}}
-
 " {{{ Tagbar 函数列表显示 
 Bundle 'majutsushi/tagbar'
 "js support:
@@ -327,6 +301,7 @@ let g:EasyMotion_do_mapping = 0
 "{{{ coffee script
 "默认竖着显示
 "有个问题需要解决：注释 ftpplugin\coffee.vim 中的第89行
+Bundle 'kchmck/vim-coffee-script'
 let coffee_compile_vert = 1
 au BufReadPost *.coffee silent CoffeeCompile watch vert
 au BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
@@ -403,6 +378,7 @@ au FileType cs set foldmethod=marker
 au FileType cs set foldmarker={,} 
 au FileType cs set foldtext=substitute(getline(v:foldstart),'{.*','{...}',) 
 au FileType cs set foldlevelstart=2 
+au FileType cs TagbarOpen
 "}}}
 
 "{{{ UI
