@@ -153,8 +153,6 @@ Bundle 'gmarik/vundle'
 "插件列表
 Bundle 'matchit.zip' 
 Bundle 'restart.vim'
-"Mercurial
-Bundle 'pangloss/vim-javascript'
 
 Bundle 'terryma/vim-multiple-cursors'
 "自动注释工具
@@ -163,6 +161,11 @@ Bundle 'surround.vim'
 Bundle 'Align'
 Bundle 'terryma/vim-expand-region'
 Bundle 'groenewege/vim-less'
+
+"{{{ Javascript 
+Bundle 'pangloss/vim-javascript'
+au FileType javascript set foldmethod=syntax
+"}}}
 
 "{{{ EasyGrep 
 Bundle 'EasyGrep'
@@ -380,10 +383,6 @@ au FileType cs set foldmarker={,}
 au FileType cs set foldtext=substitute(getline(v:foldstart),'{.*','{...}',) 
 au FileType cs set foldlevelstart=2 
 au FileType cs TagbarOpen
-"}}}
-
-"{{{ JS 配置
-au FileType cs set foldmethod=syntax 
 "}}}
 
 "{{{ UI
