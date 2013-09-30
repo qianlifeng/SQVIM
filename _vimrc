@@ -162,6 +162,7 @@ Bundle 'DoxygenToolkit.vim'
 Bundle 'surround.vim'
 Bundle 'Align'
 Bundle 'terryma/vim-expand-region'
+Bundle 'groenewege/vim-less'
 
 "{{{ EasyGrep 
 Bundle 'EasyGrep'
@@ -192,10 +193,10 @@ let g:vim_markdown_folding_disabled=1
 "}}}
 
 "{{{ syntastic 语法检查，支持N多语言，真是无敌了
-Bundle 'scrooloose/syntastic'
-let g:syntastic_auto_loc_list=1
-let g:syntastic_disabled_filetypes=['html']
-let g:syntastic_enable_signs=1
+"Bundle 'scrooloose/syntastic'
+"let g:syntastic_auto_loc_list=1
+"let g:syntastic_disabled_filetypes=['html']
+"let g:syntastic_enable_signs=1
 "需要提前安装好各种检查器，比如
 "js依赖于jshint: npm install -g jshint
 "css依赖于csslint: npm install -g csslint
@@ -379,6 +380,10 @@ au FileType cs set foldmarker={,}
 au FileType cs set foldtext=substitute(getline(v:foldstart),'{.*','{...}',) 
 au FileType cs set foldlevelstart=2 
 au FileType cs TagbarOpen
+"}}}
+
+"{{{ JS 配置
+au FileType cs set foldmethod=syntax 
 "}}}
 
 "{{{ UI
