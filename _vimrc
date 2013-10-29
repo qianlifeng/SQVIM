@@ -153,6 +153,7 @@ Bundle 'gmarik/vundle'
 "插件列表
 Bundle 'matchit.zip' 
 Bundle 'restart.vim'
+Bundle 'mattn/emmet-vim'
 
 Bundle 'terryma/vim-multiple-cursors'
 "自动注释工具
@@ -177,7 +178,7 @@ let g:EasyGrepMode = 3
 "{{{ ctrlp
 Bundle 'kien/ctrlp.vim'
 "MRU default 
-let g:ctrlp_map = '<leader><leader>'
+let g:ctrlp_map = '<F2>'
 let g:ctrlp_regexp = 1
 let g:ctrlp_cmd = 'CtrlPMRU'
 let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$\|.rvm$'
@@ -299,7 +300,8 @@ autocmd BufNewFile,BufRead *.vb set ft=vbnet
 
 "{{{ EasyMotion
 Bundle 'qianlifeng/vim-easymotion'
-let g:EasyMotion_do_mapping = 0
+let g:EasyMotion_leader_key = '<Leader>' 
+nmap <leader><leader> <leader>f
 "}}}
 
 "{{{ coffee script
@@ -326,10 +328,6 @@ map <C-m> :%s/\r//g<CR>
 "文件类型
 nmap <leader>1 :set filetype=xml<cr>
 
-"设置折叠方式为语法折叠同时开启所有折叠
-map <leader>fs :set fdm=syntax<cr>zM
-map <leader>fm :set fdm=marker<cr>zM
-
 "映射搜索快捷键
 nmap <C-f> gg//g<left><left>
 imap <C-f> <esc>gg//g<left><left>
@@ -354,13 +352,6 @@ nmap <C-Tab> gt
 nmap <F4> :let @+ = expand("%:p")<CR>
 
 nmap <Tab> <C-w>w
-
-"p4 command
-nmap <F6> :!p4 edit %<Enter>
-imap <F6> <ESC>:!p4 edit %<Enter>
-
-" Quick vertical split
-nnoremap <leader>w <C-w>v
 
 " Switch splits with <C-h> & <C-l>
 noremap <C-h> <C-w>h
