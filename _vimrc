@@ -160,7 +160,25 @@ Bundle 'terryma/vim-multiple-cursors'
 Bundle 'DoxygenToolkit.vim'
 Bundle 'surround.vim'
 Bundle 'Align'
+
+"{{{ vim-expand-region 
 Bundle 'terryma/vim-expand-region'
+Bundle 'kana/vim-textobj-user'
+Bundle 'kana/vim-textobj-line'
+map <space> <Plug>(expand_region_expand)
+let g:expand_region_text_objects = {
+      \ 'iw'  :0,
+      \ 'iW'  :0,
+      \ 'i"'  :0,
+      \ 'i''' :0,
+      \ 'i>'  :0,
+      \ 'i]'  :1, 
+      \ 'ib'  :1, 
+      \ 'iB'  :1, 
+      \ 'il'  :0,
+      \ }
+"}}}
+
 Bundle 'groenewege/vim-less'
 
 "{{{ Javascript 
