@@ -155,6 +155,25 @@ Bundle 'matchit.zip'
 Bundle 'restart.vim'
 Bundle 'mattn/emmet-vim'
 
+"{{{ c#自动完成
+Bundle 'tpope/vim-dispatch'
+Bundle 'nosami/Omnisharp'
+"move the preview window (code documentation) to the bottom of the screen, so it doesn't move the code!
+set splitbelow
+"Set the type lookup function to use the preview window instead of the status line
+let g:OmniSharp_typeLookupInPreview = 1
+"don't autoselect first item in omnicomplete, show if only one item (for preview)
+set completeopt=longest,menuone,preview
+"Showmatch significantly slows down omnicomplete
+"when the first match contains parentheses.
+set noshowmatch
+" Builds can run asynchronously with vim-dispatch installed
+nnoremap <F5> :wa!<cr>:OmniSharpBuildAsync<cr>
+nnoremap gd :OmniSharpGotoDefinition<cr>
+"Don't ask to save when changing buffers (i.e. when jumping to a type definition)
+set hidden
+"}}}
+
 Bundle 'terryma/vim-multiple-cursors'
 "自动注释工具
 Bundle 'DoxygenToolkit.vim'
@@ -227,7 +246,7 @@ let g:vim_markdown_folding_disabled=1
 "{{{ vim-numbertoggle 相对行号
 Bundle 'jeffkreeftmeijer/vim-numbertoggle'
 "非要设置个快捷键，设置一个不常用的
-"let g:NumberToggleTrigger='<C-F2>'  
+let g:NumberToggleTrigger='<C-F2>'  
 "}}}
 
 "{{{ neocomplcache 自动补全
@@ -239,14 +258,43 @@ Bundle 'Shougo/neocomplcache.vim'
 imap <C-J> <C-X><C-u>
 " Use neocomplcache.
 let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_force_overwrite_completefunc = 1
+let g:neocomplcache_enable_smart_case = 1
+" Use camel case completion.
+let g:neocomplcache_enable_camel_case_completion = 1
+" Use underscore completion.
+let g:neocomplcache_enable_underbar_completion = 1
+" Sets minimum char length of syntax keyword.
+let g:neocomplcache_min_syntax_length = 1
+let g:neocomplcache_enable_auto_close_preview = 0
+"let g:neocomplcache_force_overwrite_completefunc = 1
 " AutoComplPop like behavior.
 let g:neocomplcache_enable_auto_select = 1
+" <CR>: close popup and save indent.
+inoremap <expr><CR> pumvisible() ? neocomplcache#close_popup() : "\<CR>"
+inoremap <expr>.  neocomplcache#close_popup() . "."
+inoremap <expr>(  neocomplcache#close_popup() . "("
+inoremap <expr>)  neocomplcache#close_popup() . ")"
+inoremap <expr><space>  neocomplcache#close_popup() . " "
+inoremap <expr>;  neocomplcache#close_popup() . ";"
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><C-y>  neocomplcache#close_popup()
+inoremap <expr><C-e>  neocomplcache#cancel_popup()
+inoremap <expr><ESC> pumvisible() ? neocomplcache#cancel_popup() : "\<esc>"
+
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+" Enable heavy omni completion, which require computational power and may stall the vim. 
+if !exists('g:neocomplcache_omni_patterns')
+  let g:neocomplcache_omni_patterns = {}
+endif
+let g:neocomplcache_omni_patterns.cs = '.*'
 "}}}
 
 "{{{ rainbow_parentheses 括号显示增强
@@ -391,7 +439,6 @@ au FileType cs set foldmethod=marker
 au FileType cs set foldmarker={,} 
 au FileType cs set foldtext=substitute(getline(v:foldstart),'{.*','{...}',) 
 au FileType cs set foldlevelstart=2 
-au FileType cs TagbarOpen
 "}}}
 
 "{{{ UI
