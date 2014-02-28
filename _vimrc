@@ -60,10 +60,6 @@ set ic
 let mapleader = ","
 "不需要高亮
 set nohls
-"不产生备份文件
-set nobackup 
-"不产生swp文件
-set noswapfile
 "不要图像按钮
 set go=
 "显示滚动条
@@ -82,8 +78,6 @@ set et
 set smarttab
 "配色方案
 colo desert
-"开启语法高亮, 7.3版本已自动开启
-syntax on
 "关闭兼容模式
 set nocompatible
 "以下三行模拟Windows操作，如Ctrl-C复制
@@ -92,6 +86,8 @@ source $VIMRUNTIME/mswin.vim
 behave mswin
 "不生成备份文件，下面这句要写在behave mswin下面，否则还是会生成备份，不知为何～
 set nobackup
+"不产生swp文件
+set noswapfile
 "GVIM内部编码
 set encoding=utf-8
 "当前编辑的文件编码
@@ -99,14 +95,12 @@ set encoding=utf-8
 set fileencodings=utf-8,gbk,gb2312,big5,latin1
 set termencoding=utf-8
 "解决菜单及右键菜单乱码
-"source $VIMRUNTIME/delmenu.vim
-"source $VIMRUNTIME/menu.vim
+source $VIMRUNTIME/delmenu.vim
+source $VIMRUNTIME/menu.vim
 "解决consle输出乱码
 language messages zh_CN.utf-8
 "防止特殊符号无法正常显示，如五角星等
 set ambiwidth=double
-"设置折叠方式
-"set foldmethod=marker
 "多个文件打开时用tab显示,0永远不显示 1两个以上显示 2 永远显示
 set showtabline=1
 "set guitablabel=%{GuiTabLabel()}
@@ -129,7 +123,7 @@ inoremap <right> <nop>
 "当前行对齐线
 set cursorcolumn
 "设置不自动折行
-:set nowrap 
+":set nowrap 
 "}}}
 
 "{{{ 插件配置
@@ -155,6 +149,7 @@ Bundle 'matchit.zip'
 Bundle 'restart.vim'
 Bundle 'mattn/emmet-vim'
 
+<<<<<<< HEAD
 "{{{ Python 插件
 Bundle 'davidhalter/jedi-vim'
 let g:jedi#popup_select_first = 0
@@ -180,6 +175,8 @@ let g:jedi#popup_on_dot = 0
 "set hidden
 "}}}
 
+=======
+>>>>>>> 19134e4338410bc714fd26bde8d6566072d98cd7
 Bundle 'terryma/vim-multiple-cursors'
 "自动注释工具
 Bundle 'DoxygenToolkit.vim'
@@ -380,10 +377,6 @@ filetype plugin indent on
 
 "消除每行结尾有可能出现的^M (文件格式问题)
 map <C-m> :%s/\r//g<CR> 
-
-"回车复制当前单词到剪切板
-"conflict inside quickfix window
-"nmap <CR> "+yiw
 
 "文件类型
 nmap <leader>1 :set filetype=xml<cr>
