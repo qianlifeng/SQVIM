@@ -156,8 +156,6 @@ Bundle 'restart.vim'
 
 "{{{ Emment
 Bundle 'mattn/emmet-vim'
-let g:user_emmet_expandabbr_key = '<Tab>'
-let g:use_emmet_complete_tag = 1
 "}}}
 
 "{{{ Ack
