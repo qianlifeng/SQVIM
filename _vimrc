@@ -159,9 +159,10 @@ Bundle 'mattn/emmet-vim'
 "how to install ack
 " installing perl http://strawberryperl.com/
 " install App::Ack by typing: perl -MCPAN -e "CPAN::Shell->force(qw(install App::Ack));"
-Bundle 'mileszs/ack.vim'
-nmap <C-f> :Ack -i  %<left><left>
-imap <C-f> <esc>:Ack -i  %<left><left>
+"Bundle 'mileszs/ack.vim'
+"let g:ackhighlight = 1
+"nmap <F3> :Ack -i  %<left><left>
+"imap <F3> <esc>:Ack -i  %<left><left>
 "}}}
 
 "{{{ Python 插件
@@ -368,9 +369,9 @@ autocmd BufNewFile,BufRead *.vb set ft=vbnet
 "}}}
 
 "{{{ EasyMotion
-Bundle 'qianlifeng/vim-easymotion'
-let g:EasyMotion_leader_key = '<Leader>' 
-nmap <leader><leader> <leader>f
+Bundle 'Lokaltog/vim-easymotion'
+let g:EasyMotion_smartcase = 1
+nmap s <Plug>(easymotion-s)
 "}}}
 
 "{{{ coffee script
@@ -398,8 +399,8 @@ map <C-m> :%s/\r//g<CR>
 nmap <leader>1 :set filetype=xml<cr>
 
 "映射搜索快捷键
-"nmap <C-f> gg//g<left><left>
-"imap <C-f> <esc>gg//g<left><left>
+nmap <C-f> gg//g<left><left>
+imap <C-f> <esc>gg//g<left><left>
 
 "双击鼠标左键高亮所有选择的单词
 nmap <2-leftmouse> *N
