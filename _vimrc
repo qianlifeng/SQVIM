@@ -144,6 +144,7 @@ Bundle 'gmarik/vundle'
 
 "²å¼þÁÐ±í
 Bundle 'matchit.zip' 
+Bundle 'tpope/vim-fugitive' 
 Bundle 'restart.vim'
 Bundle 'mattn/emmet-vim'
 Bundle 'terryma/vim-multiple-cursors'
@@ -379,6 +380,10 @@ au FileType cs set foldmethod=marker
 au FileType cs set foldmarker={,} 
 au FileType cs set foldtext=substitute(getline(v:foldstart),'{.*','{...}',) 
 au FileType cs set foldlevelstart=2 
+"}}}
+
+"{{{ Json
+Bundle 'elzr/vim-json'
 "}}}
 
 "{{{ Python
