@@ -209,8 +209,10 @@ Bundle 'scrooloose/syntastic'
 let g:syntastic_disabled_filetypes=['html']
 let g:syntastic_enable_signs=1
 let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': ['python'], 'passive_filetypes': ['js'] }
+let g:syntastic_python_checkers = ['pyflakes']
 
 "需要提前安装好各种检查器，比如
+"python依赖于pyflaks pip install pyflakes
 "js依赖于jshint: npm install -g jshint
 "css依赖于csslint: npm install -g csslint
 "}}}
@@ -385,6 +387,7 @@ autocmd BufRead *.py nmap <F5> :!
 
 Bundle 'davidhalter/jedi-vim'
 let g:jedi#popup_select_first = 0
+let g:jedi#popup_on_dot = 0
 autocmd FileType python setlocal completeopt-=preview
 "}}}
 
