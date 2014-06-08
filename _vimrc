@@ -60,10 +60,6 @@ set ic
 let mapleader = ","
 "不需要高亮
 set nohls
-"不产生备份文件
-set nobackup 
-"不产生swp文件
-set noswapfile
 "不要图像按钮
 set go=
 "显示滚动条
@@ -92,25 +88,21 @@ source $VIMRUNTIME/mswin.vim
 behave mswin
 "不生成备份文件，下面这句要写在behave mswin下面，否则还是会生成备份，不知为何～
 set nobackup
+"不产生swp文件
+set noswapfile
 "GVIM内部编码
 set encoding=utf-8
 "当前编辑的文件编码
 "GVIM支持打开的文件编码
 set fileencodings=utf-8,gbk,gb2312,big5,latin1
 set termencoding=utf-8
-"解决菜单及右键菜单乱码
-"source $VIMRUNTIME/delmenu.vim
-"source $VIMRUNTIME/menu.vim
 "解决consle输出乱码
 language messages zh_CN.utf-8
 "防止特殊符号无法正常显示，如五角星等
 set ambiwidth=double
-"设置折叠方式
-"set foldmethod=marker
 "多个文件打开时用tab显示,0永远不显示 1两个以上显示 2 永远显示
 set showtabline=1
-"set guitablabel=%{GuiTabLabel()}
-set guitablabel=%t
+set guitablabel=%{GuiTabLabel()}
 " 搜索时忽略大小写，但在有一个或以上大写字母时仍大小写敏感
 set ignorecase
 set smartcase
@@ -129,7 +121,7 @@ inoremap <right> <nop>
 "当前行对齐线
 set cursorcolumn
 "设置不自动折行
-:set nowrap 
+set nowrap 
 "}}}
 
 "{{{ 插件配置
@@ -153,55 +145,17 @@ Bundle 'gmarik/vundle'
 "插件列表
 Bundle 'matchit.zip' 
 Bundle 'restart.vim'
-
-"{{{ Emment
 Bundle 'mattn/emmet-vim'
-"}}}
-
-"{{{ Ack
-"how to install ack
-" installing perl http://strawberryperl.com/
-" install App::Ack by typing: perl -MCPAN -e "CPAN::Shell->force(qw(install App::Ack));"
-"Bundle 'mileszs/ack.vim'
-"let g:ackhighlight = 1
-"nmap <F3> :Ack -i  %<left><left>
-"imap <F3> <esc>:Ack -i  %<left><left>
-"}}}
-
-"{{{ Python 插件
-Bundle 'davidhalter/jedi-vim'
-let g:jedi#popup_select_first = 0
-let g:jedi#popup_on_dot = 0
-"}}}
-
-"{{{ c#自动完成
-"Bundle 'tpope/vim-dispatch'
-"Bundle 'nosami/Omnisharp'
-""move the preview window (code documentation) to the bottom of the screen, so it doesn't move the code!
-"set splitbelow
-""Set the type lookup function to use the preview window instead of the status line
-"let g:OmniSharp_typeLookupInPreview = 1
-""don't autoselect first item in omnicomplete, show if only one item (for preview)
-"set completeopt=longest,menuone,preview
-""Showmatch significantly slows down omnicomplete
-""when the first match contains parentheses.
-"set noshowmatch
-"" Builds can run asynchronously with vim-dispatch installed
-"nnoremap <F5> :wa!<cr>:OmniSharpBuildAsync<cr>
-"nnoremap gd :OmniSharpGotoDefinition<cr>
-""Don't ask to save when changing buffers (i.e. when jumping to a type definition)
-"set hidden
-"}}}
-
 Bundle 'terryma/vim-multiple-cursors'
+Bundle 'groenewege/vim-less'
+Bundle "surround.vim"
+Bundle 'Align'
+Bundle 'honza/vim-snippets'
+
 "自动注释工具
 Bundle 'DoxygenToolkit.vim'
 let g:DoxygenToolkit_authorName="qianlifeng"
 let g:doxygen_enhanced_color=1
-
-Bundle "surround.vim"
-Bundle 'Align'
-Bundle 'honza/vim-snippets'
 
 "{{{ vim-expand-region 
 Bundle 'terryma/vim-expand-region'
@@ -219,13 +173,6 @@ let g:expand_region_text_objects = {
       \ 'iB'  :1, 
       \ 'il'  :0,
       \ }
-"}}}
-
-Bundle 'groenewege/vim-less'
-
-"{{{ Javascript 
-Bundle 'pangloss/vim-javascript'
-au FileType javascript set foldmethod=syntax
 "}}}
 
 "{{{ EasyGrep 
@@ -261,7 +208,8 @@ Bundle 'scrooloose/syntastic'
 "let g:syntastic_auto_loc_list=1
 let g:syntastic_disabled_filetypes=['html']
 let g:syntastic_enable_signs=1
-let g:syntastic_mode_map = { 'mode': 'passive' }
+let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': ['python'], 'passive_filetypes': ['js'] }
+
 "需要提前安装好各种检查器，比如
 "js依赖于jshint: npm install -g jshint
 "css依赖于csslint: npm install -g csslint
@@ -366,25 +314,12 @@ Bundle 'The-NERD-tree'
 map <silent> <F11> :call NTFinderP()<CR>
 "}}}
 
-"{{{ vbnet.vim 
-Bundle 'vbnet.vim'
-autocmd BufNewFile,BufRead *.vb set ft=vbnet
-"}}}
-
 "{{{ EasyMotion
 Bundle 'Lokaltog/vim-easymotion'
 let g:EasyMotion_smartcase = 1
 nmap s <Plug>(easymotion-s)
 "}}}
 
-"{{{ coffee script
-"默认竖着显示
-"有个问题需要解决：注释 ftpplugin\coffee.vim 中的第89行
-Bundle 'kchmck/vim-coffee-script'
-let coffee_compile_vert = 1
-au BufReadPost *.coffee silent CoffeeCompile watch vert
-au BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
-"}}}
 
 filetype plugin indent on
 "}}}
@@ -393,10 +328,6 @@ filetype plugin indent on
 
 "消除每行结尾有可能出现的^M (文件格式问题)
 map <C-m> :%s/\r//g<CR> 
-
-"回车复制当前单词到剪切板
-"conflict inside quickfix window
-"nmap <CR> "+yiw
 
 "文件类型
 nmap <leader>1 :set filetype=xml<cr>
@@ -441,11 +372,43 @@ nnoremap <leader>= :call SplitToggle()<cr>
 
 "}}}
 
-"{{{ C# 配置
+"{{{ C#
 au FileType cs set foldmethod=marker 
 au FileType cs set foldmarker={,} 
 au FileType cs set foldtext=substitute(getline(v:foldstart),'{.*','{...}',) 
 au FileType cs set foldlevelstart=2 
+"}}}
+
+"{{{ Python
+autocmd BufRead *.py set tabstop=4
+autocmd BufRead *.py nmap <F5> :!
+
+Bundle 'davidhalter/jedi-vim'
+let g:jedi#popup_select_first = 0
+autocmd FileType python setlocal completeopt-=preview
+"}}}
+
+"{{{ Javascript 
+Bundle 'pangloss/vim-javascript'
+au FileType javascript set foldmethod=syntax
+"}}}
+
+"{{{ VB.NET
+Bundle 'vbnet.vim'
+autocmd BufNewFile,BufRead *.vb set ft=vbnet
+"}}}
+
+"{{{ Coffee Script
+"默认竖着显示
+"有个问题需要解决：注释 ftpplugin\coffee.vim 中的第89行
+Bundle 'kchmck/vim-coffee-script'
+let coffee_compile_vert = 1
+au BufReadPost *.coffee silent CoffeeCompile watch vert
+au BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
+"}}}
+
+"{{{ Mercurial
+:command! HgLog cd %:p:h | !thgw.exe --nofork log %:p & exit
 "}}}
 
 "{{{ UI
@@ -588,5 +551,3 @@ hi scssColor ctermfg=81 ctermbg=NONE cterm=NONE guifg=#66d9ef guibg=NONE gui=NON
 "}}}
 
 "}}}
-
-:command! HgLog cd %:p:h | !thgw.exe --nofork log %:p & exit
