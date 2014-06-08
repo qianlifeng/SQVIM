@@ -301,15 +301,17 @@ Bundle 'majutsushi/tagbar'
 nmap <silent><F10> :TagbarToggle<CR>
 "}}}
 
-" {{{ PowerLine
-Bundle 'Lokaltog/vim-powerline'
-Bundle 'eugeneching/consolas-powerline-vim'
-"字体设置,先到到tool下安装consolas字体
+Bundle 'bling/vim-airline'
+let g:airline_powerline_fonts = 1
+""字体设置,先到到tool下安装consolas字体
 set guifont=Consolas\ for\ Powerline\ FixedD:h11
-set laststatus=2
-set encoding=utf-8
 set t_Co=256
-let g:Powerline_symbols = 'fancy'
+
+" {{{ PowerLine
+"Bundle 'Lokaltog/vim-powerline'
+"Bundle 'eugeneching/consolas-powerline-vim'
+"set laststatus=2
+"let g:Powerline_symbols = 'fancy'
 "}}}
 
 " {{{ Nerd Tree  树形目录结构
