@@ -1,4 +1,4 @@
-"{{{ ×Ô¶¨Òåº¯Êı
+"{{{ è‡ªå®šä¹‰å‡½æ•°
 
 " Using <leader>=, toggle the width of the current split. If it's set to 999, it
 " takes up as much space as possible, without pushing the other ones under 60
@@ -44,105 +44,105 @@ endfunction
 
 "}}}
 
-"{{{ »ù´¡ÅäÖÃ
-"Ó³ÉäyÎªÏµÍ³¼ôÇĞ°å
+"{{{ åŸºç¡€é…ç½®
+"æ˜ å°„yä¸ºç³»ç»Ÿå‰ªåˆ‡æ¿
 nnoremap y "+y
 vnoremap y "+y
-"ÖØĞÂÉèÖÃmkviewÊ±ºòµÄ±£´æÂ·¾¶£¬ÔÚwin7ÉÏÈç¹û°²×°ÔÚCÅÌµÄ»°¿ÉÄÜ³öÏÖ±£´æ²»ÁËµÄÇé¿ö
+"é‡æ–°è®¾ç½®mkviewæ—¶å€™çš„ä¿å­˜è·¯å¾„ï¼Œåœ¨win7ä¸Šå¦‚æœå®‰è£…åœ¨Cç›˜çš„è¯å¯èƒ½å‡ºç°ä¿å­˜ä¸äº†çš„æƒ…å†µ
 set viewdir=~/.vim/view
-"¼ÇÂ¼ÎÄ¼ş×´Ì¬£¨°üÀ¨¶ÀÁ¢ÓÚ¸ÃÎÄ¼şµÄ¼üÅÌÓ³Éä¡¢´úÂëÕÛµş×´Ì¬µÈ£©£º
+"è®°å½•æ–‡ä»¶çŠ¶æ€ï¼ˆåŒ…æ‹¬ç‹¬ç«‹äºè¯¥æ–‡ä»¶çš„é”®ç›˜æ˜ å°„ã€ä»£ç æŠ˜å çŠ¶æ€ç­‰ï¼‰ï¼š
 autocmd BufWinLeave *.* if expand('%') != '' && &buftype == '' | mkview | endif
 autocmd BufWinEnter *.* if expand('%') != '' && &buftype == '' | silent loadview | endif
 autocmd BufWinEnter _vimrc set foldmethod=marker
-"ºöÂÔËÑË÷Ê±ºòµÄ´óĞ¡Ğ´
+"å¿½ç•¥æœç´¢æ—¶å€™çš„å¤§å°å†™
 set ic
-"ÖØĞÂÉèÖÃleader key
+"é‡æ–°è®¾ç½®leader key
 let mapleader = ","
-"²»ĞèÒª¸ßÁÁ
+"ä¸éœ€è¦é«˜äº®
 set nohls
-"²»ÒªÍ¼Ïñ°´Å¥
+"ä¸è¦å›¾åƒæŒ‰é’®
 set go=
-"ÏÔÊ¾¹ö¶¯Ìõ
+"æ˜¾ç¤ºæ»šåŠ¨æ¡
 set guioptions+=b
-"¿ªÆôĞĞºÅ
+"å¼€å¯è¡Œå·
 set number
-"¿ªÆô×Ô¶¯Ëõ½ø, 7.3ÒÔÉÏ°æ±¾ÒÑ×Ô¶¯¿ªÆô
+"å¼€å¯è‡ªåŠ¨ç¼©è¿›, 7.3ä»¥ä¸Šç‰ˆæœ¬å·²è‡ªåŠ¨å¼€å¯
 set autoindent
-"Ëõ½ø¿í¶ÈÎª4¸ö×Ö·û
+"ç¼©è¿›å®½åº¦ä¸º4ä¸ªå­—ç¬¦
 set shiftwidth=4
-"tab¿í¶ÈÎª4¸ö×Ö·û
+"tabå®½åº¦ä¸º4ä¸ªå­—ç¬¦
 set tabstop=4
-"±à¼­Ê±½«ËùÓĞtabÌæ»»Îª¿Õ¸ñ
+"ç¼–è¾‘æ—¶å°†æ‰€æœ‰tabæ›¿æ¢ä¸ºç©ºæ ¼
 set et
-"°´Ò»´ÎBackspace¾ÍÉ¾³ı4¸ö¿Õ¸ñ
+"æŒ‰ä¸€æ¬¡Backspaceå°±åˆ é™¤4ä¸ªç©ºæ ¼
 set smarttab
-"ÅäÉ«·½°¸
+"é…è‰²æ–¹æ¡ˆ
 colo desert
-"¿ªÆôÓï·¨¸ßÁÁ, 7.3°æ±¾ÒÑ×Ô¶¯¿ªÆô
+"å¼€å¯è¯­æ³•é«˜äº®, 7.3ç‰ˆæœ¬å·²è‡ªåŠ¨å¼€å¯
 syntax on
-"¹Ø±Õ¼æÈİÄ£Ê½
+"å…³é—­å…¼å®¹æ¨¡å¼
 set nocompatible
-"ÒÔÏÂÈıĞĞÄ£ÄâWindows²Ù×÷£¬ÈçCtrl-C¸´ÖÆ
+"ä»¥ä¸‹ä¸‰è¡Œæ¨¡æ‹ŸWindowsæ“ä½œï¼Œå¦‚Ctrl-Cå¤åˆ¶
 source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
 behave mswin
-"²»Éú³É±¸·İÎÄ¼ş£¬ÏÂÃæÕâ¾äÒªĞ´ÔÚbehave mswinÏÂÃæ£¬·ñÔò»¹ÊÇ»áÉú³É±¸·İ£¬²»ÖªÎªºÎ¡«
+"ä¸ç”Ÿæˆå¤‡ä»½æ–‡ä»¶ï¼Œä¸‹é¢è¿™å¥è¦å†™åœ¨behave mswinä¸‹é¢ï¼Œå¦åˆ™è¿˜æ˜¯ä¼šç”Ÿæˆå¤‡ä»½ï¼Œä¸çŸ¥ä¸ºä½•ï½
 set nobackup
-"²»²úÉúswpÎÄ¼ş
+"ä¸äº§ç”Ÿswpæ–‡ä»¶
 set noswapfile
-"GVIMÄÚ²¿±àÂë
+"GVIMå†…éƒ¨ç¼–ç 
 set encoding=utf-8
-"µ±Ç°±à¼­µÄÎÄ¼ş±àÂë
-"GVIMÖ§³Ö´ò¿ªµÄÎÄ¼ş±àÂë
+"å½“å‰ç¼–è¾‘çš„æ–‡ä»¶ç¼–ç 
+"GVIMæ”¯æŒæ‰“å¼€çš„æ–‡ä»¶ç¼–ç 
 set fileencodings=utf-8,gbk,gb2312,big5,latin1
 set termencoding=utf-8
-"½â¾öconsleÊä³öÂÒÂë
+"è§£å†³consleè¾“å‡ºä¹±ç 
 language messages zh_CN.utf-8
-"·ÀÖ¹ÌØÊâ·ûºÅÎŞ·¨Õı³£ÏÔÊ¾£¬ÈçÎå½ÇĞÇµÈ
+"é˜²æ­¢ç‰¹æ®Šç¬¦å·æ— æ³•æ­£å¸¸æ˜¾ç¤ºï¼Œå¦‚äº”è§’æ˜Ÿç­‰
 set ambiwidth=double
-"¶à¸öÎÄ¼ş´ò¿ªÊ±ÓÃtabÏÔÊ¾,0ÓÀÔ¶²»ÏÔÊ¾ 1Á½¸öÒÔÉÏÏÔÊ¾ 2 ÓÀÔ¶ÏÔÊ¾
+"å¤šä¸ªæ–‡ä»¶æ‰“å¼€æ—¶ç”¨tabæ˜¾ç¤º,0æ°¸è¿œä¸æ˜¾ç¤º 1ä¸¤ä¸ªä»¥ä¸Šæ˜¾ç¤º 2 æ°¸è¿œæ˜¾ç¤º
 set showtabline=1
 set guitablabel=%{GuiTabLabel()}
-" ËÑË÷Ê±ºöÂÔ´óĞ¡Ğ´£¬µ«ÔÚÓĞÒ»¸ö»òÒÔÉÏ´óĞ´×ÖÄ¸Ê±ÈÔ´óĞ¡Ğ´Ãô¸Ğ
+" æœç´¢æ—¶å¿½ç•¥å¤§å°å†™ï¼Œä½†åœ¨æœ‰ä¸€ä¸ªæˆ–ä»¥ä¸Šå¤§å†™å­—æ¯æ—¶ä»å¤§å°å†™æ•æ„Ÿ
 set ignorecase
 set smartcase
-" ËÑË÷µ½ÎÄ¼şÁ½¶ËÊ±²»ÖØĞÂËÑË÷
+" æœç´¢åˆ°æ–‡ä»¶ä¸¤ç«¯æ—¶ä¸é‡æ–°æœç´¢
 set nowrapscan
-" ÊµÊ±ËÑË÷
+" å®æ—¶æœç´¢
 set incsearch
-" ËÑË÷Ê±¸ßÁÁÏÔÊ¾±»ÕÒµ½µÄÎÄ±¾
+" æœç´¢æ—¶é«˜äº®æ˜¾ç¤ºè¢«æ‰¾åˆ°çš„æ–‡æœ¬
 set hlsearch
-"²åÈë×´Ì¬ÏÂ½ûÓÃ·½Ïò¼ü
-"MRUºÍacpµÄÊ±ºòĞèÒªÉÏÏÂÑ¡Ôñ
+"æ’å…¥çŠ¶æ€ä¸‹ç¦ç”¨æ–¹å‘é”®
+"MRUå’Œacpçš„æ—¶å€™éœ€è¦ä¸Šä¸‹é€‰æ‹©
 "inoremap <up> <nop>
 "inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
-"µ±Ç°ĞĞ¶ÔÆëÏß
+"å½“å‰è¡Œå¯¹é½çº¿
 set cursorcolumn
-"ÉèÖÃ²»×Ô¶¯ÕÛĞĞ
+"è®¾ç½®ä¸è‡ªåŠ¨æŠ˜è¡Œ
 set nowrap 
 "}}}
 
-"{{{ ²å¼şÅäÖÃ
+"{{{ æ’ä»¶é…ç½®
 
-" {{{ ²å¼şÃû£ºVundle
-"     ÏîÄ¿µØÖ·£ºhttps://github.com/gmarik/vundle
-"     ×÷ÓÃ£º
+" {{{ æ’ä»¶åï¼šVundle
+"     é¡¹ç›®åœ°å€ï¼šhttps://github.com/gmarik/vundle
+"     ä½œç”¨ï¼š
 "   
-"           ¹ÜÀí²å¼ş°²×°
+"           ç®¡ç†æ’ä»¶å®‰è£…
 "required
 filetype off
-"´Ë´¦¹æ¶¨VundleµÄÂ·¾¶
+"æ­¤å¤„è§„å®šVundleçš„è·¯å¾„
 set rtp+=$HOME/.vim/bundle/vundle
-"´Ë´¦¹æ¶¨²å¼şµÄ°²×°Â·¾¶
+"æ­¤å¤„è§„å®šæ’ä»¶çš„å®‰è£…è·¯å¾„
 call vundle#rc('$HOME/.vim/bundle')
 " let Vundle manage Vundle
 Bundle 'gmarik/vundle'
 " required!
 "}}}
 
-"²å¼şÁĞ±í
+"æ’ä»¶åˆ—è¡¨
 Bundle 'matchit.zip' 
 Bundle 'tpope/vim-fugitive' 
 Bundle 'restart.vim'
@@ -153,7 +153,7 @@ Bundle "surround.vim"
 Bundle 'Align'
 Bundle 'honza/vim-snippets'
 
-"×Ô¶¯×¢ÊÍ¹¤¾ß
+"è‡ªåŠ¨æ³¨é‡Šå·¥å…·
 Bundle 'DoxygenToolkit.vim'
 let g:DoxygenToolkit_authorName="qianlifeng"
 let g:doxygen_enhanced_color=1
@@ -199,12 +199,12 @@ let g:ctrlp_follow_symlinks=1
 "}}}
 
 "{{{ Vim-markdown
-"×¢Òâ×¢ÊÍ¸Ã²å¼şÏÂÃæµÄftppluginÖĞµÄmarkdownÕÛµş¹¦ÄÜ
+"æ³¨æ„æ³¨é‡Šè¯¥æ’ä»¶ä¸‹é¢çš„ftppluginä¸­çš„markdownæŠ˜å åŠŸèƒ½
 Bundle 'plasticboy/vim-markdown'
 let g:vim_markdown_folding_disabled=1
 "}}}
 
-"{{{ syntastic Óï·¨¼ì²é£¬Ö§³ÖN¶àÓïÑÔ£¬ÕæÊÇÎŞµĞÁË
+"{{{ syntastic è¯­æ³•æ£€æŸ¥ï¼Œæ”¯æŒNå¤šè¯­è¨€ï¼ŒçœŸæ˜¯æ— æ•Œäº†
 Bundle 'scrooloose/syntastic'
 "let g:syntastic_auto_loc_list=1
 let g:syntastic_disabled_filetypes=['html']
@@ -212,29 +212,29 @@ let g:syntastic_enable_signs=1
 let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': ['python'], 'passive_filetypes': ['js'] }
 let g:syntastic_python_checkers = ['pyflakes']
 
-"ĞèÒªÌáÇ°°²×°ºÃ¸÷ÖÖ¼ì²éÆ÷£¬±ÈÈç
-"pythonÒÀÀµÓÚpyflaks pip install pyflakes
-"jsÒÀÀµÓÚjshint: npm install -g jshint
-"cssÒÀÀµÓÚcsslint: npm install -g csslint
+"éœ€è¦æå‰å®‰è£…å¥½å„ç§æ£€æŸ¥å™¨ï¼Œæ¯”å¦‚
+"pythonä¾èµ–äºpyflaks pip install pyflakes
+"jsä¾èµ–äºjshint: npm install -g jshint
+"cssä¾èµ–äºcsslint: npm install -g csslint
 "}}}
 
-"{{{ vim-numbertoggle Ïà¶ÔĞĞºÅ
+"{{{ vim-numbertoggle ç›¸å¯¹è¡Œå·
 Bundle 'jeffkreeftmeijer/vim-numbertoggle'
-"·ÇÒªÉèÖÃ¸ö¿ì½İ¼ü£¬ÉèÖÃÒ»¸ö²»³£ÓÃµÄ
+"éè¦è®¾ç½®ä¸ªå¿«æ·é”®ï¼Œè®¾ç½®ä¸€ä¸ªä¸å¸¸ç”¨çš„
 let g:NumberToggleTrigger='<C-F2>'  
 "}}}
 
-"{{{ neocomplcache ×Ô¶¯²¹È«
-"Â½Â½ĞøĞøÓÃÁËºÜ¶à×Ô¶¯²¹È«²å¼ş£¬Õâ¿î»¹ÊÇ²»´íµÄ£¬ËÙ¶ÈºÜ¿ì
+"{{{ neocomplcache è‡ªåŠ¨è¡¥å…¨
+"é™†é™†ç»­ç»­ç”¨äº†å¾ˆå¤šè‡ªåŠ¨è¡¥å…¨æ’ä»¶ï¼Œè¿™æ¬¾è¿˜æ˜¯ä¸é”™çš„ï¼Œé€Ÿåº¦å¾ˆå¿«
 Bundle 'Shougo/neocomplcache.vim'
-"ÆôÓÃÁËÒÔºó»á²»ÄÜÑ¡ÖĞÎÄ×Ö
+"å¯ç”¨äº†ä»¥åä¼šä¸èƒ½é€‰ä¸­æ–‡å­—
 "Bundle 'Shougo/neosnippet'
 "" Plugin key-mappings.
 "imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 "smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 "xmap <C-k>     <Plug>(neosnippet_expand_target)
 
-"×Ô¶¯Íê³ÉÓ³ÉäÎªCtrl+J
+"è‡ªåŠ¨å®Œæˆæ˜ å°„ä¸ºCtrl+J
 imap <C-J> <C-X><C-u>
 " Use neocomplcache.
 let g:neocomplcache_enable_at_startup = 1
@@ -255,7 +255,7 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 "let g:neocomplcache_omni_patterns.cs = '.*'
 "}}}
 
-"{{{ rainbow_parentheses À¨ºÅÏÔÊ¾ÔöÇ¿
+"{{{ rainbow_parentheses æ‹¬å·æ˜¾ç¤ºå¢å¼º
 Bundle 'kien/rainbow_parentheses.vim'
 let g:rbpt_colorpairs = [
             \ ['brown',       'RoyalBlue3'],
@@ -283,8 +283,8 @@ au Syntax   * RainbowParenthesesLoadSquare
 au Syntax   * RainbowParenthesesLoadBraces
 "}}}
 
-" {{{ The NERD Commenter ÓÃÓÚ´úÂë×¢ÊÍ
-" ÕâÀïÊ¹ÓÃµÄ°ó¶¨¿ì½İ¼üÍ¬VS
+" {{{ The NERD Commenter ç”¨äºä»£ç æ³¨é‡Š
+" è¿™é‡Œä½¿ç”¨çš„ç»‘å®šå¿«æ·é”®åŒVS
 Bundle 'The-NERD-Commenter'
 :nmap <C-K><C-C> <leader>c<space>
 :imap <C-K><C-C> <Esc><leader>c<space>i
@@ -293,7 +293,7 @@ Bundle 'The-NERD-Commenter'
 
 "}}}
 
-" {{{ Tagbar º¯ÊıÁĞ±íÏÔÊ¾ 
+" {{{ Tagbar å‡½æ•°åˆ—è¡¨æ˜¾ç¤º 
 Bundle 'majutsushi/tagbar'
 "js support:
 "   1. git clone --recursive https://github.com/mozilla/doctorjs.github
@@ -302,19 +302,26 @@ nmap <silent><F10> :TagbarToggle<CR>
 "}}}
 
 Bundle 'bling/vim-airline'
-let g:airline_powerline_fonts = 1
-""×ÖÌåÉèÖÃ,ÏÈµ½µ½toolÏÂ°²×°consolas×ÖÌå
+
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+let g:airline_left_sep = 'â®€'
+let g:airline_left_alt_sep = 'â®'
+let g:airline_right_sep = 'â®‚'
+let g:airline_right_alt_sep = 'â®ƒ'
+let g:airline_symbols.branch = 'â­ '
+let g:airline_symbols.readonly = 'â­¤'
+let g:airline_symbols.linenr = 'â­¡'
+let g:airline_symbols.paste = 'Ã'
+let g:airline_symbols.whitespace = 'Î'
+""å­—ä½“è®¾ç½®,å…ˆåˆ°åˆ°toolä¸‹å®‰è£…consolaså­—ä½“
 set guifont=Consolas\ for\ Powerline\ FixedD:h11
 set t_Co=256
+set laststatus=2
 
-" {{{ PowerLine
-"Bundle 'Lokaltog/vim-powerline'
-"Bundle 'eugeneching/consolas-powerline-vim'
-"set laststatus=2
-"let g:Powerline_symbols = 'fancy'
-"}}}
 
-" {{{ Nerd Tree  Ê÷ĞÎÄ¿Â¼½á¹¹
+" {{{ Nerd Tree  æ ‘å½¢ç›®å½•ç»“æ„
 Bundle 'The-NERD-tree'
 map <silent> <F11> :call NTFinderP()<CR>
 "}}}
@@ -329,27 +336,27 @@ nmap s <Plug>(easymotion-s)
 filetype plugin indent on
 "}}}
 
-"{{{ ¼üÅÌÓ³Éä
+"{{{ é”®ç›˜æ˜ å°„
 
-"Ïû³ıÃ¿ĞĞ½áÎ²ÓĞ¿ÉÄÜ³öÏÖµÄ^M (ÎÄ¼ş¸ñÊ½ÎÊÌâ)
+"æ¶ˆé™¤æ¯è¡Œç»“å°¾æœ‰å¯èƒ½å‡ºç°çš„^M (æ–‡ä»¶æ ¼å¼é—®é¢˜)
 map <C-m> :%s/\r//g<CR> 
 
-"ÎÄ¼şÀàĞÍ
+"æ–‡ä»¶ç±»å‹
 nmap <leader>1 :set filetype=xml<cr>
 
-"Ó³ÉäËÑË÷¿ì½İ¼ü
+"æ˜ å°„æœç´¢å¿«æ·é”®
 nmap <C-f> gg//g<left><left>
 imap <C-f> <esc>gg//g<left><left>
 
-"Ë«»÷Êó±ê×ó¼ü¸ßÁÁËùÓĞÑ¡ÔñµÄµ¥´Ê
+"åŒå‡»é¼ æ ‡å·¦é”®é«˜äº®æ‰€æœ‰é€‰æ‹©çš„å•è¯
 nmap <2-leftmouse> *N
 imap <2-leftmouse> <esc>*N
 
-"×ÊÔ´¹ÜÀíÆ÷ÖĞ´ò¿ªµ±Ç°ÎÄ¼ş
+"èµ„æºç®¡ç†å™¨ä¸­æ‰“å¼€å½“å‰æ–‡ä»¶
 imap <F12> <ESC>:call OpenFileLocation()<CR> 
 nmap <F12> :call OpenFileLocation()<CR>
 
-"¸ñÊ½»¯È«ÎÄ
+"æ ¼å¼åŒ–å…¨æ–‡
 imap <C-K><C-D> <ESC>gg=G
 nmap <C-K><C-D> gg=G
 
@@ -357,7 +364,7 @@ nmap <C-K><C-D> gg=G
 imap <C-Tab> <ESC>gt
 nmap <C-Tab> gt
 
-"¸´ÖÆµ±Ç°ÎÄ¼şÂ·¾¶
+"å¤åˆ¶å½“å‰æ–‡ä»¶è·¯å¾„
 nmap <F4> :let @+ = expand("%:p")<CR>
 
 nmap <Tab> <C-w>w
@@ -409,8 +416,8 @@ autocmd BufNewFile,BufRead *.vb set ft=vbnet
 "}}}
 
 "{{{ Coffee Script
-"Ä¬ÈÏÊú×ÅÏÔÊ¾
-"ÓĞ¸öÎÊÌâĞèÒª½â¾ö£º×¢ÊÍ ftpplugin\coffee.vim ÖĞµÄµÚ89ĞĞ
+"é»˜è®¤ç«–ç€æ˜¾ç¤º
+"æœ‰ä¸ªé—®é¢˜éœ€è¦è§£å†³ï¼šæ³¨é‡Š ftpplugin\coffee.vim ä¸­çš„ç¬¬89è¡Œ
 Bundle 'kchmck/vim-coffee-script'
 let coffee_compile_vert = 1
 au BufReadPost *.coffee silent CoffeeCompile watch vert
@@ -423,9 +430,9 @@ au BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
 
 "{{{ UI
 
-"×Ô¶¯Í¸Ã÷
+"è‡ªåŠ¨é€æ˜
 au GUIEnter * call libcallnr("vimtweak.dll", "SetAlpha", 238)
-"×Ô¶¯×î´ó»¯
+"è‡ªåŠ¨æœ€å¤§åŒ–
 au GUIEnter * call libcallnr("vimtweak.dll", "EnableMaximize", 1)
 
 "{{{ Color
@@ -449,7 +456,7 @@ hi VertSplit ctermfg=59 ctermbg=59 cterm=NONE guifg=#5f5f5e guibg=#5f5f5e gui=NO
 hi MatchParen ctermfg=197 ctermbg=238 cterm=bold guifg=#f92672 guibg=#444444 gui=bold
 hi StatusLine ctermfg=231 ctermbg=59 cterm=bold guifg=#f8f8f2 guibg=#5f5f5e gui=bold
 hi StatusLineNC ctermfg=231 ctermbg=59 cterm=NONE guifg=#f8f8f2 guibg=#5f5f5e gui=NONE
-"¸ü¸ÄÑ¡ÔñmoniboxÌáÊ¾ÖĞµÄÑÕÉ«
+"æ›´æ”¹é€‰æ‹©moniboxæç¤ºä¸­çš„é¢œè‰²
 hi Pmenu ctermfg=NONE ctermbg=NONE cterm=NONE guifg=#75BAFF guibg=NONE gui=NONE
 hi PmenuSel ctermfg=NONE ctermbg=238 cterm=NONE guifg=#f92672 guibg=#222222 gui=NONE
 hi IncSearch ctermfg=NONE ctermbg=53 cterm=NONE guifg=NONE guibg=#C14471 gui=NONE
@@ -559,5 +566,4 @@ hi scssVariable ctermfg=208 ctermbg=NONE cterm=NONE guifg=#fd971f guibg=NONE gui
 hi scssVariableValue ctermfg=141 ctermbg=NONE cterm=NONE guifg=#ae81ff guibg=NONE gui=NONE
 hi scssColor ctermfg=81 ctermbg=NONE cterm=NONE guifg=#66d9ef guibg=NONE gui=NONE
 "}}}
-
 "}}}
