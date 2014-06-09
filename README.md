@@ -1,14 +1,12 @@
 SQVIM
 ===  
-配置文件使用Vundle管理插件，Vundle安装方法：[http://www.cnblogs.com/qiangji/archive/2011/07/31/Vundle.html  ](http://www.cnblogs.com/qiangji/archive/2011/07/31/Vundle.html )
-因为默认配置了每个文件关闭的时候都mkview，所以一段时间后可能产生大量的view文件，从而拖慢启动速度，需要记得清理。  
+这是我个人使用的VIM配置文件，插件部分使用了[Vundle]((http://www.cnblogs.com/qiangji/archive/2011/07/31/Vundle.html ))进行管理。
 
-
-**截图**
+##截图
 <img src="http://ww1.sinaimg.cn/large/5d7c1fa4gw1eh8alzt2vuj20zh0k142l.jpg" />
 
 
-**插件列表**
+##插件列表
 * Bundle 'matchit.zip' 
 * Bundle 'tpope/vim-fugitive' 
 * Bundle 'restart.vim'
@@ -42,7 +40,7 @@ SQVIM
 
 
 
-**修改日志**
+##修改日志
 ###2014-05-28
 * 移除Ack插件，vim启动的时候好像会执行ACK插件不知道在搜索什么东西，从而导致拖慢vim启动速度
 
