@@ -183,10 +183,9 @@ let g:EasyGrepDefaultUserPattern = '%'
 let g:EasyGrepMode = 3
 "}}}
 
-"{{{ ctrlp
+"ctrlp
 Bundle 'kien/ctrlp.vim'
 "MRU default 
-let g:ctrlp_map = '<F2>'
 let g:ctrlp_regexp = 1
 let g:ctrlp_cmd = 'CtrlPMRU'
 let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$\|.rvm$'
@@ -196,7 +195,6 @@ let g:ctrlp_max_height=15
 let g:ctrlp_match_window_reversed=0
 let g:ctrlp_mruf_max=500
 let g:ctrlp_follow_symlinks=1
-"}}}
 
 "{{{ Vim-markdown
 "注意注释该插件下面的ftpplugin中的markdown折叠功能
@@ -429,12 +427,6 @@ au BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
 "}}}
 
 "{{{ UI
-
-"自动透明
-au GUIEnter * call libcallnr("vimtweak.dll", "SetAlpha", 238)
-"自动最大化
-au GUIEnter * call libcallnr("vimtweak.dll", "EnableMaximize", 1)
-
 "{{{ Color
 set background=dark
 highlight clear
