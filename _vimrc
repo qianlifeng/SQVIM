@@ -53,7 +53,7 @@ set viewdir=~/.vim/view
 "记录文件状态（包括独立于该文件的键盘映射、代码折叠状态等）：
 autocmd BufWinLeave *.* if expand('%') != '' && &buftype == '' | mkview | endif
 autocmd BufWinEnter *.* if expand('%') != '' && &buftype == '' | silent loadview | endif
-autocmd BufWinEnter _vimrc set foldmethod=marker
+autocmd BufWinEnter _vimrc set fozldmethod=marker
 "忽略搜索时候的大小写
 set ic
 "重新设置leader key
@@ -96,8 +96,6 @@ set encoding=utf-8
 "GVIM支持打开的文件编码
 set fileencodings=utf-8,gbk,gb2312,big5,latin1
 set termencoding=utf-8
-"解决consle输出乱码
-language messages zh_CN.utf-8
 "防止特殊符号无法正常显示，如五角星等
 set ambiwidth=double
 "多个文件打开时用tab显示,0永远不显示 1两个以上显示 2 永远显示
