@@ -53,7 +53,7 @@ set viewdir=~/.vim/view
 "记录文件状态（包括独立于该文件的键盘映射、代码折叠状态等）：
 autocmd BufWinLeave *.* if expand('%') != '' && &buftype == '' | mkview | endif
 autocmd BufWinEnter *.* if expand('%') != '' && &buftype == '' | silent loadview | endif
-autocmd BufWinEnter _vimrc set fozldmethod=marker
+autocmd BufWinEnter _vimrc set foldmethod=marker
 "忽略搜索时候的大小写
 set ic
 "重新设置leader key
@@ -96,6 +96,8 @@ set encoding=utf-8
 "GVIM支持打开的文件编码
 set fileencodings=utf-8,gbk,gb2312,big5,latin1
 set termencoding=utf-8
+"解决consle输出乱码
+language messages zh_CN.utf-8
 "防止特殊符号无法正常显示，如五角星等
 set ambiwidth=double
 "多个文件打开时用tab显示,0永远不显示 1两个以上显示 2 永远显示
@@ -122,86 +124,54 @@ set cursorcolumn
 set nowrap 
 "}}}
 
-"{{{ 插件配置
-
-" {{{ 插件名：Vundle
-"     项目地址：https://github.com/gmarik/vundle
-"     作用：
-"   
-"           管理插件安装
-"required
+"{{{ 插件
 filetype off
-"此处规定Vundle的路径
-set rtp+=$HOME/.vim/bundle/vundle
+set rtp+=$HOME/.vim/bundle/Vundle.vim
 "此处规定插件的安装路径
 call vundle#rc('$HOME/.vim/bundle')
-" let Vundle manage Vundle
-Bundle 'gmarik/vundle'
-" required!
-"}}}
+call vundle#begin()
+Plugin 'gmarik/Vundle.vim'
 
-"插件列表
-Bundle 'matchit.zip' 
-Bundle 'tpope/vim-fugitive' 
-Bundle 'restart.vim'
-Bundle 'mattn/emmet-vim'
-Bundle 'terryma/vim-multiple-cursors'
-Bundle 'groenewege/vim-less'
-Bundle "surround.vim"
-Bundle 'Align'
-Bundle 'honza/vim-snippets'
-
-"自动注释工具
-Bundle 'DoxygenToolkit.vim'
-let g:DoxygenToolkit_authorName="qianlifeng"
-let g:doxygen_enhanced_color=1
+"{{{ 通用插件
+Plugin 'matchit.zip' 
+Plugin 'restart.vim'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'surround.vim'
+Plugin 'Align'
+Plugin 'DoxygenToolkit.vim'
 
 "{{{ vim-expand-region 
-Bundle 'terryma/vim-expand-region'
-Bundle 'kana/vim-textobj-user'
-Bundle 'kana/vim-textobj-line'
+Plugin 'terryma/vim-expand-region'
+Plugin 'kana/vim-textobj-user'
+Plugin 'kana/vim-textobj-line'
 map <space> <Plug>(expand_region_expand)
 let g:expand_region_text_objects = {
-      \ 'iw'  :0,
-      \ 'iW'  :0,
-      \ 'i"'  :0,
-      \ 'i''' :0,
-      \ 'i>'  :0,
-      \ 'i]'  :1, 
-      \ 'ib'  :1, 
-      \ 'iB'  :1, 
-      \ 'il'  :0,
-      \ }
+            \ 'iw'  :0,
+            \ 'iW'  :0,
+            \ 'i"'  :0,
+            \ 'i''' :0,
+            \ 'i>'  :0,
+            \ 'i]'  :1, 
+            \ 'ib'  :1, 
+            \ 'iB'  :1, 
+            \ 'il'  :0,
+            \ }
 "}}}
 
-"{{{ EasyGrep 
-Bundle 'EasyGrep'
-"Only search in current file by default
-let g:EasyGrepDefaultUserPattern = '%'
-let g:EasyGrepMode = 3
-"}}}
-
-"ctrlp
-Bundle 'kien/ctrlp.vim'
-"MRU default 
+"{{{ctrlp
+Plugin 'kien/ctrlp.vim'
 let g:ctrlp_regexp = 1
 let g:ctrlp_cmd = 'CtrlPMRU'
 let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$\|.rvm$'
-"let g:ctrlp_working_path_mode=0
 let g:ctrlp_match_window_bottom=1
 let g:ctrlp_max_height=15
 let g:ctrlp_match_window_reversed=0
 let g:ctrlp_mruf_max=500
 let g:ctrlp_follow_symlinks=1
-
-"{{{ Vim-markdown
-"注意注释该插件下面的ftpplugin中的markdown折叠功能
-Bundle 'plasticboy/vim-markdown'
-let g:vim_markdown_folding_disabled=1
 "}}}
 
 "{{{ syntastic 语法检查，支持N多语言，真是无敌了
-Bundle 'scrooloose/syntastic'
+Plugin 'scrooloose/syntastic'
 "let g:syntastic_auto_loc_list=1
 let g:syntastic_disabled_filetypes=['html']
 let g:syntastic_enable_signs=1
@@ -215,16 +185,16 @@ let g:syntastic_python_checkers = ['pyflakes']
 "}}}
 
 "{{{ vim-numbertoggle 相对行号
-Bundle 'jeffkreeftmeijer/vim-numbertoggle'
+Plugin 'jeffkreeftmeijer/vim-numbertoggle'
 "非要设置个快捷键，设置一个不常用的
 let g:NumberToggleTrigger='<C-F2>'  
 "}}}
 
 "{{{ neocomplcache 自动补全
 "陆陆续续用了很多自动补全插件，这款还是不错的，速度很快
-Bundle 'Shougo/neocomplcache.vim'
+Plugin 'Shougo/neocomplcache.vim'
 "启用了以后会不能选中文字
-"Bundle 'Shougo/neosnippet'
+"Plugin 'Shougo/neosnippet'
 "" Plugin key-mappings.
 "imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 "smap <C-k>     <Plug>(neosnippet_expand_or_jump)
@@ -246,13 +216,13 @@ autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 " Enable heavy omni completion, which require computational power and may stall the vim. 
 "if !exists('g:neocomplcache_omni_patterns')
-  "let g:neocomplcache_omni_patterns = {}
+"let g:neocomplcache_omni_patterns = {}
 "endif
 "let g:neocomplcache_omni_patterns.cs = '.*'
 "}}}
 
 "{{{ rainbow_parentheses 括号显示增强
-Bundle 'kien/rainbow_parentheses.vim'
+Plugin 'kien/rainbow_parentheses.vim'
 let g:rbpt_colorpairs = [
             \ ['brown',       'RoyalBlue3'],
             \ ['Darkblue',    'SeaGreen3'],
@@ -273,15 +243,17 @@ let g:rbpt_colorpairs = [
             \ ]
 let g:rbpt_max = 16
 let g:rbpt_loadcmd_toggle = 0
-au VimEnter * RainbowParenthesesToggle
-au Syntax   * RainbowParenthesesLoadRound
-au Syntax   * RainbowParenthesesLoadSquare
-au Syntax   * RainbowParenthesesLoadBraces
+if exists("*RainbowParenthesesToggle")
+	au VimEnter * RainbowParenthesesToggle
+	au Syntax   * RainbowParenthesesLoadRound
+	au Syntax   * RainbowParenthesesLoadSquare
+	au Syntax   * RainbowParenthesesLoadBraces
+endif
 "}}}
 
 " {{{ The NERD Commenter 用于代码注释
 " 这里使用的绑定快捷键同VS
-Bundle 'The-NERD-Commenter'
+Plugin 'The-NERD-Commenter'
 :nmap <C-K><C-C> <leader>c<space>
 :imap <C-K><C-C> <Esc><leader>c<space>i
 :nmap <C-K><C-U> <leader>c<space>
@@ -290,14 +262,15 @@ Bundle 'The-NERD-Commenter'
 "}}}
 
 " {{{ Tagbar 函数列表显示 
-Bundle 'majutsushi/tagbar'
+Plugin 'majutsushi/tagbar'
 "js support:
 "   1. git clone --recursive https://github.com/mozilla/doctorjs.github
 "   2. add tool/jsctags.bat to path (need to change some variables inside it)
 nmap <silent><F10> :TagbarToggle<CR>
 "}}}
 
-Bundle 'bling/vim-airline'
+"{{{ vim-airline
+Plugin 'bling/vim-airline'
 
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
@@ -315,21 +288,75 @@ let g:airline_symbols.whitespace = 'Ξ'
 set guifont=Consolas\ for\ Powerline\ FixedD:h11
 set t_Co=256
 set laststatus=2
+"}}}
 
-
-" {{{ Nerd Tree  树形目录结构
-Bundle 'The-NERD-tree'
+" {{{ Nerd Tree
+Plugin 'The-NERD-tree'
 map <silent> <F11> :call NTFinderP()<CR>
 "}}}
 
 "{{{ EasyMotion
-Bundle 'Lokaltog/vim-easymotion'
+Plugin 'Lokaltog/vim-easymotion'
 let g:EasyMotion_smartcase = 1
 nmap s <Plug>(easymotion-s)
 "}}}
 
+"{{{ Markdown
+"注意注释该插件下面的ftpplugin中的markdown折叠功能
+Plugin 'plasticboy/vim-markdown'
+let g:vim_markdown_folding_disabled=1
+"}}}
 
-filetype plugin indent on
+"{{{ C#
+au FileType cs set foldmethod=marker 
+au FileType cs set foldmarker={,} 
+au FileType cs set foldtext=substitute(getline(v:foldstart),'{.*','{...}',) 
+au FileType cs set foldlevelstart=2 
+"}}}
+
+"{{{ Go
+Plugin 'fatih/vim-go'
+"}}}
+
+"{{{ Json
+Plugin 'elzr/vim-json'
+"}}}
+
+"{{{ Python
+autocmd BufRead *.py set tabstop=4
+autocmd BufRead *.py nmap <F5> :!
+
+Plugin 'davidhalter/jedi-vim'
+let g:jedi#popup_select_first = 0
+let g:jedi#popup_on_dot = 0
+autocmd FileType python setlocal completeopt-=preview
+"}}}
+
+"{{{ Javascript 
+Plugin 'pangloss/vim-javascript'
+au FileType javascript set foldmethod=syntax
+"}}}
+
+"{{{ VB.NET
+Plugin 'vbnet.vim'
+autocmd BufNewFile,BufRead *.vb set ft=vbnet
+"}}}
+
+"{{{ Coffee Script
+"默认竖着显示
+"有个问题需要解决：注释 ftpplugin\coffee.vim 中的第89行
+Plugin 'kchmck/vim-coffee-script'
+let coffee_compile_vert = 1
+au BufReadPost *.coffee silent CoffeeCompile watch vert
+au BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
+"}}}
+
+"{{{ Mercurial
+:command! HgLog cd %:p:h | !thgw.exe --nofork log %:p & exit
+"}}}
+
+call vundle#end()            " required
+filetype plugin indent on    " required
 "}}}
 
 "{{{ 键盘映射
@@ -380,57 +407,13 @@ nnoremap <leader>= :call SplitToggle()<cr>
 
 "}}}
 
-"{{{ C#
-au FileType cs set foldmethod=marker 
-au FileType cs set foldmarker={,} 
-au FileType cs set foldtext=substitute(getline(v:foldstart),'{.*','{...}',) 
-au FileType cs set foldlevelstart=2 
-"}}}
-
-"{{{ Json
-Bundle 'elzr/vim-json'
-"}}}
-
-"{{{ Python
-autocmd BufRead *.py set tabstop=4
-autocmd BufRead *.py nmap <F5> :!
-
-Bundle 'davidhalter/jedi-vim'
-let g:jedi#popup_select_first = 0
-let g:jedi#popup_on_dot = 0
-autocmd FileType python setlocal completeopt-=preview
-"}}}
-
-"{{{ Javascript 
-Bundle 'pangloss/vim-javascript'
-au FileType javascript set foldmethod=syntax
-"}}}
-
-"{{{ VB.NET
-Bundle 'vbnet.vim'
-autocmd BufNewFile,BufRead *.vb set ft=vbnet
-"}}}
-
-"{{{ Coffee Script
-"默认竖着显示
-"有个问题需要解决：注释 ftpplugin\coffee.vim 中的第89行
-Bundle 'kchmck/vim-coffee-script'
-let coffee_compile_vert = 1
-au BufReadPost *.coffee silent CoffeeCompile watch vert
-au BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
-"}}}
-
-"{{{ Mercurial
-:command! HgLog cd %:p:h | !thgw.exe --nofork log %:p & exit
-"}}}
-
 "{{{ UI
 "{{{ Color
 set background=dark
 highlight clear
 
 if exists("syntax_on")
-  syntax reset
+    syntax reset
 endif
 
 let g:colors_name = "Monokai-Refined"
