@@ -27,24 +27,20 @@ function! NTFinderP()
     else
         let s:ntree = -1
     endif
+
     if (s:ntree != -1)
-        "" If NERDTree is open, close it.
-        :NERDTreeClose
+        "" If NERDTree is open, focus it.
+        :NERDTreeTabsFind
     else
-        "" Try to open a :Rtree for the rails project
-        if exists(":Rtree")
-            "" Open Rtree (using rails plugin, it opens in project dir)
-            :Rtree
-        else
-            "" Open NERDTree in the file path
-            :NERDTreeFind
-        endif
+        "" Open NERDTree in the file path
+        :NERDTreeTabsOpen
     endif
 endfunction
 
 "}}}
 
 "{{{ 基础配置
+set relativenumber
 "映射y为系统剪切板
 nnoremap y "+y
 vnoremap y "+y
@@ -171,12 +167,11 @@ let g:ctrlp_follow_symlinks=1
 "}}}
 
 "{{{ syntastic 语法检查，支持N多语言，真是无敌了
-Plugin 'scrooloose/syntastic'
-"let g:syntastic_auto_loc_list=1
-let g:syntastic_disabled_filetypes=['html']
-let g:syntastic_enable_signs=1
-let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': ['python'], 'passive_filetypes': ['js'] }
-let g:syntastic_python_checkers = ['pyflakes']
+"Plugin 'scrooloose/syntastic'
+"let g:syntastic_disabled_filetypes=['html']
+"let g:syntastic_enable_signs=1
+"let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': ['python'], 'passive_filetypes': ['js'] }
+"let g:syntastic_python_checkers = ['pyflakes']
 
 "需要提前安装好各种检查器，比如
 "python依赖于pyflaks pip install pyflakes
@@ -184,41 +179,26 @@ let g:syntastic_python_checkers = ['pyflakes']
 "css依赖于csslint: npm install -g csslint
 "}}}
 
-"{{{ vim-numbertoggle 相对行号
-Plugin 'jeffkreeftmeijer/vim-numbertoggle'
-"非要设置个快捷键，设置一个不常用的
-let g:NumberToggleTrigger='<C-F2>'  
-"}}}
-
 "{{{ neocomplcache 自动补全
-"陆陆续续用了很多自动补全插件，这款还是不错的，速度很快
 Plugin 'Shougo/neocomplcache.vim'
-"启用了以后会不能选中文字
-"Plugin 'Shougo/neosnippet'
-"" Plugin key-mappings.
-"imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-"smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-"xmap <C-k>     <Plug>(neosnippet_expand_target)
-
-"自动完成映射为Ctrl+J
-imap <C-J> <C-X><C-u>
-" Use neocomplcache.
 let g:neocomplcache_enable_at_startup = 1
-"let g:neocomplcache_enable_auto_close_preview = 0
-let g:neocomplcache_force_overwrite_completefunc = 1
-" AutoComplPop like behavior.
-let g:neocomplcache_enable_auto_select = 1
+let g:neocomplcache_enable_ignore_case = 1
+"let g:neocomplcache_force_overwrite_completefunc = 1
+"自动完成映射为Ctrl+J
+imap <C-J> <C-x><C-o>
+"关闭顶部的自动预览
+set completeopt-=preview
 
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+"autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+"autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+"autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+"autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+"autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 " Enable heavy omni completion, which require computational power and may stall the vim. 
 "if !exists('g:neocomplcache_omni_patterns')
 "let g:neocomplcache_omni_patterns = {}
 "endif
-"let g:neocomplcache_omni_patterns.cs = '.*'
+"let g:neocomplcache_omni_patterns.go = '.'
 "}}}
 
 "{{{ rainbow_parentheses 括号显示增强
@@ -261,14 +241,6 @@ Plugin 'The-NERD-Commenter'
 
 "}}}
 
-" {{{ Tagbar 函数列表显示 
-Plugin 'majutsushi/tagbar'
-"js support:
-"   1. git clone --recursive https://github.com/mozilla/doctorjs.github
-"   2. add tool/jsctags.bat to path (need to change some variables inside it)
-nmap <silent><F10> :TagbarToggle<CR>
-"}}}
-
 "{{{ vim-airline
 Plugin 'bling/vim-airline'
 
@@ -292,19 +264,16 @@ set laststatus=2
 
 " {{{ Nerd Tree
 Plugin 'The-NERD-tree'
+Plugin 'jistr/vim-nerdtree-tabs'
 map <silent> <F11> :call NTFinderP()<CR>
 "}}}
 
 "{{{ EasyMotion
-Plugin 'Lokaltog/vim-easymotion'
-let g:EasyMotion_smartcase = 1
-nmap s <Plug>(easymotion-s)
+"Plugin 'Lokaltog/vim-easymotion'
+"let g:EasyMotion_smartcase = 1
+"nmap s <Plug>(easymotion-s)
 "}}}
 
-"{{{ Markdown
-"注意注释该插件下面的ftpplugin中的markdown折叠功能
-Plugin 'plasticboy/vim-markdown'
-let g:vim_markdown_folding_disabled=1
 "}}}
 
 "{{{ C#
@@ -315,6 +284,7 @@ au FileType cs set foldlevelstart=2
 "}}}
 
 "{{{ Go
+au FileType go nmap <F5> <Plug>(go-run)
 Plugin 'fatih/vim-go'
 "}}}
 
