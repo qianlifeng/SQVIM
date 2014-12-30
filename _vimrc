@@ -1,4 +1,4 @@
-"{{{ 自定义函数
+"{{{ Functions
 
 " Using <leader>=, toggle the width of the current split. If it's set to 999, it
 " takes up as much space as possible, without pushing the other ones under 60
@@ -39,97 +39,59 @@ endfunction
 
 "}}}
 
-"{{{ 基础配置
+"{{{ Basic
 set lines=999 columns=999
 set relativenumber
-"映射y为系统剪切板
 nnoremap y "+y
 vnoremap y "+y
-"重新设置mkview时候的保存路径，在win7上如果安装在C盘的话可能出现保存不了的情况
 set viewdir=~/.vim/view
-"记录文件状态（包括独立于该文件的键盘映射、代码折叠状态等）：
+"Auto save
 autocmd BufWinLeave *.* if expand('%') != '' && &buftype == '' | mkview | endif
 autocmd BufWinEnter *.* if expand('%') != '' && &buftype == '' | silent loadview | endif
 autocmd BufWinEnter _vimrc set foldmethod=marker
-"忽略搜索时候的大小写
 set ic
-"重新设置leader key
 let mapleader = ","
-"不需要高亮
 set nohls
-"不要图像按钮
 set go=
-"显示滚动条
 set guioptions+=b
-"开启行号
 set number
-"开启自动缩进, 7.3以上版本已自动开启
 set autoindent
-"缩进宽度为4个字符
 set shiftwidth=4
-"tab宽度为4个字符
 set tabstop=4
-"编辑时将所有tab替换为空格
 set et
-"按一次Backspace就删除4个空格
 set smarttab
-"配色方案
 colo desert
-"开启语法高亮, 7.3版本已自动开启
 syntax on
-"关闭兼容模式
-set nocompatible
-"以下三行模拟Windows操作，如Ctrl-C复制
+"windows behaviro
 source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
 behave mswin
-"不生成备份文件，下面这句要写在behave mswin下面，否则还是会生成备份，不知为何～
 set nobackup
-"不产生swp文件
 set noswapfile
-"GVIM内部编码
 set encoding=utf-8
-"当前编辑的文件编码
-"GVIM支持打开的文件编码
 set fileencodings=utf-8,gbk,gb2312,big5,latin1
 set termencoding=utf-8
-"解决consle输出乱码
-language messages zh_CN.utf-8
-"防止特殊符号无法正常显示，如五角星等
 set ambiwidth=double
-"多个文件打开时用tab显示,0永远不显示 1两个以上显示 2 永远显示
 set showtabline=1
 set guitablabel=%{GuiTabLabel()}
-" 搜索时忽略大小写，但在有一个或以上大写字母时仍大小写敏感
 set ignorecase
 set smartcase
-" 搜索到文件两端时不重新搜索
 set nowrapscan
-" 实时搜索
 set incsearch
-" 搜索时高亮显示被找到的文本
 set hlsearch
-"插入状态下禁用方向键
-"MRU和acp的时候需要上下选择
-"inoremap <up> <nop>
-"inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
-"当前行对齐线
 set cursorcolumn
-"设置不自动折行
 set nowrap 
 "}}}
 
-"{{{ 插件
+"{{{ Plugin
+set nocompatible
 filetype off
 set rtp+=$HOME/.vim/bundle/Vundle.vim
-"此处规定插件的安装路径
-call vundle#rc('$HOME/.vim/bundle')
-call vundle#begin()
+call vundle#begin('$HOME/.vim/bundle')
 Plugin 'gmarik/Vundle.vim'
 
-"{{{ 通用插件
 Plugin 'matchit.zip' 
 Plugin 'restart.vim'
 Plugin 'terryma/vim-multiple-cursors'
@@ -167,27 +129,24 @@ let g:ctrlp_mruf_max=500
 let g:ctrlp_follow_symlinks=1
 "}}}
 
-"{{{ syntastic 语法检查，支持N多语言，真是无敌了
+"{{{ syntastic
 "Plugin 'scrooloose/syntastic'
 "let g:syntastic_disabled_filetypes=['html']
 "let g:syntastic_enable_signs=1
 "let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': ['python'], 'passive_filetypes': ['js'] }
 "let g:syntastic_python_checkers = ['pyflakes']
 
-"需要提前安装好各种检查器，比如
-"python依赖于pyflaks pip install pyflakes
-"js依赖于jshint: npm install -g jshint
-"css依赖于csslint: npm install -g csslint
+"python : pyflaks pip install pyflakes
+"js: jshint: npm install -g jshint
+"css: csslint: npm install -g csslint
 "}}}
 
-"{{{ neocomplcache 自动补全
+"{{{ neocomplcache
 Plugin 'Shougo/neocomplcache.vim'
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_ignore_case = 1
 "let g:neocomplcache_force_overwrite_completefunc = 1
-"自动完成映射为Ctrl+J
 imap <C-J> <C-x><C-o>
-"关闭顶部的自动预览
 set completeopt-=preview
 
 "autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -202,7 +161,7 @@ set completeopt-=preview
 "let g:neocomplcache_omni_patterns.go = '.'
 "}}}
 
-"{{{ rainbow_parentheses 括号显示增强
+"{{{ rainbow_parentheses 
 Plugin 'kien/rainbow_parentheses.vim'
 let g:rbpt_colorpairs = [
             \ ['brown',       'RoyalBlue3'],
@@ -232,8 +191,7 @@ if exists("*RainbowParenthesesToggle")
 endif
 "}}}
 
-" {{{ The NERD Commenter 用于代码注释
-" 这里使用的绑定快捷键同VS
+" {{{ The NERD Commenter
 Plugin 'The-NERD-Commenter'
 :nmap <C-K><C-C> <leader>c<space>
 :imap <C-K><C-C> <Esc><leader>c<space>i
@@ -257,7 +215,6 @@ let g:airline_symbols.readonly = '⭤'
 let g:airline_symbols.linenr = '⭡'
 let g:airline_symbols.paste = 'Þ'
 let g:airline_symbols.whitespace = 'Ξ'
-""字体设置,先到到tool下安装consolas字体
 set guifont=Consolas\ for\ Powerline\ FixedD:h11
 set t_Co=256
 set laststatus=2
@@ -281,8 +238,6 @@ highlight BookmarkSign ctermbg=NONE ctermfg=160
 highlight BookmarkLine ctermbg=194 ctermfg=NONE
 let g:bookmark_sign = '♥'
 let g:bookmark_highlight_lines = 1
-"}}}
-
 "}}}
 
 "{{{ C#
@@ -322,8 +277,6 @@ autocmd BufNewFile,BufRead *.vb set ft=vbnet
 "}}}
 
 "{{{ Coffee Script
-"默认竖着显示
-"有个问题需要解决：注释 ftpplugin\coffee.vim 中的第89行
 Plugin 'kchmck/vim-coffee-script'
 let coffee_compile_vert = 1
 au BufReadPost *.coffee silent CoffeeCompile watch vert
@@ -338,27 +291,19 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 "}}}
 
-"{{{ 键盘映射
+"{{{ hotkey
 
-"消除每行结尾有可能出现的^M (文件格式问题)
 map <C-m> :%s/\r//g<CR> 
-
-"文件类型
 nmap <leader>1 :set filetype=xml<cr>
-
-"映射搜索快捷键
 nmap <C-f> gg//g<left><left>
 imap <C-f> <esc>gg//g<left><left>
 
-"双击鼠标左键高亮所有选择的单词
 nmap <2-leftmouse> *N
 imap <2-leftmouse> <esc>*N
 
-"资源管理器中打开当前文件
 imap <F12> <ESC>:call OpenFileLocation()<CR> 
 nmap <F12> :call OpenFileLocation()<CR>
 
-"格式化全文
 imap <C-K><C-D> <ESC>gg=G
 nmap <C-K><C-D> gg=G
 
@@ -366,7 +311,6 @@ nmap <C-K><C-D> gg=G
 imap <C-Tab> <ESC>gt
 nmap <C-Tab> gt
 
-"复制当前文件路径
 nmap <F4> :let @+ = expand("%:p")<CR>
 
 nmap <Tab> <C-w>w
