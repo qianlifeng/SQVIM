@@ -30,16 +30,17 @@ function! NTFinderP()
 
     if (s:ntree != -1)
         "" If NERDTree is open, focus it.
-        :NERDTreeTabsFind
+        :NERDTreeClose
     else
         "" Open NERDTree in the file path
-        :NERDTreeTabsOpen
+        :NERDTreeFind
     endif
 endfunction
 
 "}}}
 
 "{{{ 基础配置
+set lines=999 columns=999
 set relativenumber
 "映射y为系统剪切板
 nnoremap y "+y
@@ -264,14 +265,22 @@ set laststatus=2
 
 " {{{ Nerd Tree
 Plugin 'The-NERD-tree'
-Plugin 'jistr/vim-nerdtree-tabs'
+"Plugin 'jistr/vim-nerdtree-tabs'
 map <silent> <F11> :call NTFinderP()<CR>
 "}}}
 
 "{{{ EasyMotion
-"Plugin 'Lokaltog/vim-easymotion'
-"let g:EasyMotion_smartcase = 1
-"nmap s <Plug>(easymotion-s)
+Plugin 'Lokaltog/vim-easymotion'
+let g:EasyMotion_smartcase = 1
+nmap s <Plug>(easymotion-s)
+"}}}
+
+"{{{ Bookmark
+Plugin 'MattesGroeger/vim-bookmarks'
+highlight BookmarkSign ctermbg=NONE ctermfg=160
+highlight BookmarkLine ctermbg=194 ctermfg=NONE
+let g:bookmark_sign = '♥'
+let g:bookmark_highlight_lines = 1
 "}}}
 
 "}}}
