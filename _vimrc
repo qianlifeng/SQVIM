@@ -136,6 +136,7 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'surround.vim'
 Plugin 'Align'
 Plugin 'DoxygenToolkit.vim'
+Plugin 'tpope/vim-dispatch'
 
 "{{{ vim-expand-region 
 Plugin 'terryma/vim-expand-region'
@@ -167,26 +168,33 @@ let g:ctrlp_mruf_max=500
 let g:ctrlp_follow_symlinks=1
 "}}}
 
-"{{{ syntastic 语法检查，支持N多语言，真是无敌了
-"Plugin 'scrooloose/syntastic'
-"let g:syntastic_disabled_filetypes=['html']
-"let g:syntastic_enable_signs=1
-"let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': ['python'], 'passive_filetypes': ['js'] }
-"let g:syntastic_python_checkers = ['pyflakes']
+"{{{ syntastic
+Plugin 'scrooloose/syntastic'
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
-"需要提前安装好各种检查器，比如
-"python依赖于pyflaks pip install pyflakes
-"js依赖于jshint: npm install -g jshint
-"css依赖于csslint: npm install -g csslint
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_disabled_filetypes=['html']
+let g:syntastic_enable_signs=1
+let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': ['python'], 'passive_filetypes': ['js'] }
+let g:syntastic_python_checkers = ['pyflakes']
+
+"syntastic relies on checkers, like 
+"python=>pyflaks pip install pyflakes
+"js=>jshint: npm install -g jshint
+"css=>csslint: npm install -g csslint
 "}}}
 
-"{{{ neocomplcache 自动补全
+"{{{ neocomplcache
 Plugin 'Shougo/neocomplcache.vim'
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_ignore_case = 1
+let g:neocomplcache_enable_auto_select = 1
 "let g:neocomplcache_force_overwrite_completefunc = 1
-"自动完成映射为Ctrl+J
-imap <C-J> <C-x><C-o>
 "关闭顶部的自动预览
 set completeopt-=preview
 
@@ -266,7 +274,7 @@ set laststatus=2
 " {{{ Nerd Tree
 Plugin 'The-NERD-tree'
 "Plugin 'jistr/vim-nerdtree-tabs'
-map <silent> <F11> :call NTFinderP()<CR>
+map <silent> <C-\> :call NTFinderP()<CR>
 "}}}
 
 "{{{ EasyMotion
@@ -286,10 +294,47 @@ let g:bookmark_highlight_lines = 1
 "}}}
 
 "{{{ C#
-au FileType cs set foldmethod=marker 
-au FileType cs set foldmarker={,} 
-au FileType cs set foldtext=substitute(getline(v:foldstart),'{.*','{...}',) 
-au FileType cs set foldlevelstart=2 
+Plugin 'OrangeT/vim-csharp'
+Plugin 'OmniSharp/omnisharp-vim'
+let g:syntastic_cs_checkers = ['syntax']
+" Contextual code actions (requires CtrlP)
+nnoremap <leader><space> :OmniSharpGetCodeActions<cr>
+"don't autoselect first item in omnicomplete, show if only one item (for preview)
+"remove preview if you don't want to see any documentation whatsoever.
+augroup omnisharp_commands
+    autocmd!
+
+    "Set autocomplete function to OmniSharp (if not using YouCompleteMe completion plugin)
+    autocmd FileType cs setlocal omnifunc=OmniSharp#Complete
+
+    " Builds can also run asynchronously with vim-dispatch installed
+    autocmd FileType cs nnoremap <leader>b :wa!<cr>:OmniSharpBuildAsync<cr>
+    " automatic syntax check on events (TextChanged requires Vim 7.4)
+    "autocmd BufEnter,TextChanged,InsertLeave *.cs SyntasticCheck
+
+    " Automatically add new cs files to the nearest project on save
+    autocmd BufWritePost *.cs call OmniSharp#AddToProject()
+
+    "show type information automatically when the cursor stops moving
+    autocmd CursorHold *.cs call OmniSharp#TypeLookupWithoutDocumentation()
+
+    "The following commands are contextual, based on the current cursor position.
+
+    autocmd FileType cs nnoremap gd :OmniSharpGotoDefinition<cr>
+    autocmd FileType cs nnoremap <F2> :OmniSharpRename<cr>
+    autocmd FileType cs nnoremap <leader>fi :OmniSharpFindImplementations<cr>
+    autocmd FileType cs nnoremap <C-K><C-D> :OmniSharpCodeFormat<cr>
+    autocmd FileType cs nnoremap <leader>ft :OmniSharpFindType<cr>
+    autocmd FileType cs nnoremap <leader>fs :OmniSharpFindSymbol<cr>
+    autocmd FileType cs nnoremap <leader>fu :OmniSharpFindUsages<cr>
+    "finds members in the current buffer
+    autocmd FileType cs nnoremap <leader>fm :OmniSharpFindMembers<cr>
+    " cursor can be anywhere on the line containing an issue
+    autocmd FileType cs nnoremap <leader>x  :OmniSharpFixIssue<cr>
+    autocmd FileType cs nnoremap <leader>fx :OmniSharpFixUsings<cr>
+    autocmd FileType cs nnoremap <leader>tt :OmniSharpTypeLookup<cr>
+    autocmd FileType cs nnoremap <leader>dc :OmniSharpDocumentation<cr>
+augroup END
 "}}}
 
 "{{{ Go
@@ -332,6 +377,7 @@ au BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
 
 "{{{ Mercurial
 :command! HgLog cd %:p:h | !thgw.exe --nofork log %:p & exit
+":command! HgLog execute 'start cmd ''' . expand('%:p:h'). ''' | !thgw.exe --nofork log ' . expand('%:p') . ' & exit'
 "}}}
 
 call vundle#end()            " required
@@ -340,26 +386,21 @@ filetype plugin indent on    " required
 
 "{{{ 键盘映射
 
+imap <C-J> <C-x><C-o>
+nmap <leader>1 :set filetype=xml<cr>
+nmap <C-f> gg//g<left><left>
+
 "消除每行结尾有可能出现的^M (文件格式问题)
 map <C-m> :%s/\r//g<CR> 
-
-"文件类型
-nmap <leader>1 :set filetype=xml<cr>
-
-"映射搜索快捷键
-nmap <C-f> gg//g<left><left>
-imap <C-f> <esc>gg//g<left><left>
 
 "双击鼠标左键高亮所有选择的单词
 nmap <2-leftmouse> *N
 imap <2-leftmouse> <esc>*N
 
 "资源管理器中打开当前文件
-imap <F12> <ESC>:call OpenFileLocation()<CR> 
-nmap <F12> :call OpenFileLocation()<CR>
+nmap <Leader>o :call OpenFileLocation()<CR> 
 
 "格式化全文
-imap <C-K><C-D> <ESC>gg=G
 nmap <C-K><C-D> gg=G
 
 "Ctrl+Tab
@@ -381,6 +422,10 @@ nnoremap <C-k> <C-w>k
 set winwidth=40
 set winminwidth=40
 nnoremap <leader>= :call SplitToggle()<cr>
+
+" In the quickfix window, <CR> is used to jump to the error under the cursor, so undefine the mapping there.
+autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
+autocmd BufReadPost quickfix nnoremap <buffer> <ESC> :q<CR>
 
 "******************************************************************************
 
