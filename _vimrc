@@ -351,12 +351,9 @@ imap <2-leftmouse> <esc>*N
 nmap <Leader>o :call OpenFileLocation()<CR> 
 
 "格式化全文
-=======
 imap <F12> <ESC>:call OpenFileLocation()<CR> 
 nmap <F12> :call OpenFileLocation()<CR>
 
-imap <C-K><C-D> <ESC>gg=G
->>>>>>> f16d6d78400ea1cb9db733ad6e2f37bbcc438a20
 nmap <C-K><C-D> gg=G
 
 "Ctrl+Tab
