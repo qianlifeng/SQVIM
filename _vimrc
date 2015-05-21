@@ -308,10 +308,6 @@ au FileType go nmap <F5> <Plug>(go-run)
 Plugin 'fatih/vim-go'
 "}}}
 
-"{{{ Json
-Plugin 'elzr/vim-json'
-"}}}
-
 "{{{ Python
 autocmd BufRead *.py set tabstop=4
 autocmd BufRead *.py nmap <F5> :!
