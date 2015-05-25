@@ -1,4 +1,4 @@
-"{{{ 自定义函数
+"{{{ Custom Functions
 
 " Using <leader>=, toggle the width of the current split. If it's set to 999, it
 " takes up as much space as possible, without pushing the other ones under 60
@@ -12,7 +12,7 @@ function! SplitToggle()
     endif
 endfunc
 
-function OpenFileLocation()  
+function OpenFileLocation()
     if ( expand("%") != "" )  
         execute "!start explorer /select, %"   
     else  
@@ -39,85 +39,60 @@ endfunction
 
 "}}}
 
-"{{{ 基础配置
+"{{{ Base Config
+"Maximize vim windows on startup
 set lines=999 columns=999
+set number
 set relativenumber
-"映射y为系统剪切板
+"remap copy and paste to system copy paste
 nnoremap y "+y
 vnoremap y "+y
-"重新设置mkview时候的保存路径，在win7上如果安装在C盘的话可能出现保存不了的情况
+"reset the path when using mkview, the default path will cause problems if
+"install vim in c:\ in windows
 set viewdir=~/.vim/view
 "记录文件状态（包括独立于该文件的键盘映射、代码折叠状态等）：
 "autocmd BufWinLeave *.* if expand('%') != '' && &buftype == '' | mkview | endif
 "autocmd BufWinEnter *.* if expand('%') != '' && &buftype == '' | silent loadview | endif
-"autocmd BufWinEnter _vimrc set foldmethod=marker
-"忽略搜索时候的大小写
-set ic
-"重新设置leader key
+autocmd BufWinEnter _vimrc set foldmethod=marker
+"remap leader key
 let mapleader = ","
-"不需要高亮
 set nohls
-"不要图像按钮
 set go=
-"显示滚动条
 set guioptions+=b
-"开启行号
-set number
-"缩进宽度为4个字符
 set shiftwidth=4
-"tab宽度为4个字符
 set tabstop=4
-"编辑时将所有tab替换为空格
+"replace all tab to space
 set et
-"按一次Backspace就删除4个空格
 set smarttab
-"配色方案
-colo desert
-"关闭兼容模式
 set nocompatible
-"以下三行模拟Windows操作，如Ctrl-C复制
+"enable ctrl c to copy
 source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
 behave mswin
-"不生成备份文件，下面这句要写在behave mswin下面，否则还是会生成备份，不知为何～
 set nobackup
-"不产生swp文件
 set noswapfile
-"GVIM内部编码
 set encoding=utf-8
-"当前编辑的文件编码
-"GVIM支持打开的文件编码
 set fileencodings=utf-8,gbk,gb2312,big5,latin1
 set termencoding=utf-8
-"防止特殊符号无法正常显示，如五角星等
-set ambiwidth=double
-"多个文件打开时用tab显示,0永远不显示 1两个以上显示 2 永远显示
-set showtabline=1
-"vim提示信息乱码的解决
 language messages zh_CN.utf-8
+set ambiwidth=double
+"show tabs 
+"0 never show tabs;1 show tabs when  > 1 tab; 2 always show tabs
+set showtabline=1
 set guitablabel=%{GuiTabLabel()}
-" 搜索时忽略大小写，但在有一个或以上大写字母时仍大小写敏感
 set ignorecase
 set smartcase
-" 搜索到文件两端时不重新搜索
 set nowrapscan
-" 实时搜索
 set incsearch
-" 搜索时高亮显示被找到的文本
 set hlsearch
-"插入状态下禁用方向键
-"MRU和acp的时候需要上下选择
-"inoremap <up> <nop>
-"inoremap <down> <nop>
+"disble left and right in insert mode
 inoremap <left> <nop>
 inoremap <right> <nop>
-"当前行对齐线
 set cursorcolumn
-"设置不自动折行
-set nowrap 
+"set nowrap 
 "}}}
 
-"{{{ 插件
+"{{{ Plugins
 filetype off
 set rtp+=$HOME/.vim/bundle/Vundle.vim
 "此处规定插件的安装路径
@@ -125,14 +100,12 @@ call vundle#rc('$HOME/.vim/bundle')
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
-"{{{ 通用插件
+"{{{ General
 Plugin 'matchit.zip' 
-"Plugin 'restart.vim'
-"Plugin 'terryma/vim-multiple-cursors'
+Plugin 'restart.vim'
 Plugin 'surround.vim'
 Plugin 'Align'
-"Plugin 'DoxygenToolkit.vim'
-"Plugin 'tpope/vim-dispatch'
+Plugin 'DoxygenToolkit.vim'
 
 "{{{ vim-expand-region 
 Plugin 'terryma/vim-expand-region'
@@ -206,14 +179,12 @@ set completeopt-=preview
 "let g:neocomplcache_omni_patterns.go = '.'
 "}}}
 
-" {{{ The NERD Commenter 用于代码注释
-" 这里使用的绑定快捷键同VS
+" {{{ The NERD Commenter
 Plugin 'The-NERD-Commenter'
 :nmap <C-K><C-C> <leader>c<space>
 :imap <C-K><C-C> <Esc><leader>c<space>i
 :nmap <C-K><C-U> <leader>c<space>
 :imap <C-K><C-U> <Esc><leader>c<space>i
-
 "}}}
 
 "{{{ vim-airline
@@ -231,7 +202,7 @@ let g:airline_symbols.readonly = '⭤'
 let g:airline_symbols.linenr = '⭡'
 let g:airline_symbols.paste = 'Þ'
 let g:airline_symbols.whitespace = 'Ξ'
-""字体设置,先到到tool下安装consolas字体
+"Font setting, need install consolas font first
 set guifont=Consolas\ for\ Powerline\ FixedD:h11
 set t_Co=256
 set laststatus=2
@@ -249,58 +220,10 @@ map <silent> <C-\> :call NTFinderP()<CR>
 "nmap s <Plug>(easymotion-s)
 "}}}
 
-"{{{ Bookmark
-"Plugin 'MattesGroeger/vim-bookmarks'
-"highlight BookmarkSign ctermbg=NONE ctermfg=160
-"highlight BookmarkLine ctermbg=194 ctermfg=NONE
-"let g:bookmark_sign = '♥'
-"let g:bookmark_highlight_lines = 1
-"}}}
-
 "}}}
 
 "{{{ C#
 Plugin 'OrangeT/vim-csharp'
-"Plugin 'OmniSharp/omnisharp-vim'
-"let g:syntastic_cs_checkers = ['syntax']
-" Contextual code actions (requires CtrlP)
-"nnoremap <leader><space> :OmniSharpGetCodeActions<cr>
-"don't autoselect first item in omnicomplete, show if only one item (for preview)
-"remove preview if you don't want to see any documentation whatsoever.
-"augroup omnisharp_commands
-    "autocmd!
-
-    ""Set autocomplete function to OmniSharp (if not using YouCompleteMe completion plugin)
-    "autocmd FileType cs setlocal omnifunc=OmniSharp#Complete
-
-    "" Builds can also run asynchronously with vim-dispatch installed
-    "autocmd FileType cs nnoremap <leader>b :wa!<cr>:OmniSharpBuildAsync<cr>
-    "" automatic syntax check on events (TextChanged requires Vim 7.4)
-    ""autocmd BufEnter,TextChanged,InsertLeave *.cs SyntasticCheck
-
-    "" Automatically add new cs files to the nearest project on save
-    "autocmd BufWritePost *.cs call OmniSharp#AddToProject()
-
-    ""show type information automatically when the cursor stops moving
-    "autocmd CursorHold *.cs call OmniSharp#TypeLookupWithoutDocumentation()
-
-    ""The following commands are contextual, based on the current cursor position.
-
-    "autocmd FileType cs nnoremap gd :OmniSharpGotoDefinition<cr>
-    "autocmd FileType cs nnoremap <F2> :OmniSharpRename<cr>
-    "autocmd FileType cs nnoremap <leader>fi :OmniSharpFindImplementations<cr>
-    "autocmd FileType cs nnoremap <C-K><C-D> :OmniSharpCodeFormat<cr>
-    "autocmd FileType cs nnoremap <leader>ft :OmniSharpFindType<cr>
-    "autocmd FileType cs nnoremap <leader>fs :OmniSharpFindSymbol<cr>
-    "autocmd FileType cs nnoremap <leader>fu :OmniSharpFindUsages<cr>
-    ""finds members in the current buffer
-    "autocmd FileType cs nnoremap <leader>fm :OmniSharpFindMembers<cr>
-    "" cursor can be anywhere on the line containing an issue
-    "autocmd FileType cs nnoremap <leader>x  :OmniSharpFixIssue<cr>
-    "autocmd FileType cs nnoremap <leader>fx :OmniSharpFixUsings<cr>
-    "autocmd FileType cs nnoremap <leader>tt :OmniSharpTypeLookup<cr>
-    "autocmd FileType cs nnoremap <leader>dc :OmniSharpDocumentation<cr>
-"augroup END
 "}}}
 
 "{{{ Go
@@ -328,48 +251,35 @@ Plugin 'vbnet.vim'
 autocmd BufNewFile,BufRead *.vb set ft=vbnet
 "}}}
 
-"{{{ Coffee Script
-"默认竖着显示
-"有个问题需要解决：注释 ftpplugin\coffee.vim 中的第89行
-Plugin 'kchmck/vim-coffee-script'
-let coffee_compile_vert = 1
-au BufReadPost *.coffee silent CoffeeCompile watch vert
-au BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
-"}}}
-
 "{{{ Mercurial
 :command! HgLog cd %:p:h | !thgw.exe --nofork log %:p & exit
-":command! HgLog execute 'start cmd ''' . expand('%:p:h'). ''' | !thgw.exe --nofork log ' . expand('%:p') . ' & exit'
 "}}}
 
 call vundle#end()            " required
 filetype plugin indent on    " required
 "}}}
 
-"{{{ 键盘映射
+"{{{ Keyboard Mapping
 
 imap <C-J> <C-x><C-o>
 nmap <leader>1 :set filetype=xml<cr>
 nmap <C-f> gg//g<left><left>
 
-"消除每行结尾有可能出现的^M (文件格式问题)
+"clear ^M in every line (file format issues)
 map <C-m> :%s/\r//g<CR> 
 
-"双击鼠标左键高亮所有选择的单词
+"highlight current word while doble clicking
 nmap <2-leftmouse> *N
 imap <2-leftmouse> <esc>*N
 
-"资源管理器中打开当前文件
 nmap <Leader>o :call OpenFileLocation()<CR> 
 
-"格式化全文
 nmap <C-K><C-D> gg=G
 
 "Ctrl+Tab
 imap <C-Tab> <ESC>gt
 nmap <C-Tab> gt
 
-"复制当前文件路径
 nmap <F4> :let @+ = expand("%:p")<CR>
 
 nmap <Tab> <C-w>w
@@ -389,11 +299,12 @@ nnoremap <leader>= :call SplitToggle()<cr>
 autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 autocmd BufReadPost quickfix nnoremap <buffer> <ESC> :q<CR>
 
-"******************************************************************************
-
 "}}}
 
 "{{{ UI
+
+colo desert
+
 "{{{ Color
 set background=dark
 highlight clear
@@ -525,4 +436,5 @@ hi scssVariable ctermfg=208 ctermbg=NONE cterm=NONE guifg=#fd971f guibg=NONE gui
 hi scssVariableValue ctermfg=141 ctermbg=NONE cterm=NONE guifg=#ae81ff guibg=NONE gui=NONE
 hi scssColor ctermfg=81 ctermbg=NONE cterm=NONE guifg=#66d9ef guibg=NONE gui=NONE
 "}}}
+
 "}}}
