@@ -89,7 +89,7 @@ set hlsearch
 inoremap <left> <nop>
 inoremap <right> <nop>
 set cursorcolumn
-"set nowrap 
+set nowrap 
 "}}}
 
 "{{{ Plugins
@@ -163,20 +163,8 @@ Plugin 'Shougo/neocomplcache.vim'
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_ignore_case = 1
 let g:neocomplcache_enable_auto_select = 1
-"let g:neocomplcache_force_overwrite_completefunc = 1
-"关闭顶部的自动预览
+""关闭顶部的自动预览
 set completeopt-=preview
-
-"autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-"autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-"autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-"autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-"autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-" Enable heavy omni completion, which require computational power and may stall the vim. 
-"if !exists('g:neocomplcache_omni_patterns')
-"let g:neocomplcache_omni_patterns = {}
-"endif
-"let g:neocomplcache_omni_patterns.go = '.'
 "}}}
 
 " {{{ The NERD Commenter
@@ -214,12 +202,6 @@ Plugin 'The-NERD-tree'
 map <silent> <C-\> :call NTFinderP()<CR>
 "}}}
 
-"{{{ EasyMotion
-"Plugin 'Lokaltog/vim-easymotion'
-"let g:EasyMotion_smartcase = 1
-"nmap s <Plug>(easymotion-s)
-"}}}
-
 "}}}
 
 "{{{ C#
@@ -244,15 +226,6 @@ autocmd FileType python setlocal completeopt-=preview
 "{{{ Javascript 
 Plugin 'pangloss/vim-javascript'
 au FileType javascript set foldmethod=syntax
-"}}}
-
-"{{{ VB.NET
-Plugin 'vbnet.vim'
-autocmd BufNewFile,BufRead *.vb set ft=vbnet
-"}}}
-
-"{{{ Mercurial
-:command! HgLog cd %:p:h | !thgw.exe --nofork log %:p & exit
 "}}}
 
 call vundle#end()            " required
