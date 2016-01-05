@@ -40,8 +40,6 @@ endfunction
 "}}}
 
 "{{{ Base Config
-"Maximize vim windows on startup
-set lines=999 columns=999
 set number
 set relativenumber
 "remap copy and paste to system copy paste
