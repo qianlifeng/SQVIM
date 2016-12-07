@@ -96,7 +96,7 @@ set rtp+=$HOME/.vim/bundle/Vundle.vim
 "此处规定插件的安装路径
 call vundle#rc('$HOME/.vim/bundle')
 call vundle#begin()
-Plugin 'gmarik/Vundle.vim'
+Plugin 'VundleVim/Vundle.vim'
 
 "{{{ General
 Plugin 'matchit.zip' 
