@@ -272,6 +272,13 @@ autocmd BufReadPost quickfix nnoremap <buffer> <ESC> :q<CR>
 
 "}}}
 
+"{{{ Custom commands
+
+"格式化JSON
+:command Json :%!python -m json.tool
+
+"}}}
+
 "{{{ UI
 
 colo desert
