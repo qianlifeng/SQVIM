@@ -169,12 +169,13 @@ set completeopt-=preview
 Plugin 'The-NERD-Commenter'
 :nmap <C-K><C-C> <leader>c<space>
 :imap <C-K><C-C> <Esc><leader>c<space>i
-:nmap <C-K><C-U> <leader>c<space>
-:imap <C-K><C-U> <Esc><leader>c<space>i
+:nmap <C-_> <leader>c<space>
+:imap <C-_> <Esc><leader>c<space>i
 "}}}
 
 "{{{ vim-airline
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
@@ -188,8 +189,7 @@ let g:airline_symbols.readonly = '⭤'
 let g:airline_symbols.linenr = '⭡'
 let g:airline_symbols.paste = 'Þ'
 let g:airline_symbols.whitespace = 'Ξ'
-"Font setting, need install consolas font first
-set guifont=Consolas\ for\ Powerline\ FixedD:h11
+set guifont=Consolas\ for\ Powerline\ FixedD:h12
 set t_Co=256
 set laststatus=2
 "}}}
@@ -230,7 +230,7 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 "}}}
 
-"{{{ Keyboard Mapping
+    "{{{ Keyboard Mapping
 
 imap <C-J> <C-x><C-o>
 nmap <leader>1 :set filetype=xml<cr>
