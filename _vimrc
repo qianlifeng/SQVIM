@@ -96,12 +96,14 @@ set rtp+=$HOME/.vim/bundle/Vundle.vim
 "此处规定插件的安装路径
 call vundle#rc('$HOME/.vim/bundle')
 call vundle#begin()
-Plugin 'gmarik/Vundle.vim'
+Plugin 'VundleVim/Vundle.vim'
 
 "{{{ General
 Plugin 'matchit.zip' 
 Plugin 'restart.vim'
 Plugin 'surround.vim'
+" terminal in vim
+Plugin 'wkentaro/conque.vim'
 Plugin 'Align'
 Plugin 'DoxygenToolkit.vim'
 
@@ -125,14 +127,33 @@ let g:expand_region_text_objects = {
 
 "{{{ctrlp
 Plugin 'kien/ctrlp.vim'
+"Plugin 'FelikZ/ctrlp-py-matcher'
 let g:ctrlp_regexp = 1
 let g:ctrlp_cmd = 'CtrlPMRU'
-let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$\|.rvm$'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn|idea)$',
+  \ 'file': '\v\.(class)$'
+  \ }
 let g:ctrlp_match_window_bottom=1
 let g:ctrlp_max_height=15
 let g:ctrlp_match_window_reversed=0
 let g:ctrlp_mruf_max=500
 let g:ctrlp_follow_symlinks=1
+
+"" The Silver Searcher
+if executable('ag')
+  let g:ctrlp_cmd = 'CtrlPMixed'
+
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g "" --skip-vcs-ignores --ignore "*.class"'
+
+  " " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
+
 "}}}
 
 "{{{ syntastic
@@ -167,10 +188,8 @@ set completeopt-=preview
 
 " {{{ The NERD Commenter
 Plugin 'The-NERD-Commenter'
-:nmap <C-K><C-C> <leader>c<space>
-:imap <C-K><C-C> <Esc><leader>c<space>i
-:nmap <C-_> <leader>c<space>
-:imap <C-_> <Esc><leader>c<space>i
+:nmap <C-/> <leader>c<space>
+:imap <C-/> <Esc><leader>c<space>i
 "}}}
 
 "{{{ vim-airline
@@ -244,6 +263,8 @@ nmap <2-leftmouse> *N
 imap <2-leftmouse> <esc>*N
 
 nmap <Leader>o :call OpenFileLocation()<CR> 
+imap <Leader>t <ESC>:ConqueTermVSplit zsh<CR><CR>
+nmap <Leader>t :ConqueTermVSplit zsh<CR><CR>
 
 nmap <C-K><C-D> gg=G
 
@@ -279,8 +300,7 @@ autocmd BufReadPost quickfix nnoremap <buffer> <ESC> :q<CR>
 
 "}}}
 
-"{{{ UI
-
+"{{{ UI 
 colo desert
 
 "{{{ Color
