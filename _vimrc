@@ -57,8 +57,15 @@ Plug 'vim-scripts/DoxygenToolkit.vim'
 Plug 'mhinz/vim-startify'
 Plug 'joshdick/onedark.vim'
 Plug 'Shougo/vimproc.vim'
-Plug 'Shougo/vimfiler.vim'
 Plug 'posva/vim-vue', {'for':'vue'}
+Plug 'junegunn/goyo.vim'
+Plug 'justinmk/vim-sneak'
+Plug 'w0rp/ale'
+
+"{{{ vimfiler
+Plug 'Shougo/vimfiler.vim'
+nmap <F2> :VimFilerBufferDir -explorer<CR>
+"}}}
 
 "{{{ incsearch
 Plug 'haya14busa/incsearch.vim'
@@ -146,18 +153,37 @@ set laststatus=2
 "{{{unite.vim
 Plug 'Shougo/neomru.vim'
 Plug 'Shougo/unite.vim'
-let g:unite_source_rec_async_command = ['ag', '--follow',  '--nocolor', '--nogroup', '--hidden', '--ignore', '.png', '-g', '']
-"let g:unite_source_rec_async_command = 'ag -i --nocolor --nogroup --ignore --ignore ''*.png'' --ignore ''node_modules'' --hidden -g ""'
+let g:unite_source_rec_async_command = ['ag', '--follow',  '--nocolor', '--nogroup', '--hidden', '-g', '']
 
-function! Unite_ctrlp()
-  execute ':UniteWithProjectDir -no-split -buffer-name=search -start-insert buffer neomru/file file_rec/async:!'
-endfunction
+if executable('pt')
+    let g:unite_source_grep_command = 'pt'
+    let g:unite_source_grep_default_opts = '--nogroup --nocolor -S --column'
+    let g:unite_source_grep_recursive_opt = ''
+    let g:unite_source_rec_async_command = ['pt', '--nogroup', '--nocolor', '-S', '-g', '.']
+endif
 
-nnoremap <C-P> :call Unite_ctrlp()<cr>
+nnoremap <C-P> :UniteWithProjectDir -no-split -buffer-name=search -start-insert buffer neomru/file file_rec/async:!<cr>
 autocmd FileType unite imap <buffer> <ESC> <Plug>(unite_exit)
 "}}}
 
 call plug#end()
+
+"Must called after plugin end
+call vimfiler#custom#profile('default', 'context', {
+      \ 'explorer' : 1,
+      \ 'winwidth' : 50,
+      \ 'winminwidth' : 30,
+      \ 'toggle' : 1,
+      \ 'auto_expand': 1,
+      \ 'direction' : 'rightbelow',
+      \ 'parent': 1,
+      \ 'status' : 1,
+      \ 'safe' : 0,
+      \ 'split' : 1,
+      \ 'hidden': 1,
+      \ 'no_quit' : 1,
+      \ 'force_hide' : 0,
+      \ })
 "}}}
 
 "{{{ Keyboard Mapping
@@ -182,7 +208,6 @@ imap <C-Tab> <ESC>gt
 nmap <C-Tab> gt
 
 nmap <F4> :let @+ = expand("%:p")<CR>
-nmap <F2> :VimFilerBufferDir -explorer<CR>
 
 nmap <Tab> <C-w>w
 
@@ -207,3 +232,4 @@ autocmd BufReadPost quickfix nnoremap <buffer> <ESC> :q<CR>
 syntax on
 colorscheme onedark
 "}}}
+
