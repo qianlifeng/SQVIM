@@ -130,13 +130,8 @@ Plug 'vim-scripts/The-NERD-Commenter'
 "}}}
 
 "{{{ vim-airline
-<<<<<<< HEAD
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-=======
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
->>>>>>> fc877df8ef64569a78aa2418293076894249baae
 
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
